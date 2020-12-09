@@ -1,0 +1,3 @@
+***WARNING***
+
+This folder is intended for those who wish to just setup RasPBX without go through each step. If you take this route, you may have issues and frustration. It is recommended that you actually take the time to go though each section as it will give you a better understanding how everything fits together. Each section also contains troubleshooting information and tips that will help you avoid problems in the first place.

@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<DIALTEMPLATE>
+    <TEMPLATE MATCH="911" Timeout="0"/> <!-- Emergency -->
+    <TEMPLATE MATCH=".........." TIMEOUT="1"/> <!-- 10 digits. Wait 1 second, then dial. -->
+    <TEMPLATE MATCH="1.........." TIMEOUT="0"/> <!-- 1+10 digits. Dial immediately -->
+    <TEMPLATE MATCH="\*97" TIMEOUT="0"/> <!-- *97 for voicemail. Dial immediately. -->
+    <TEMPLATE MATCH="011*" TIMEOUT="5"/> <!-- International number. No fixed length -->
+    <TEMPLATE MATCH="1.." Timeout="1"/> <!-- Internal extensions 100 to 199. Wait 1 second, then dial. -->
+    <TEMPLATE MATCH="2.." Timeout="1"/>  <!-- Internal extensions 200 to 299. Wait 1 second, then dial. -->
+    <TEMPLATE MATCH="*#" TIMEOUT="0" REWRITE="%1"/> <!-- Dial immediately after pressing #. -->
+    <TEMPLATE MATCH="*" TIMEOUT="5"/> <!-- Anything else -->
+</DIALTEMPLATE>
