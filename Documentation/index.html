@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="Description" content="RasPBX Build using FreePBX/Asterisk. Modified code from the SourceForge 
+			Open79XX XML Directory project.
+			Helpful hints for Cisco 7941G IP phones." />
+		<link rel="stylesheet" href="./style/modal.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<script src="./js/modal.js"></script>
+		<script src="./js/include.js"></script>
+		<script>
+			function layout() {
+				includeFile("_header_", "./parts/header.html");
+				includeFile("_footer_", "./parts/footer.html");
+
+				addImgClickEvents();
+			}
+		</script>
+		<title>RasPBX</title>
+	</head>
+	<body onload="layout();">
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="_header_"></div>
+		<h1 id="main">RasPBX Build</h1>
+		<p>
+			The inspiration for this project came from the article "<a href="https://magpi.raspberrypi.org/articles/raspberry-pi-telephone-exchange" target="_blank" rel="noopener noreferrer">Build 
+			a telephone exchange</a>" in <a href="https://magpi.raspberrypi.org/issues/78" target="_blank" rel="noopener noreferrer">MagPi issue 78</a>. I ran into issues with this build
+			and did not listen to the advice of others to throw out the phones and gets some newer ones which are supported and can be easily configured.
+		</p>
+		<p>
+			My advice is if you have Cisco 7941G phones, it is possible to get them to work and it is not too bad once you understand how to configure them and 
+			get them to work. If you do not have these phones, then I would advise you to move along and get a newer phone because the Cisco 7941G phones are not 
+			for the faint of heart. They are difficult but not impossible to setup. Hopefully the information that I have collected and am sharing here will help 
+			you to configure your RasPBX/FreePBX installation to work with the Cisco 7941G IP phones.
+		</p>
+		<p>
+			The articles here are setup to let you pick and choose which ones you would like to follow based on your needs. I am not an expert in this area, but
+			I had enough knowledge and ability to Google for answers to figure this out. I invite others with more knowledge in these areas to make improvements
+			by forking this repository, making changes, and creating a pull request. If you run into any issues or see errors, please feel free to submit an 
+			issue and I will attempt to address it.
+		</p>
+		<p>Articles in this series</p>
+		<ul>
+			<li><a href="./101.html">101 - Install and configure RasPBX</a></li>
+			<li><a href="./102.html">102 - Connecting to a POTS Line</a></li>
+			<li><a href="./200.html">200 - Setting up Cisco 79xx Phones</a></li>
+			<li><a href="./201.html">201 - Adding Ringtones to Cisco 79xx Phones</a></li>
+			<li><a href="./202.html">202 - Adding Background Images to Cisco 79xx Phones</a></li>
+			<li><a href="./203.html">203 - Adding Directories to Cisco 79xx Phones</a></li>
+			<li><a href="./204.html">204 - Adding Services to Cisco 79xx Phones</a></li>
+			<li><a href="./205.html">205 - Adding Info/Help to Cisco 79xx Phones</a></li>
+			<li><a href="./206.html">206 - Take a screenshot of Cisco 79xx Phones</a></li>
+			<li><a href="./900.html">900 - Securing the installation</a></li>
+			<li><a href="./ref.html">References used to pull the information together for this series</a></li>
+		</ul>
+		<div id="_footer_"></div>
+	</body>
+</html>
