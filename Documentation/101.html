@@ -47,7 +47,10 @@
 				<img src="./images/raspberry-asterisk_02.png" 
 					alt="Raspberry-asterisk website downloads page" />
 			</li>
-			<li>Write the image to the microSD card using image writing software such as balenaEtcher
+			<li>
+				Write the image to the microSD card using image writing software such as balenaEtcher. The steps and 
+				images below are from balenaEtcher. If you use another imaging software application, the steps may be
+				different but the process is similar.
 				<ol>
 					<li>
 						Click the "Flash from file" button to select the image file<br />
@@ -74,7 +77,10 @@
 					<li>
 						Click the "Flash!" button to write the image to the microSD card.<br />
 						<img src="./images/Etcher-Flash_05.png" 
-							alt="balenaEtcher Screenshot - 'Flash!' button highlighted" />
+							alt="balenaEtcher Screenshot - 'Flash!' button highlighted" /><br />
+						<b>NOTE:</b>If you see a User Account Control (UAC) dialog box, click the "Yes" button to continue.<br />
+						<img src="./images/Etcher-Flash_05UAC.png" 
+							alt="Windows User Account Control (UAC) dialog box" />
 					</li>
 					<li>
 						Wait until the flash process completes. It will take several minutes. You will see the screens shown below.<br />
@@ -237,7 +243,15 @@
 		
 		<h2>Step 3 - Add extensions to RasPBX for the softphones</h2>
 		<ol>
-			<li></li>
+			<li>
+				Open a web browser and navigate to <a href="http://raspbx.local/" target="_blank" rel="noopener noreferrer">
+				http://raspbx.local/</a> or use the IP Address or your Raspberry Pi.<br />
+			</li>
+			<li>
+				Click on the "FreePBX Administration" button<br />
+				<img src="./images/RasPBX-Extensions_01.png" 
+					alt="FreePBX Home Screen" />
+			</li>
 		</ol>
 		
 		<h2>Step 4 - Install &amp; provision softphones</h2>
