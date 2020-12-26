@@ -5,9 +5,11 @@ body {
 	padding-left: 3em;
 }
 
-li img {
-	width: 100%;
+li img, .previewImage {
+	height: auto;
 	max-width: 250px;
+	width: auto;
+	max-height: 250px;
 }
 
 ol {
