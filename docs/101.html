@@ -96,7 +96,7 @@
 						<b>NOTE:</b> Windows may access the drive once the Flashing of the drive is complete. If this happens, you may 
 						see a message stating that you need to format the disk. Click Cancel on the dialog. Etcher may then present a 
 						message that there is "1 Failed device" on the "Flash Complete" screen. This is due to Windows creating a 
-						“System Volume Information” folder on the microSD card during validation. You may safely ignor the error and 
+						“System Volume Information” folder on the microSD card during validation. You may safely ignore the error and 
 						continue. If you wish to learn more about this message, you may read 
 						<a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17634" target="_blank" rel="noopener noreferrer">issue #17634</a>
 						on the Tails GitLab project.<br />
@@ -287,22 +287,21 @@
 					alt="raspbx-upgrade typed at the command prompt" /><br />
 					If prompted for input, select the default value by pressing enter.<br />
 				<img src="./images/101/update_05.png" 
-					alt="raspbx-upgrade prompt to continue the upgrade with Yes as the default option" />
+					alt="raspbx-upgrade prompt to continue the upgrade" />
 			</li>
 		</ol>
 		
-		<h2>Step 4 - Inital RasPBX Setup</h2>
+		<h2>Step 4 - Initial RasPBX Setup</h2>
 		<ol>
 			<li>
-				Open a web browser and navigate to <a href="http://raspbx.local/" target="_blank" rel="noopener noreferrer">
-				http://raspbx.local/</a> or use the IP Address or your Raspberry Pi.<br />
+				Open a web browser and navigate to http://raspbx.local/ or use the IP Address or your Raspberry Pi.<br />
 			</li>
 			<li>
-				The Inital Setup Screen is shown. Complete the requested information and click the "Setup System" button.<br />
+				The Initial Setup Screen is shown. Complete the requested information and click the "Setup System" button.<br />
 				<img src="./images/101/RasPBX-Setup_01.png" 
-					alt="FreePBX Inital Setup Screen" /><br />
+					alt="FreePBX Initial Setup Screen" /><br />
 				<img src="./images/101/RasPBX-Setup_02.png" 
-					alt="FreePBX Inital Setup Screen completed" />
+					alt="FreePBX Initial Setup Screen completed" />
 			</li>
 			<li>
 				Click on the "FreePBX Administration" button<br />
@@ -310,7 +309,7 @@
 					alt="FreePBX Home Screen" />
 			</li>
 			<li>
-				Enter the username and password that you created on the Inital Setup Screen to log into FreePBX.<br />
+				Enter the username and password that you created on the Initial Setup Screen to log into FreePBX.<br />
 				<img src="./images/101/RasPBX-Setup_04.png" 
 					alt="FreePBX Login Screen" />
 			</li>
@@ -372,13 +371,12 @@
 		<h2>Step 5 - Add extensions to RasPBX for the softphones</h2>
 		<ol>
 			<li>
-				Open a web browser and navigate to <a href="http://raspbx.local/" target="_blank" rel="noopener noreferrer">
-				http://raspbx.local/</a> or use the IP Address or your Raspberry Pi.<br />
+				Open a web browser and navigate to http://raspbx.local/ or use the IP Address or your Raspberry Pi.<br />
 				<img src="./images/101/RasPBX-Extensions_01.png" 
 					alt="FreePBX Home Screen" />
 			</li>
 			<li>
-				Enter the username and password you created during the intial RasPBX setup and click the "Continue" button.<br />
+				Enter the username and password you created during the initial RasPBX setup and click the "Continue" button.<br />
 				<img src="./images/101/RasPBX-Extensions_02.png" 
 					alt="FreePBX Login Screen" />
 			</li>
@@ -387,15 +385,15 @@
 				<img src="./images/101/RasPBX-Extensions_03.png" 
 					alt="FreePBX Dashboard" />
 				<img src="./images/101/RasPBX-Extensions_04.png" 
-					alt="FreePBX Dashboard" />
+					alt="FreePBX Dashboard-Applications &gt; Extensions menu" />
 			</li>
 			<li>
 				Click the "+Add Extension" button and select "Add New SIP [chan_pjsip] Extension" from the drop-down menu.<br />
-				<strong>NOTE:</strong> Other extension types may work but PJSIP is what I used here. Feel free to try others if you like.<br />
+				<strong>NOTE:</strong> Other extension types may work but PJSIP is what I used here.<br />
 				<img src="./images/101/RasPBX-Extensions_05.png" 
 					alt="FreePBX Extensions Application - All Extensions tab" />
 				<img src="./images/101/RasPBX-Extensions_06.png" 
-					alt="FreePBX Extensions Application - All Extensions tab" />
+					alt="FreePBX Extensions Application - Add New SIP [chang_pjsip] Extension" />
 			</li>
 			<li>
 				Enter values in the following fields and click the "Submit" button.<br />
@@ -406,14 +404,14 @@
 				</ul>
 				<strong>NOTES:</strong>
 				<ul>
-					<li>Place your mouse over the "?" icons next to each field to see a description of what to enter in the field.</li>
+					<li>To get more information on a field, place your mouse over the "?" icons next to each field to view a description of what to enter in the field.</li>
 					<li>Click into the "Secret" field and copy the value as we will need it to setup the softphone.</li>
 				</ul>
 				<img src="./images/101/RasPBX-Extensions_07.png" 
 					alt="FreePBX Extensions Application - Add PJSIP Extension Screen" />
 			</li>
 			<li>
-				Click on the "Voicemail" tab to turn on voicemail for the extention.<br />
+				Click on the "Voicemail" tab to turn on voicemail for the extension.<br />
 				<img src="./images/101/RasPBX-Extensions_12.png" 
 					alt="FreePBX Extensions Application - Add PJSIP Extension Screen" />
 			</li>
@@ -423,20 +421,43 @@
 				voicemail if the password is the same as the extension. Once voicemail is enabled and the "Voicemail 
 				Password" are set, click the "Submit" button.<br />
 				<img src="./images/101/RasPBX-Extensions_13.png" 
-					alt="FreePBX Extensions Application - Add PJSIP Extension Screen - Voicemail" />
+					alt="FreePBX Extensions Application - Voicemail Password" />
 				<img src="./images/101/RasPBX-Extensions_14.png" 
-					alt="FreePBX Extensions Application - Add PJSIP Extension Screen - Voicemail" />
+					alt="FreePBX Extensions Application - Submit Voicemail Settings" />
 			</li>
 			<li>
 				Repeat the above steps to add an extension for another softphone then click the "Apply Config" button.<br />
 				<img src="./images/101/RasPBX-Extensions_08.png" 
-					alt="FreePBX Extensions Application Screen" />
+					alt="FreePBX Extensions Application Screen - Add new extension" />
 				<img src="./images/101/RasPBX-Extensions_09.png" 
+					alt="FreePBX Extensions Application Screen - Extensions added" />
+			</li>
+			<li>
+				Click the "Settings" menu and select the "Asterisk SIP Settings" drop-down item.<br />
+				<img src="./images/101/RasPBX-Extensions_15.png" 
 					alt="FreePBX Extensions Application Screen" />
+			</li>
+			<li>
+				Click the "Detect Network Settings" button to get your current external IP Network Address, then click the "Submit" button.<br />
+				<img src="./images/101/RasPBX-Extensions_16.png" 
+					alt="FreePBX SIP Settings Screen - Detect Network Settings" />
+				<img src="./images/101/RasPBX-Extensions_17.png" 
+					alt="FreePBX SIP Settings Screen - Submit Changes" />
+			</li>
+			<li>
+				Apply the configuration changes by clicking on the red "Apply Config" button in the upper right corner.<br />
+				<img src="./images/101/RasPBX-Extensions_09b.png" 
+					alt="FreePBX SIP Settings Screen" />
 				<img src="./images/101/RasPBX-Extensions_10.png" 
-					alt="FreePBX Extensions Application Screen" />
+					alt="FreePBX SIP Settings Screen - Applying Changes" />
 				<img src="./images/101/RasPBX-Extensions_11.png" 
-					alt="FreePBX Extensions Application Screen" />
+					alt="FreePBX SIP Settings Screen - Changes Applied" />
+			</li>
+			<li>
+				Reboot the Raspberry Pi to have the SIP changes take effect. At the terminal window, log in, if 
+				not already logged in and type the command "sudo shutdown -r now"<br />
+				<img src="./images/101/RasPBX-Extensions_18.png" 
+					alt="FreePBX SIP Settings Screen" />
 			</li>
 		</ol>
 		
@@ -489,7 +510,7 @@
 			<li>
 				Enter the following information and click the "Use" button<br />
 				<ul>
-					<li>Username: This will be the extention that was setup in FreePBX</li>
+					<li>Username: This will be the extension that was setup in FreePBX</li>
 					<li>SIP Domain: Enter the IP Address of the RasPBX</li>
 					<li>Password: Enter the "Secret" value from when the extension was setup</li>
 					<li>Transport: Select "UDP"</li>
@@ -536,7 +557,7 @@
 			<li>
 				Enter the following information in the SIP account screen and click the "Login" button.<br />
 				<ul>
-					<li>Username: This will be the extention that was setup in FreePBX</li>
+					<li>Username: This will be the extension that was setup in FreePBX</li>
 					<li>Password: Enter the "Secret" value from when the extension was setup</li>
 					<li>Domain: Enter the IP Address of the RasPBX</li>
 					<li>Transport: Select "UDP"</li>
@@ -557,7 +578,7 @@
 				<img src="./images/101/Softphone_Android_10.png" 
 					alt="Android Do Not Disturb Permission Screen - Linphone setting" />
 				<img src="./images/101/Softphone_Android_11.png" 
-					alt="Android Do Not Disturb Permission Screen - Linphone setting" />
+					alt="Android Do Not Disturb Permission Screen - System Prompt" />
 			</li>
 			<li>
 				Return to the Linphone application and note that the upper left corner show a green "Connected"
@@ -566,7 +587,7 @@
 					alt="Linphone application screen" />
 			</li>
 			<li>
-				Now we must fix an issue with Linphone. Linphone prepends the country code to every call so we 
+				Now we must fix an issue with Linphone. Linphone adds the country code prefix to every call so we 
 				need to configure it not to add the country code. Click the menu in the upper left corner to pop 
 				out the menu items.<br />
 				<img src="./images/101/Softphone_Android_13.png" 
@@ -581,11 +602,11 @@
 				Locate "Prefix" in the options, remove the value, then click the arrow in the upper
 				left corner to return to the main screen.<br />
 				<img src="./images/101/Softphone_Android_15.png" 
-					alt="Linphone account settings" />
+					alt="Linphone account settings - Prefix default setting" />
 				<img src="./images/101/Softphone_Android_16.png" 
-					alt="Linphone account settings" /><br />
+					alt="Linphone account settings - Prefix cleared" /><br />
 				<strong>NOTE:</strong> If you do not remove the "Prefix" value you will see an error notification
-				when attempting to call other extenstions stating, "User not found".<br />
+				when attempting to call other extensions stating, "User not found".<br />
 				<img src="./images/101/Softphone_Android_17.png" 
 					alt="Linphone 'User not found' error" />
 			</li>
