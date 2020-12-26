@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# UEStudio project files
+*.pui
+*.prj
+*.tags.lst
