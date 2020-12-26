@@ -1,4 +1,6 @@
 # RasPBX_Build
+View detailed documentation in the docs folder at [https://richteel.github.io/RasPBX_Build/](https://richteel.github.io/RasPBX_Build/ "github.io")
+
 Documentation for RasPBX Build with Cisco 7941G IP Phones
 
 The inspiration for this project was the [MagPi 78](https://magpi.raspberrypi.org/issues/78) article “[Build a telephone exchange](https://magpi.raspberrypi.org/articles/raspberry-pi-telephone-exchange).” I ran into issues with this build and did not listen to the advise of others to throw out the phones and gets some newer ones which are supported and can be easily configured.
@@ -21,6 +23,9 @@ My advise is if you have Cisco 7941G phones, it is possible to get them to work 
 - Open79XX XML Directory - [https://sourceforge.net/projects/open79xxdir/](https://sourceforge.net/projects/open79xxdir/) ***NOTE** The version included here is heavily modified to fix some bugs and allowed it to work with PHP 7.*
 - Zoiper (Windows version) - [https://www.zoiper.com/](https://www.zoiper.com/)
 - Linphone (Android version) - [https://www.linphone.org/](https://www.linphone.org/)
+- balenaEtcher (Windows version) - [https://www.balena.io/etcher/](https://www.balena.io/etcher/)
+- PuTTY (Windows version) - [https://www.putty.org/](https://www.putty.org/)
+- WinSCP (Windows version) - [https://winscp.net/](https://winscp.net/)
 
 **Additional Notes***
 I utilized a Windows Server to run a DHCP Server. The Raspberry Pi could have been used as well, but I have a Windows Server on my network and I am familiar with setting up and running the DHCP Server on Windows.
