@@ -62,3 +62,36 @@ a.skip-main:focus, a.skip-main:active {
 	font-size:1.2em;
 	z-index:999;
 }
+
+.caption {
+	display: block;
+	height: auto;
+	max-width: 250px;
+	text-align: center;
+	font-size: smaller;
+}
+
+.NoteBlock {
+	border: 1px solid #fff;
+	background-color: wheat;
+	display: block;
+}
+
+.NoteBlock div {
+	padding: 0px 10px;
+}
+
+.NoteTitle {
+	background-color: black;
+	color: white;
+	display: block;
+	padding: 5px 10px;
+	font-weight: bold;
+}
+
+.code {
+	display: block;
+	unicode-bidi: embed;
+	font-family: monospace;
+	white-space: pre;
+}

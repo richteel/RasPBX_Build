@@ -7,7 +7,7 @@ function addImgClickEvents() {
 	imgs = document.getElementsByTagName("img");
 	
 	for (var i = 0; i < imgs.length; i++) {
-		if(imgs[i].id != "_modalImg_") {
+		if(imgs[i].id != "_modalImg_" && !imgs[i].classList.contains("None")) {
 			showModal(imgs[i]);
 			imgs[i].modal = i + 1;
 			imgsCount = i + 1;
@@ -123,4 +123,5 @@ function showModal(imgElement)
 	  modalImg.alt = this.alt;
 	  captionText.innerHTML = this.alt + "<br /><i>" + this.modal + " of " + imgsCount + " images</i>";
 	}
+	imgElement.title = imgElement.alt;
 }

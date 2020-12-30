@@ -24,6 +24,553 @@
 		<a class="skip-main" href="#main">Skip to main content</a>
 		<div id="_header_"></div>
 		<h1 id="main">102 - Connecting to a POTS Line</h1>
+		<p>
+			This guide will walk you through setting up an OBi110, to allow FreePBX to place and receive 
+			calls from phones outside of your network.<br />
+			<img src="./images/102/PBX_Network_102.png" 
+				alt="Diagram showing the end state" class="previewImage" />
+		</p>
+		<h2>Prerequisites</h2>
+		<ul>
+			<li>Install and configure RasPBX completed steps with a minimum of one softphone</li>
+		</ul>
+		<h2>Required Items</h2>
+		<ul>
+			<li>
+				OBi100 or OBi110 analog telephone adapter (ATA) (You may be able to substitute with similar device 
+				however screens and steps will be different.)<br />
+				<strong>NOTE:</strong> OBiTALK no longer produces OBi110 ATAs. The current models are OBi2xx 
+				series. Some people have commented that there are issues with the OBi200 series but they are 
+				usable. If you wish to use an OBi1xx ATA, you may find them on auction sites such as eBay. 
+				Search eBay for <a href="https://www.ebay.com/sch/i.html?_nkw=OBi+100"
+					target="_blank" rel="noopener noreferrer">OBi100</a> or 
+				<a href="https://www.ebay.com/sch/i.html?_nkw=OBi+110" 
+					target="_blank" rel="noopener noreferrer">OBi110</a>.
+			</li>
+			<li>
+				Analog telephone line / Plain Old Telephone Service (POTS) 
+			</li>
+		</ul>
+		
+		<div class="NoteBlock">
+			<span class="NoteTitle">Obtaining the OBi110 IP Address</span>
+			<div>
+				<p>
+					In order to complete the steps in this guide, you will need to know the IP Address of the 
+					OBi110. There are a few ways to get the IP Address of the OBi110 ATA once it is connected 
+					to the network.
+				</p>
+				<ul>
+					<li>
+						<strong>Option 1</strong> - With a phone connected to the phone port
+						<ul>
+							<li>On the phone, dial * * * 1</li>
+							<li>The voice prompt will tell you the IP Address and DHCP status</li>
+						</ul>
+					</li>
+					<li>
+						<strong>Option 2</strong> - Looking at your DHCP server leases
+						<ul>
+							<li>
+								If you don't know what your DHCP server's IP Address is and you are using Windows, you
+								may type "ipconfig /all" in a command window to get the DHCP information. The IP 
+								Address of the DHCP server will be displayed on the line "DHCP Server"<br />
+								<strong>NOTE:</strong> If you do not see "DHCP Server" in the ipconfig output,
+								then the Windows machine may be assigned a static IP Address.<br />
+								<img src="./images/102/OBi110_IP_Address_01.png" 
+									alt="Windows Command Window with networking information displayed" />
+								<span class="caption">
+									Windows Command Window with networking information displayed
+								</span>
+							</li>
+							<li>
+								Once you have the DHCP Server's address, access your DHCP Server to view the active
+								leases. Typically the DHCP Server is a router with a web interface but it may be a 
+								another PC.<br />
+								<img src="./images/102/OBi110_IP_Address_02.png" 
+									alt="Sample device list from router web management portal" />
+								<span class="caption">
+									Sample device list from router web management portal
+								</span>
+								<img src="./images/102/OBi110_IP_Address_03.png" 
+									alt="Sample leases from Windows DHCP Server" />
+								<span class="caption">
+									Sample leases from Windows DHCP Server
+								</span>
+								
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<h2>Step 1 - Reset the OBi110 ATA </h2>
+		<p>
+			This step is optional but is recommended, especially if the ATA has been purchased as a used
+			device. Resetting the ATA to factory defaults will provide a better experience.
+		</p>
+		<p>
+			There are at least 3 ways to factory reset your OBi110 ATA.
+		</p>
+		<ol>
+			<li>
+				Option 1 - Paper clip method
+				<ol>
+					<li>Power on the unit (no need to connect phone or internet)</li>
+					<li>
+						Locate the reset hole on the bottom of the OBi110 located at the top-left corner of the 
+						product label.<br />
+						<img src="./images/102/OBi110_Reset_01.png" 
+							alt="Bottom of the OBi110 showing the reset hole" />
+					</li>
+					<li>Insert tip of a paper-clip and press for 10 seconds</li>
+					<li>The power LED will blink for about 5 seconds and the unit will reboot</li>
+				</ol>
+			</li>
+			<li>
+				Option 2 - Using a phone attached to the phone port
+				<ol>
+					<li>Power on the unit and attach a phone to the phone port</li>
+					<li>
+						Take the phone off-hook and press the star key three times followed by the number 8; <br />
+						i.e. * * * 8
+					</li>
+					<li>When prompted, press "1" to confirm the factory reset</li>
+					<li>The power LED will blink for about 5 seconds and the unit will reboot</li>
+				</ol>
+			</li>
+			<li>
+				Option 3 - Using the web management portal
+				<ol>
+					<li>
+						With the OBi110 powered on and connected to the network, open a web browser and navigate
+						to the OBi110 web management portal
+					</li>
+					<li>
+						Login to the web management portal<br />
+						<strong>NOTE:</strong> The default username / password is admin / admin<br />
+						<img src="./images/102/OBi110_Reset_02.png" 
+							alt="OBi110 Management Login" />
+					</li>
+					<li>
+						Expand the "System Management" menu option on the left and click the "Device Update"
+						item<br />
+						<img src="./images/102/OBi110_Reset_03.png" 
+							alt="OBi110 Management Home" />
+					</li>
+					<li>
+						On the "Device Update" page, click the "Reset" button in the "Reset Configuration" 
+						section.<br />
+						<img src="./images/102/OBi110_Reset_04.png" 
+							alt="OBi110 Device Update page" />
+					</li>
+					<li>
+						Click the "OK" button on the confirmation popup to reset the ATA.<br />
+						<img src="./images/102/OBi110_Reset_05.png" 
+							alt="Reset confirmation popup" />
+					</li>
+					<li>The power LED will blink for about 5 seconds and the unit will reboot</li>
+				</ol>
+			</li>
+		</ol>
+		
+		<p>
+			The following steps are from Martin Anderson's post on the 
+			<a href="https://wiki.freepbx.org/pages/viewpage.action?pageId=4161594"
+				target="_blank" rel="noopener noreferrer">FreePBX Website</a>. You may wish to follow
+			Martin's guide as he has some additional steps regarding setting up a static IP Address.
+		</p>
+		<h2>Step 2 - Configure the OBi110 as an FXO Gateway</h2>
+		<ol>
+			<li>
+				Open the OBi110 web management portal and login<br />				
+			</li>
+			<li>
+				Optionally setup the Timezone<br>
+				You may wish to change the timezone if you are not located in the Pacific Standard 
+				Timezone (PST).
+				<ol>
+					<li>
+						Select "System Management" &gt; "Network Settings" from the menu on the left<br />
+						<img src="./images/102/OBi110_Timezone_01.png" 
+							alt="System Management &gt; Network Settings menu" />
+					</li>
+					<li>
+						Change the LocalTimeZone by picking a value from the list, then click the "Submit"
+						button<br />
+						<img src="./images/102/OBi110_Timezone_02.png" 
+							alt="Network Settings screen with LocalTimeZone highlighted" />
+						<img src="./images/102/OBi110_Timezone_03.png" 
+							alt="Network Settings screen with Submit button highlighted" />
+						<img src="./images/102/OBi110_Timezone_03d.png" 
+							alt="Prompt to confirm Network Setting changes" />
+						<img src="./images/102/OBi110_Timezone_04.png" 
+							alt="Network Settings have been applied" />
+					</li>
+				</ol>
+			</li>
+			<li>
+				Navigate to the SIP settings by navigating the menu on the left side. Click on "Service 
+				Providers" &gt; "ITSP Profile B" &gt; "SIP"<br />
+				<img src="./images/102/FXO_Gateway_01.png" 
+					alt="ITSP Profile B SIP Settings Page" />
+			</li>
+			<li>
+				Change the following values and click the "Submit" button.<br />
+				<strong>NOTE:</strong> You must uncheck the "Default" checkboxes to change values
+				<ul>
+					<li>ProxyServer: Enter the IP Address of the RasPBX</li>
+					<li>ProxyServerPort: 5160</li>
+					<li>RegistrarServerPort: 5160</li>
+					<li>X_SpoofCallerID: Check the checkbox</li>
+					<li>X_AccessList: Enter the IP Address of the RasPBX</li>
+				</ul>
+				<img src="./images/102/FXO_Gateway_02.png" 
+					alt="ITSP Profile B SIP Settings Page with 4 items highlighted" />
+				<img src="./images/102/FXO_Gateway_03.png" 
+					alt="ITSP Profile B SIP Settings Page with 1 item and Submit button highlighted" />
+				<img src="./images/102/FXO_Gateway_04.png" 
+					alt="Prompt to confirm SIP changes" />
+				<img src="./images/102/FXO_Gateway_05.png" 
+					alt="SIP Settings applied screen" />
+			</li>
+			<li>
+				Navigate to the SP2 settings by navigating the menu on the left side. Click on "Voice 
+				Services" &gt; "SP2 Service"<br />
+				<img src="./images/102/FXO_Gateway_06.png" 
+					alt="SP2 Service Settings Page" />
+			</li>
+			<li>
+				Change the following values and click the "Submit" button.
+				<ul>
+					<li>X_ServProvProfile: Select "B" from the drop-down list</li>
+					<li>X_InboundCallRoute: LI</li>
+					<li>
+						AuthUserName: <i>Enter a name. It will be used in the configuration of the 
+						trunk that will be setup in FreePBX (i.e. OBITRUNK1)</i>
+					</li>
+					<li>
+						AuthPassword: <i>Enter a password. It will be used in the configuration of the 
+						trunk that will be setup in FreePBX (i.e. FXOPASSWORD)</i>
+					</li>
+					<li>MessageWaiting: Uncheck the checkbox</li>
+				</ul>
+				<img src="./images/102/FXO_Gateway_07.png" 
+					alt="ITSP SP2 Settings Page with 4 items highlighted" />
+				<img src="./images/102/FXO_Gateway_08.png" 
+					alt="ITSP SP2 Settings Page with 1 item and Submit button highlighted" />
+				<img src="./images/102/FXO_Gateway_08d.png" 
+					alt="Prompt to confirm SP2 changes" />
+				<img src="./images/102/FXO_Gateway_09.png" 
+					alt="SP2 Settings applied screen" />
+			</li>
+			<li>
+				Navigate to the Line Port settings by navigating the menu on the left side. Click on 
+				"Physical Interfaces" &gt; "LINE Port"<br />
+				<img src="./images/102/FXO_Gateway_10.png" 
+					alt="LINE Port Settings Page" />
+			</li>
+			<li>
+				Change the following values and click the "Submit" button.
+				<ul>
+					<li>
+						InboundCallRoute: SP2(<i>phone number of the line that will be 
+						attached to your LINE port)</i><br />
+						<i>example: SP2(7165550123)</i>
+					</li>
+					<li>RingDelay: 3500</li>
+					<li>DialDelay: 1000</li>
+					<li>DialDigitOnTime: 50</li>
+					<li>DialDigitOffTime: 50</li>
+					<li>SilenceTimeThreshold: 600</li>
+				</ul>
+				<img src="./images/102/FXO_Gateway_11.png" 
+					alt="Line Port Settings Page with 5 items highlighted" />
+				<img src="./images/102/FXO_Gateway_12.png" 
+					alt="Line Port Settings Page with 1 item and Submit button highlighted" />
+				<img src="./images/102/FXO_Gateway_12d.png" 
+					alt="Prompt to confirm Line Port changes" />
+				<img src="./images/102/FXO_Gateway_13.png" 
+					alt="Line Port Settings applied screen" />
+			</li>
+			<li>
+				Reboot the OBi110 to have the changes take effect by clicking on the "Reboot" button
+				in the upper right corner of the screen<br />
+				<img src="./images/102/OBi110_Reboot_01.png" 
+					alt="OBi110 Web Page with the Reboot button highlighted" />
+			</li>
+		</ol>
+		
+		<h2>Step 3 - Set-up a Trunk in FreePBX</h2>
+		<ol>
+			<li>
+				Open up the FreePBX web management portal, select "FreePBX Administration" and log in<br />
+				<img src="./images/102/FreePBX_Trunk_01.png" 
+					alt="FreePBX Home Screen" />
+				<img src="./images/102/FreePBX_Trunk_02.png" 
+					alt="FreePBX Login Screen" />
+			</li>
+			<li>
+				From the "Connectivity" menu, click the "Trunks" item<br />
+				<img src="./images/102/FreePBX_Trunk_03.png" 
+					alt="FreePBX Connectivity Menu - Trunks" />
+			</li>
+			<li>
+				Click the "+ Add Trunk" button, then select "+ Add SIP (chan_sip) Trunk" from the drop-down
+				list<br />
+				<img src="./images/102/FreePBX_Trunk_04.png" 
+					alt="FreePBX Trunks Admin - Add Trunk menu" />
+			</li>
+			<li>
+				Enter the following values on the "General" tab
+				<ul>
+					<li>
+						Trunk Name: <i>Enter a name for the trunk</i><br />
+						<i>example: Obitrunk1</i>
+					</li>
+					<li>
+						Outbound CallerID: <i>Enter the phone number of the POTS line that is connected to the 
+							OBi110</i><br />
+						<i>example: 7165550123</i>
+					</li>
+					<li>CID Options: Allow Any CID</li>
+					<li>Maximum Channels: <i>Blank</i></li>
+					<li>Asterisk Trunk Dial Options: System</li>
+					<li>Continue if Busy: No</li>
+					<li>Disable Trunk: No</li>
+					<li>Monitor Trunk Failures: No</li>
+				</ul>
+				<img src="./images/102/FreePBX_Trunk_05.png" 
+					alt="FreePBX - Add Trunk - General Tab" />
+			</li>
+			<li>
+				Enter the following values on the "sip Settings" tab / "Outgoing" tab, then click
+				the "Submit" button
+				<ul>
+					<li>
+						Trunk Name: <i>Enter the "AuthUserName" used in the setup of the OBi110 "Voice 
+							Services" &gt; "SP2 Service Setting"</i><br />
+						<i>example: OBITRUNK1</i>
+					</li>
+					<li>
+						PEER Details: <i>Enter the following but set username and secret to the AuthUserName
+							and AuthPassword entered in the setup of the OBi110 "Voice Services" &gt; "SP2 
+							Service Setting"</i><br />
+						<span class="code">username=<strong><i>OBITRUNK1</i></strong>
+secret=<strong><i>FXOPASSWORD</i></strong>
+host=dynamic
+type=friend
+context=from-trunk
+qualify=yes
+dtmfmode=rfc2833
+canreinvite=no
+disallow=all
+allow=ulaw</span><br />
+					</li>
+				</ul>
+				<img src="./images/102/FreePBX_Trunk_06.png" 
+					alt="FreePBX - Add Trunk - sip Settings / Outgoing Tab" /><br />
+				<p>
+					<strong>NOTE:</strong> After clicking the "Submit" button, there will be a red "Apply 
+					Config" button in the top right corner. We will click the button at the end, however there
+					is no harm in clicking it early. It does take a while for the changes to be applied so it
+					saves a bit of time if you wait until the end.
+				</p>
+			</li>
+		</ol>
+		
+		<h2>Step 4 - Set-up an Inbound Route in FreePBX</h2>
+		<ol>
+			<li>
+				From the "Connectivity" menu, click the "Inbound Routes" item<br />
+				<img src="./images/102/FreePBX_Inbound_01.png" 
+					alt="FreePBX Connectivity Menu - Inbound Routes" />
+			</li>
+			<li>
+				Click the "+ Add Inbound Route" button<br />
+				<img src="./images/102/FreePBX_Inbound_02.png" 
+					alt="FreePBX Inbound Routes - Add Inbound Route Button" />
+			</li>
+			<li>
+				Enter the following values on the "General" tab, then click the "Submit" button
+				<ul>
+					<li>Description: Obi110</li>
+					<li>
+						DID Number : <i>Enter the phone number of the POTS line that is connected to the 
+							OBi110</i><br />
+						<i>example: 7165550123</i>
+					</li>
+					<li>CallerID Number: <i>Blank</i></li>
+					<li>CID Priority Route: No</li>
+					<li>Alert Info: None</li>
+					<li>Ringer Volume Override: None</li>
+					<li>CID name prefix: POTS-</li>
+					<li>Music On Hold: Default</li>
+					<li>
+						Set Destination: Extensions / 201<br />
+						<strong>NOTE:</strong> This is for example only to make the setup simple. You may wish
+						to set this to IVR (Interactive Voice Response). I do not plan to go into how to set this
+						up as Chris at Crosstalk Solutions has an excellent <a href="https://youtu.be/c8pJO6fCFuY"
+							target="_blank" rel="noopener noreferrer">YouTube video</a> on setting up Announcements.
+					</li>
+				</ul>
+				<img src="./images/102/FreePBX_Inbound_03.png" 
+					alt="FreePBX - Add Inbound Route - General Tab" />
+			</li>
+		</ol>
+		
+		<h2>Step 5 - Set-up an Outbound Route in FreePBX</h2>
+		<ol>
+			<li>
+				From the "Connectivity" menu, click the "Outbound Routes" item<br />
+				<img src="./images/102/FreePBX_Outbound_01.png" 
+					alt="FreePBX Connectivity Menu - Outbound Routes" />
+			</li>
+			<li>
+				Click the "+ Add Outbound Route" button<br />
+				<img src="./images/102/FreePBX_Outbound_02.png" 
+					alt="FreePBX Outbound Routes - Add Outbound Route Button" />
+			</li>
+			<li>
+				Enter the following values on the "General" tab
+				<ul>
+					<li>Route Name: 9DialsPOTS</li>
+					<li>Route CID: <i>Blank</i></li>
+					<li>Override Extension: No</li>
+					<li>Route Password: <i>Blank</i></li>
+					<li>Route Type: <i>None Selected</i></li>
+					<li>Music On Hold?: default</li>
+					<li>Trunk Sequence for Matched Routes: <i>Obitrunk1</i></li>
+					<li>Optional Destination on Congestion: Normal Congestion</li>
+				</ul>
+				<img src="./images/102/FreePBX_Outbound_03.png" 
+					alt="FreePBX - Add Outbound Route (9DialsPOTS) - General Tab" />
+			</li>
+			<li>
+				Click the "Dial Patterns" tab, add the following patterns, then click the "Submit" button
+				<ul>
+					<li>
+						Dial Pattern 1
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: 9</li>
+							<li>match pattern: <i>Blank</i></li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+					<li>
+						Dial Pattern 2
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: 9</li>
+							<li>match pattern: 1NXXNXXXXXX</li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+					<li>
+						Dial Pattern 3
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: 9</li>
+							<li>match pattern: NXXNXXXXXX</li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+					<li>
+						Dial Pattern 4
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: 9</li>
+							<li>match pattern: X11</li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+				</ul>
+				<img src="./images/102/FreePBX_Outbound_04.png" 
+					alt="FreePBX - Add Outbound Route (9DialsPOTS) - Dial Patterns" />
+			</li>
+			
+			
+			
+			<li>
+				Click the "+ Add Outbound Route" button<br />
+				<img src="./images/102/FreePBX_Outbound_05.png" 
+					alt="FreePBX Outbound Routes (with 9DialsPOTS) - Add Outbound Route Button" />
+			</li>
+			<li>
+				Enter the following values on the "General" tab
+				<ul>
+					<li>Route Name: EMERGENCY</li>
+					<li>Route CID: <i>Blank</i></li>
+					<li>Override Extension: No</li>
+					<li>Route Password: <i>Blank</i></li>
+					<li>Route Type: <i>None Selected</i></li>
+					<li>Music On Hold?: default</li>
+					<li>Trunk Sequence for Matched Routes: <i>Obitrunk1</i></li>
+					<li>Optional Destination on Congestion: Normal Congestion</li>
+				</ul>
+				<img src="./images/102/FreePBX_Outbound_06.png" 
+					alt="FreePBX - Add Outbound Route (EMERGENCY) - General Tab" />
+			</li>
+			<li>
+				Click the "Dial Patterns" tab, add the following patterns, then click the "Submit" button
+				<ul>
+					<li>
+						Dial Pattern 1
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: 9</li>
+							<li>match pattern: <i>Blank</i></li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+					<li>
+						Dial Pattern 2
+						<ul>
+							<li>prepend: <i>Blank</i></li>
+							<li>prefix: <i>Blank</i></li>
+							<li>match pattern: 911</li>
+							<li>CallerID: <i>Blank</i></li>
+						</ul>
+					</li>
+				</ul>
+				<img src="./images/102/FreePBX_Outbound_07.png" 
+					alt="FreePBX - Add Outbound Route (EMERGENCY) - Dial Patterns" />
+			</li>
+			<li>
+				Click on the red "Apply Config" button in the upper right corner.<br />
+				<img src="./images/102/FreePBX_Outbound_08.png" 
+					alt="FreePBX Outbound Routes (with all routes) - Apply Config Button" />
+				<img src="./images/102/FreePBX_Outbound_09.png" 
+					alt="FreePBX Appling Changes" />
+				<img src="./images/102/FreePBX_Outbound_10.png" 
+					alt="FreePBX Outbound Routes - Changes Applied" />
+			</li>
+			<li>
+				Reboot the Raspberry Pi to make certain that changes take effect. At the terminal window, 
+				log in, if not already logged in and type the command "sudo shutdown -r now"<br />
+				<img src="./images/102/RasPBX-Reboot_01.png" 
+					alt="Terminal Window to reboot the Raspberry Pi" />
+			</li>
+		</ol>
+		
+		<h2>Step 6 - Place Test Calls</h2>
+		<ol>
+			<li>
+				Place an outgoing test call by using one of the softphones to an outside number<br />
+				<strong>NOTE:</strong> Remember to dial the prefix to get an external line. In the steps
+				above, the prefix was set to "9" for external calls.<br />
+				<img src="./images/102/Test_Call_01.png" 
+					alt="Test call being placed from Linphone on Windows PC to a mobile phone" />
+			</li>
+			<li>
+				Place an incoming test call by calling the POTS number from another phone such as a mobile
+				phone<br />
+				<img src="./images/102/Test_Call_02.png" 
+					alt="Test call being received by Linphone on Windows PC" />
+			</li>
+		</ol>
 		
 		<div id="_footer_"></div>
 	</body>
