@@ -21,14 +21,14 @@
             <members>
                 <member priority="0">
                     <callManager>
-                    		<name>10.140.1.65</name>
+                    		<name>*** FreePBX IP Address ***</name>
                     		<description/>
                         <ports>
                             <ethernetPhonePort>2000</ethernetPhonePort>
                             <sipPort>5160</sipPort>
                             <securedSipPort>5061</securedSipPort>
                         </ports>
-                        <processNodeName>10.140.1.65</processNodeName>
+                        <processNodeName>*** FreePBX IP Address ***</processNodeName>
                     </callManager>
                 </member>
             </members>
@@ -85,12 +85,12 @@
     </networkLocaleInfo>
     
     <deviceSecurityMode>1</deviceSecurityMode>
-    <authenticationURL>http://10.140.1.65/cisco/authenticate.php</authenticationURL>
-    <directoryURL>http://10.140.1.65/cisco/directory.php?xtn=101</directoryURL>
+    <authenticationURL>http://*** FreePBX IP Address ***/cisco/authenticate.php</authenticationURL>
+    <directoryURL>http://*** FreePBX IP Address ***/cisco/directory.php?xtn=*** Extension Number ***</directoryURL>
     <idleURL></idleURL>
     <informationURL></informationURL>
     <messagesURL></messagesURL>
-    <servicesURL>http://10.140.1.65/xmldir/PhoneUI/</servicesURL>
+    <servicesURL>http://*** FreePBX IP Address ***/xmldir/PhoneUI/</servicesURL>
     
     
     
@@ -172,23 +172,23 @@
         
         
         
-        <phoneLabel>Phone 101</phoneLabel>
+        <phoneLabel>Phone *** Extension Number ***</phoneLabel>
         <natEnabled>false</natEnabled>
 
         <sipLines>
             <line button="1">
                 <featureID>9</featureID>
-                <featureLabel>Line 1 - Ext 101</featureLabel>
-                <name>101</name>
-                <displayName>101</displayName>
-                <contact>101</contact>
+                <featureLabel>Line 1 - Ext *** Extension Number ***</featureLabel>
+                <name>*** Extension Number ***</name>
+                <displayName>*** Extension Number ***</displayName>
+                <contact>*** Extension Number ***</contact>
                 <proxy>USECALLMANAGER</proxy>
                 <port>5160</port>
                 <autoAnswer>
                     <autoAnswerEnabled>2</autoAnswerEnabled>
                 </autoAnswer>
                 <callWaiting>3</callWaiting>
-                <authName>101</authName>
+                <authName>*** Extension Number ***</authName>
                 <authPassword>12345678</authPassword>
                 <sharedLine>false</sharedLine>
                 <messageWaitingLampPolicy>1</messageWaitingLampPolicy>
@@ -205,18 +205,18 @@
 
             <line button="2">
                 <featureID>9</featureID>
-                <featureLabel>Line 2 - Ext 101</featureLabel>
-                <name>101</name>
-                <displayName>101</displayName>
-                <contact>101</contact>
+                <featureLabel>Line 2 - Ext *** Extension Number ***</featureLabel>
+                <name>*** Extension Number ***</name>
+                <displayName>*** Extension Number ***</displayName>
+                <contact>*** Extension Number ***</contact>
                 <proxy>USECALLMANAGER</proxy>
                 <port>5160</port>
                 <autoAnswer>
                     <autoAnswerEnabled>2</autoAnswerEnabled>
                 </autoAnswer>
                 <callWaiting>3</callWaiting>
-                <authName>101</authName>
-                <authPassword>70347249</authPassword>
+                <authName>*** Extension Number ***</authName>
+                <authPassword>*** Extension Password ***</authPassword>
                 <sharedLine>false</sharedLine>
                 <messageWaitingLampPolicy>1</messageWaitingLampPolicy>
                 <messagesNumber>*97</messagesNumber>
