@@ -1,0 +1,32 @@
+
+        /*** Fields and Constants ***/
+        #region
+        #endregion
+
+        /*** Properties ***/
+        #region
+        #endregion
+
+        /*** Constructor & Initialization ***/
+        #region
+        #endregion
+
+        /*** Public Events ***/
+        #region
+        #endregion
+
+        /*** Public Methods ***/
+        #region
+        #endregion
+
+        /*** Protected Methods ***/
+        #region
+        #endregion
+
+        /*** Private Methods ***/
+        #region
+        #endregion
+
+        /*** Event Handlers ***/
+        #region
+        #endregion
