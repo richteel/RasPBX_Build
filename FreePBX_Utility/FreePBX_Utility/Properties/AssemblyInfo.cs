@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FreePBX_Utility")]
-[assembly: AssemblyDescription("Utility for FreePBX installations with CallerId\r\nSee\r\n\thttps://teelsys.com\r\n\thttps://github.com/richteel/RasPBX_Build")]
+[assembly: AssemblyDescription("Utility for FreePBX installations with CallerId\r\nSee\r\nhttps://teelsys.com\r\nhttps://github.com/richteel/RasPBX_Build")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TeelSys")]
 [assembly: AssemblyProduct("FreePBX_Utility")]

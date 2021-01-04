@@ -71,12 +71,13 @@ namespace FreePBX_Utility
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -85,13 +86,13 @@ namespace FreePBX_Utility
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -101,37 +102,39 @@ namespace FreePBX_Utility
             this.helpToolStripMenuItem1,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "&Help";
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(133, 26);
             this.helpToolStripMenuItem1.Text = "&Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.HelpToolStripMenuItem1_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Size = new System.Drawing.Size(49, 20);
             this.lblStatus.Text = "Status";
             // 
             // tabControl1
@@ -142,17 +145,20 @@ namespace FreePBX_Utility
             this.tabControl1.Controls.Add(this.tabPgDirectory);
             this.tabControl1.Controls.Add(this.tabPgConfig);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 404);
+            this.tabControl1.Size = new System.Drawing.Size(1067, 500);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPgQuickAccess
             // 
-            this.tabPgQuickAccess.Location = new System.Drawing.Point(4, 22);
+            this.tabPgQuickAccess.Location = new System.Drawing.Point(4, 25);
+            this.tabPgQuickAccess.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgQuickAccess.Name = "tabPgQuickAccess";
-            this.tabPgQuickAccess.Size = new System.Drawing.Size(792, 378);
+            this.tabPgQuickAccess.Size = new System.Drawing.Size(1059, 471);
             this.tabPgQuickAccess.TabIndex = 0;
             this.tabPgQuickAccess.Text = "Quick Access";
             this.tabPgQuickAccess.UseVisualStyleBackColor = true;
@@ -160,9 +166,10 @@ namespace FreePBX_Utility
             // tabPgInboundCalls
             // 
             this.tabPgInboundCalls.Controls.Add(this.webPortalIncoming);
-            this.tabPgInboundCalls.Location = new System.Drawing.Point(4, 22);
+            this.tabPgInboundCalls.Location = new System.Drawing.Point(4, 25);
+            this.tabPgInboundCalls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgInboundCalls.Name = "tabPgInboundCalls";
-            this.tabPgInboundCalls.Size = new System.Drawing.Size(792, 378);
+            this.tabPgInboundCalls.Size = new System.Drawing.Size(1059, 468);
             this.tabPgInboundCalls.TabIndex = 1;
             this.tabPgInboundCalls.Text = "Inbound Calls";
             this.tabPgInboundCalls.UseVisualStyleBackColor = true;
@@ -172,8 +179,9 @@ namespace FreePBX_Utility
             this.webPortalIncoming.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webPortalIncoming.LastRefreshed = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.webPortalIncoming.Location = new System.Drawing.Point(0, 0);
+            this.webPortalIncoming.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.webPortalIncoming.Name = "webPortalIncoming";
-            this.webPortalIncoming.Size = new System.Drawing.Size(792, 378);
+            this.webPortalIncoming.Size = new System.Drawing.Size(1059, 468);
             this.webPortalIncoming.StatusText = "Not Loaded";
             this.webPortalIncoming.TabIndex = 0;
             this.webPortalIncoming.Title = "Incoming Calls - Most Recent First";
@@ -182,9 +190,10 @@ namespace FreePBX_Utility
             // tabPgOutboundCalls
             // 
             this.tabPgOutboundCalls.Controls.Add(this.webPortalOutgoing);
-            this.tabPgOutboundCalls.Location = new System.Drawing.Point(4, 22);
+            this.tabPgOutboundCalls.Location = new System.Drawing.Point(4, 25);
+            this.tabPgOutboundCalls.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgOutboundCalls.Name = "tabPgOutboundCalls";
-            this.tabPgOutboundCalls.Size = new System.Drawing.Size(792, 378);
+            this.tabPgOutboundCalls.Size = new System.Drawing.Size(1059, 468);
             this.tabPgOutboundCalls.TabIndex = 2;
             this.tabPgOutboundCalls.Text = "Outgoing Calls";
             this.tabPgOutboundCalls.UseVisualStyleBackColor = true;
@@ -194,8 +203,9 @@ namespace FreePBX_Utility
             this.webPortalOutgoing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webPortalOutgoing.LastRefreshed = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.webPortalOutgoing.Location = new System.Drawing.Point(0, 0);
+            this.webPortalOutgoing.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.webPortalOutgoing.Name = "webPortalOutgoing";
-            this.webPortalOutgoing.Size = new System.Drawing.Size(792, 378);
+            this.webPortalOutgoing.Size = new System.Drawing.Size(1059, 468);
             this.webPortalOutgoing.StatusText = "Not Loaded";
             this.webPortalOutgoing.TabIndex = 0;
             this.webPortalOutgoing.Title = "Outgoing Calls - Most Recent First";
@@ -204,9 +214,10 @@ namespace FreePBX_Utility
             // tabPgDirectory
             // 
             this.tabPgDirectory.Controls.Add(this.webPortalDirectory);
-            this.tabPgDirectory.Location = new System.Drawing.Point(4, 22);
+            this.tabPgDirectory.Location = new System.Drawing.Point(4, 25);
+            this.tabPgDirectory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgDirectory.Name = "tabPgDirectory";
-            this.tabPgDirectory.Size = new System.Drawing.Size(792, 378);
+            this.tabPgDirectory.Size = new System.Drawing.Size(1059, 468);
             this.tabPgDirectory.TabIndex = 3;
             this.tabPgDirectory.Text = "Directory";
             this.tabPgDirectory.UseVisualStyleBackColor = true;
@@ -216,8 +227,9 @@ namespace FreePBX_Utility
             this.webPortalDirectory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webPortalDirectory.LastRefreshed = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.webPortalDirectory.Location = new System.Drawing.Point(0, 0);
+            this.webPortalDirectory.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.webPortalDirectory.Name = "webPortalDirectory";
-            this.webPortalDirectory.Size = new System.Drawing.Size(792, 378);
+            this.webPortalDirectory.Size = new System.Drawing.Size(1059, 468);
             this.webPortalDirectory.StatusText = "Not Loaded";
             this.webPortalDirectory.TabIndex = 0;
             this.webPortalDirectory.Title = "Cisco Directory (XML)";
@@ -231,9 +243,10 @@ namespace FreePBX_Utility
             this.tabPgConfig.Controls.Add(this.urlOutbound);
             this.tabPgConfig.Controls.Add(this.urlInbound);
             this.tabPgConfig.Controls.Add(this.urlFreePbx);
-            this.tabPgConfig.Location = new System.Drawing.Point(4, 22);
+            this.tabPgConfig.Location = new System.Drawing.Point(4, 25);
+            this.tabPgConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgConfig.Name = "tabPgConfig";
-            this.tabPgConfig.Size = new System.Drawing.Size(792, 378);
+            this.tabPgConfig.Size = new System.Drawing.Size(1059, 471);
             this.tabPgConfig.TabIndex = 4;
             this.tabPgConfig.Text = "Configuration";
             this.tabPgConfig.UseVisualStyleBackColor = true;
@@ -244,16 +257,18 @@ namespace FreePBX_Utility
             this.panConfigurationButtons.Controls.Add(this.cmdRevertConfig);
             this.panConfigurationButtons.Controls.Add(this.cmdSaveConfig);
             this.panConfigurationButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panConfigurationButtons.Location = new System.Drawing.Point(0, 278);
+            this.panConfigurationButtons.Location = new System.Drawing.Point(0, 348);
+            this.panConfigurationButtons.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panConfigurationButtons.Name = "panConfigurationButtons";
-            this.panConfigurationButtons.Size = new System.Drawing.Size(792, 100);
+            this.panConfigurationButtons.Size = new System.Drawing.Size(1059, 123);
             this.panConfigurationButtons.TabIndex = 5;
             // 
             // cmdValidateConfig
             // 
-            this.cmdValidateConfig.Location = new System.Drawing.Point(234, 74);
+            this.cmdValidateConfig.Location = new System.Drawing.Point(312, 91);
+            this.cmdValidateConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdValidateConfig.Name = "cmdValidateConfig";
-            this.cmdValidateConfig.Size = new System.Drawing.Size(75, 23);
+            this.cmdValidateConfig.Size = new System.Drawing.Size(100, 28);
             this.cmdValidateConfig.TabIndex = 2;
             this.cmdValidateConfig.Text = "Check URLs";
             this.toolTip1.SetToolTip(this.cmdValidateConfig, "Check that the Settings are valid");
@@ -262,9 +277,10 @@ namespace FreePBX_Utility
             // 
             // cmdRevertConfig
             // 
-            this.cmdRevertConfig.Location = new System.Drawing.Point(123, 74);
+            this.cmdRevertConfig.Location = new System.Drawing.Point(164, 91);
+            this.cmdRevertConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdRevertConfig.Name = "cmdRevertConfig";
-            this.cmdRevertConfig.Size = new System.Drawing.Size(75, 23);
+            this.cmdRevertConfig.Size = new System.Drawing.Size(100, 28);
             this.cmdRevertConfig.TabIndex = 1;
             this.cmdRevertConfig.Text = "Revert";
             this.toolTip1.SetToolTip(this.cmdRevertConfig, "Revert to Saved Settings");
@@ -273,9 +289,10 @@ namespace FreePBX_Utility
             // 
             // cmdSaveConfig
             // 
-            this.cmdSaveConfig.Location = new System.Drawing.Point(11, 74);
+            this.cmdSaveConfig.Location = new System.Drawing.Point(15, 91);
+            this.cmdSaveConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdSaveConfig.Name = "cmdSaveConfig";
-            this.cmdSaveConfig.Size = new System.Drawing.Size(75, 23);
+            this.cmdSaveConfig.Size = new System.Drawing.Size(100, 28);
             this.cmdSaveConfig.TabIndex = 0;
             this.cmdSaveConfig.Text = "Save";
             this.toolTip1.SetToolTip(this.cmdSaveConfig, "Save Current Settings");
@@ -287,11 +304,12 @@ namespace FreePBX_Utility
             this.urlCallerId.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.urlCallerId.BaseUrl = null;
             this.urlCallerId.Dock = System.Windows.Forms.DockStyle.Top;
-            this.urlCallerId.Location = new System.Drawing.Point(0, 120);
+            this.urlCallerId.Location = new System.Drawing.Point(0, 148);
+            this.urlCallerId.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.urlCallerId.Name = "urlCallerId";
             this.urlCallerId.SettingKey = null;
             this.urlCallerId.ShowValidateButton = false;
-            this.urlCallerId.Size = new System.Drawing.Size(792, 30);
+            this.urlCallerId.Size = new System.Drawing.Size(1059, 37);
             this.urlCallerId.TabIndex = 4;
             this.urlCallerId.Title = "CallerId URL:";
             this.urlCallerId.ToolTip = "Enter the URL for the CallerId page.\r\nThe URL may relative to the FreePBX URL\r\n\r\n" +
@@ -304,11 +322,12 @@ namespace FreePBX_Utility
             this.urlDirectory.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.urlDirectory.BaseUrl = null;
             this.urlDirectory.Dock = System.Windows.Forms.DockStyle.Top;
-            this.urlDirectory.Location = new System.Drawing.Point(0, 90);
+            this.urlDirectory.Location = new System.Drawing.Point(0, 111);
+            this.urlDirectory.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.urlDirectory.Name = "urlDirectory";
             this.urlDirectory.SettingKey = null;
             this.urlDirectory.ShowValidateButton = false;
-            this.urlDirectory.Size = new System.Drawing.Size(792, 30);
+            this.urlDirectory.Size = new System.Drawing.Size(1059, 37);
             this.urlDirectory.TabIndex = 3;
             this.urlDirectory.Title = "Directory URL:";
             this.urlDirectory.ToolTip = "Enter the URL for the Directory page.\r\nThe URL may relative to the FreePBX URL\r\n\r" +
@@ -321,11 +340,12 @@ namespace FreePBX_Utility
             this.urlOutbound.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.urlOutbound.BaseUrl = null;
             this.urlOutbound.Dock = System.Windows.Forms.DockStyle.Top;
-            this.urlOutbound.Location = new System.Drawing.Point(0, 60);
+            this.urlOutbound.Location = new System.Drawing.Point(0, 74);
+            this.urlOutbound.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.urlOutbound.Name = "urlOutbound";
             this.urlOutbound.SettingKey = null;
             this.urlOutbound.ShowValidateButton = false;
-            this.urlOutbound.Size = new System.Drawing.Size(792, 30);
+            this.urlOutbound.Size = new System.Drawing.Size(1059, 37);
             this.urlOutbound.TabIndex = 2;
             this.urlOutbound.Title = "Outbound Calls URL:";
             this.urlOutbound.ToolTip = "Enter the URL for the outgoing Calls page.\r\nThe URL may relative to the FreePBX U" +
@@ -338,11 +358,12 @@ namespace FreePBX_Utility
             this.urlInbound.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.urlInbound.BaseUrl = null;
             this.urlInbound.Dock = System.Windows.Forms.DockStyle.Top;
-            this.urlInbound.Location = new System.Drawing.Point(0, 30);
+            this.urlInbound.Location = new System.Drawing.Point(0, 37);
+            this.urlInbound.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.urlInbound.Name = "urlInbound";
             this.urlInbound.SettingKey = null;
             this.urlInbound.ShowValidateButton = false;
-            this.urlInbound.Size = new System.Drawing.Size(792, 30);
+            this.urlInbound.Size = new System.Drawing.Size(1059, 37);
             this.urlInbound.TabIndex = 1;
             this.urlInbound.Title = "Inbound Calls URL:";
             this.urlInbound.ToolTip = "Enter the URL for the Incoming Calls page.\r\nThe URL may relative to the FreePBX U" +
@@ -356,10 +377,11 @@ namespace FreePBX_Utility
             this.urlFreePbx.BaseUrl = null;
             this.urlFreePbx.Dock = System.Windows.Forms.DockStyle.Top;
             this.urlFreePbx.Location = new System.Drawing.Point(0, 0);
+            this.urlFreePbx.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.urlFreePbx.Name = "urlFreePbx";
             this.urlFreePbx.SettingKey = null;
             this.urlFreePbx.ShowValidateButton = false;
-            this.urlFreePbx.Size = new System.Drawing.Size(792, 30);
+            this.urlFreePbx.Size = new System.Drawing.Size(1059, 37);
             this.urlFreePbx.TabIndex = 0;
             this.urlFreePbx.Title = "FreePBX URL:";
             this.urlFreePbx.ToolTip = "Enter the URL for your FreePBX installation in the form of http://<IP Address>/\r\n" +
@@ -376,17 +398,18 @@ namespace FreePBX_Utility
             this.timer1.Interval = 30000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // frmMain
+            // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMain";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FrmMain";
             this.Text = "FreePBX Utility";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);

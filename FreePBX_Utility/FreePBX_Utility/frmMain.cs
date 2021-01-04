@@ -198,6 +198,11 @@ namespace FreePBX_Utility
             OnHelpRequested(new HelpEventArgs(new Point(0, 0)));
         }
 
+        private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LayoutButtons();
+        }
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
@@ -205,13 +210,13 @@ namespace FreePBX_Utility
             if (this.Visible)
             {
                 if (!string.IsNullOrEmpty(webPortalIncoming.Url))
-                    webPortalIncoming.Refresh();
+                    webPortalIncoming.RefreshWebView();
 
                 if (!string.IsNullOrEmpty(webPortalOutgoing.Url))
-                    webPortalOutgoing.Refresh();
+                    webPortalOutgoing.RefreshWebView();
 
                 if (!string.IsNullOrEmpty(webPortalDirectory.Url))
-                    webPortalDirectory.Refresh();
+                    webPortalDirectory.RefreshWebView();
             }
 
 

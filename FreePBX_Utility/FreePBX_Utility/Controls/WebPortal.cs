@@ -73,7 +73,6 @@ namespace FreePBX_Utility.Controls
         }
         #endregion
 
-
         #region Private Methods
         private async void InitializeAsync()
         {
