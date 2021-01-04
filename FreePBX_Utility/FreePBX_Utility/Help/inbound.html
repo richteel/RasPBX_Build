@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="Help for the FreePBX Utility application" />
+    <link rel="stylesheet" href="./style/modal.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <script src="./js/modal.js"></script>
+    <script>
+        function layout() {
+            addImgClickEvents();
+        }
+    </script>
+    <title>FreePBX Utility Help - Inbound Calls</title>
+</head>
+<body onload="layout();">
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <h1 id="main">FreePBX Utility Help - Inbound Calls</h1>
+    <p>
+        The Inbound Calls tab displays a report of external calls received through the OBi110 ATA. If you are using another device, you may 
+        need to create a new report PHP page or modify the existing query. The following are the files of the GitHub project 
+        associated with the Inbound report.
+    </p>
+	<ul>
+		<li>RasPBX_Build/Quick Start/www/html/utility/inbound.php</li>
+		<li>RasPBX_Build/Quick Start/www/html/utility/queries/inbound.txt</li>
+	</ul>
+
+    <!-- The Modal -->
+    <div id="_modal_" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="closeModal();">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="_modalImg_" src="./images/unknown.png" alt="Unknown Image" onclick="modalClick();" />
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="_modalCaption_"></div>
+    </div>
+</body>
+</html>

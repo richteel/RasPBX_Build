@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<title>*** TITLE ***</title>
+	</head>
+	<body>
+		<a class="skip-main" href="#main">Skip to main content</a>
+		<div id="msg" style="font-weight: bold;"></div>
+		<div id="_header_"></div>
+		
+		<h1 id="main">*** TITLE ***</h1>

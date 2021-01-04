@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="Help for the FreePBX Utility application" />
+    <link rel="stylesheet" href="./style/modal.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <script src="./js/modal.js"></script>
+    <script>
+        function layout() {
+            addImgClickEvents();
+        }
+    </script>
+    <title>FreePBX Utility Help - Quick Access</title>
+</head>
+<body onload="layout();">
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <h1 id="main">FreePBX Utility Help - Quick Access</h1>
+    <p>
+        The Quick Access tab displays allows you to create shortcuts to items to help with maintaining your IP Phone Network.
+        <br />
+        <img src="./images/QuickAccess_01.png" class="previewImage"
+             alt="Quick Access tab showing three shortcuts" />
+    </p>
+
+    <!-- The Modal -->
+    <div id="_modal_" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="closeModal();">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="_modalImg_" src="./images/unknown.png" alt="Unknown Image" onclick="modalClick();" />
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="_modalCaption_"></div>
+    </div>
+</body>
+</html>

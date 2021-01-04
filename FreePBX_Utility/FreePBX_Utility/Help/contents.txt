@@ -1,0 +1,7 @@
+﻿Help Home	help\index.html	LocalFile
+Quick Access	help\quckaccess.html	LocalFile
+Inbound Calls	help\inbound.html	LocalFile
+Outgoing Calls	help\outgoing.html	LocalFile
+Directory	help\directory.html	LocalFile
+Configuration	help\configuration.html	LocalFile
+GitHub Phoject	https://github.com/richteel/RasPBX_Build	web

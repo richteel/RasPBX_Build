@@ -1,0 +1,27 @@
+-- If field order or number of fields change, the file, \FreePBX_Utility\CallerId\CallerIdUpdater.cs will 
+-- need to be updated to match the query.
+
+SELECT
+	A.eventtime AS `Date and Time`
+    ,CASE WHEN A.cid_name LIKE '"POTS-%' THEN CONCAT('"', SUBSTRING(A.cid_name, 7)) ELSE A.cid_name END AS `Caller`
+    ,A.cid_num as `Number`
+    ,TIMESTAMPDIFF(SECOND, B.StartTime, B.EndTime) as `Duration`
+    ,"" as `Caller Id Info`
+    ,"" as `Disposition`
+    ,"" as `Source`
+    ,"" as `Destination`
+    ,A.linkedid as `Unique ID`
+FROM asteriskcdrdb.cel AS A
+	INNER JOIN (
+				SELECT linkedid
+					,MIN(id) as FirstId
+					,MAX(id) as LastId
+                    ,MIN(eventtime) as StartTime
+                    ,MAX(eventtime) as EndTime
+				FROM asteriskcdrdb.cel
+				GROUP BY linkedid
+				) AS B
+		ON A.id = B.FirstId
+WHERE channame LIKE 'SIP/OBITRUNK1-%'
+ORDER BY eventtime DESC
+LIMIT 1

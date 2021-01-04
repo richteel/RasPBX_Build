@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="Help for the FreePBX Utility application" />
+    <link rel="stylesheet" href="./style/modal.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <script src="./js/modal.js"></script>
+    <script>
+        function layout() {
+            addImgClickEvents();
+        }
+    </script>
+    <title>FreePBX Utility Help</title>
+</head>
+<body onload="layout();">
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <h1 id="main">FreePBX Utility Help</h1>
+    <p>
+        The FreePBX Utility Application was written to provide Caller Id notifications for calls coming from a POTS line to an OBi110 ATA. The code in
+        the RasPBX_Build/Quick Start/www/html/utility folder of the GitHub project may be modified for use with monitoring other ATAs or sources.
+    </p>
+    <p>
+        When a new call is received by the OBi110 and a record is created in the asteriskcdrdb.cel database table, a notification will
+        appear in the System Tray<br />
+        <img src="./images/CallerId_Notification.png" class="previewImage" alt="Caller Id Notification" />
+    </p>
+
+    <!-- The Modal -->
+    <div id="_modal_" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="closeModal();">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="_modalImg_" src="./images/unknown.png" alt="Unknown Image" onclick="modalClick();" />
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="_modalCaption_"></div>
+    </div>
+</body>
+</html>

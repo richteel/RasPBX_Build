@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using FreePBX_Utility.CallerId;
+﻿using FreePBX_Utility.CallerId;
 using FreePBX_Utility.Controls;
 using FreePBX_Utility.Settings;
+using System;
+using System.Windows.Forms;
 
 namespace FreePBX_Utility
 {
@@ -12,7 +12,8 @@ namespace FreePBX_Utility
         #region
         private const string CALLINGREF = "ApplicationContext";
 
-        readonly frmMain configWindow;
+        readonly FrmMain configWindow;
+        readonly FrmHelp helpWindow;
         readonly NotifyIcon notifyIcon;
         readonly Timer updateTimer;
         readonly CallerIdUpdater callerIdUpdater;
@@ -43,10 +44,15 @@ namespace FreePBX_Utility
 
             updateTimer.Interval = 1000;
             updateTimer.Tick += UpdateTimer_Tick;
-            configWindow = new frmMain();
-            configWindow.Status = "Not Connected";
+            configWindow = new FrmMain
+            {
+                Status = "Not Connected"
+            };
             configWindow.ExitRequested += Exit;
+            configWindow.HelpRequested += ShowHelp;
             configWindow.ConfigSettings = settings;
+
+            helpWindow = new FrmHelp();
 
             MenuItem quickAccessMenuItem = new MenuItem("Quick Access", new EventHandler(ShowQuickAccessg));
             MenuItem inboundMenuItem = new MenuItem("Inbound Calls", new EventHandler(ShowInbound));
@@ -59,13 +65,13 @@ namespace FreePBX_Utility
             {
                 Icon = FreePBX_Utility.Properties.Resources.Cisco7941G_icon,
                 ContextMenu = new ContextMenu(new MenuItem[]
-                { 
+                {
                     quickAccessMenuItem,
                     inboundMenuItem,
                     outboundMenuItem,
                     directoryMenuItem,
-                    configMenuItem, 
-                    exitMenuItem 
+                    configMenuItem,
+                    exitMenuItem
                 })
             };
 
@@ -148,9 +154,22 @@ namespace FreePBX_Utility
 
         private void Settings_OnChanged(object sender, SettingsEventArgs e)
         {
-            if(e.ActionFrom != CALLINGREF && e.ChangeAction == SettingsEventActions.Save)
+            if (e.ActionFrom != CALLINGREF && e.ChangeAction == SettingsEventActions.Save)
             {
                 UpdateFromSettings();
+            }
+        }
+
+        private void ShowHelp(object sender, EventArgs e)
+        {
+            // If we are already showing the window, merely focus it.
+            if (helpWindow.Visible)
+            {
+                helpWindow.Activate();
+            }
+            else
+            {
+                helpWindow.Show();
             }
         }
 

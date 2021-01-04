@@ -84,6 +84,7 @@
     </Compile>
     <Compile Include="CallerId\CallerIdResult.cs" />
     <Compile Include="CallerId\CallerIdUpdater.cs" />
+    <Compile Include="Controls\Flow.cs" />
     <Compile Include="Controls\QuickLaunch.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -98,11 +99,18 @@
       <DependentUpon>UrlConfigSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UrlConfigSetting_Setting.cs" />
+    <Compile Include="Controls\UrlListViewItem.cs" />
     <Compile Include="Controls\WebPortal.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\WebPortal.Designer.cs">
       <DependentUpon>WebPortal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHelp.Designer.cs">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\AppSettings.cs" />
     <Compile Include="Settings\SettingFileTypes.cs" />
@@ -112,16 +120,17 @@
     <Compile Include="Settings\SettingsHelper.cs" />
     <Compile Include="Settings\Shortcut.cs" />
     <Compile Include="Utility\Common.cs" />
-    <Compile Include="frmMain.cs">
+    <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="FreePBX_Utility_AppContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ExecutionTime.cs" />
+    <Compile Include="Utility\RunConfiguration.cs" />
     <Compile Include="Web\WebContent.cs" />
     <Compile Include="Web\WebHelper.cs" />
     <EmbeddedResource Include="AboutBox1.resx">
@@ -136,8 +145,11 @@
     <EmbeddedResource Include="Controls\WebPortal.resx">
       <DependentUpon>WebPortal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <EmbeddedResource Include="FrmHelp.resx">
+      <DependentUpon>FrmHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,6 +189,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\About.png" />
+    <Content Include="Help\contents.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\configuration.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\CallerId_Notification.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\QuickAccess_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\quckaccess.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\Configuration_01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\Configuration_02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\Configuration_03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\images\unknown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\inbound.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\outgoing.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\directory.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\js\modal.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\style\main.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\style\modal.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\check.png" />
     <Content Include="Images\Cisco7941G.ico" />
     <Content Include="Images\Cisco7941G.png">
@@ -188,6 +248,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\freepbx_icon.ico" />
+    <Content Include="Images\help2.ico" />
     <Content Include="Images\OBi110 - Front.png" />
     <Content Include="Images\Question.png" />
     <Content Include="Images\help2.png" />
@@ -197,6 +258,7 @@
     </Content>
     <None Include="Images\X.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Web.WebView2.1.0.664.37\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.664.37\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

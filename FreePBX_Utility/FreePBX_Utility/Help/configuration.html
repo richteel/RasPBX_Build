@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="Description" content="Help for the FreePBX Utility application" />
+    <link rel="stylesheet" href="./style/modal.css" />
+    <link rel="stylesheet" href="./style/main.css" />
+    <script src="./js/modal.js"></script>
+    <script>
+        function layout() {
+            addImgClickEvents();
+        }
+    </script>
+    <title>FreePBX Utility Help - Configuration</title>
+</head>
+<body onload="layout();">
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <h1 id="main">FreePBX Utility Help - Configuration</h1>
+    <p>
+        The Configuration tab allows you to modify the URLs for the report pages. The FreePBX URL needs to be the URL for the FreePBX
+        server. The remaining URLS may be complete URLs or relative to the FreePBX URL.<br />
+        <img src="./images/Configuration_01.png" class="previewImage" alt="Configuration Tab of the FreePBX Utility application" />
+    </p>
+	<ul>
+		<li>
+			<strong>FreePBX URL:</strong> The full URL to the FreePBX server. It should be in the form of http://&lt;IP Address&gt;/<br />
+			<i>The default value is BLANK</i>.
+		</li>
+		<li>
+			<strong>Inbound Calls URL:</strong> The relative or full URL to the Inbound Report.<br />
+			<i>DEFAULT: /utility/inbound.php</i>
+		</li>
+		<li>
+			<strong>Outbound Calls URL:</strong> The relative or full URL to the Outgoing Report.<br />
+			<i>DEFAULT: /utility/outbound.php</i>
+		</li>
+		<li>
+			<strong>Directory URL:</strong> The relative or full URL to the Directory Report.<br />
+			<i>DEFAULT: /cisco/directory/</i>
+		</li>
+		<li>
+			<strong>CallerId URL:</strong> The relative or full URL to the CallerId Report.<br />
+			<i>DEFAULT: /utility/callerid.php?format=text&inc_headers=no</i>
+		</li>
+	</ul>
+    <p>
+        Clicking "Check" button will perform a test to make certain that the application can connect to each URL. It does not
+        validate that they provide the correct content. The check only validates that a response is received from the Apache server
+        running on the FreePBX machine.
+    </p>
+    <p>
+        After clicking the "Check" button, a validation summary dialog will appear and the status indicators will
+        change to green checkmarks for valid items and red X for failed items.
+        <br />
+        <img src="./images/Configuration_02.png" class="previewImage"
+             alt="Configuration tab after validation check will all items passing" />
+        <br />
+        <img src="./images/Configuration_03.png" class="previewImage"
+             alt="Configuration tab after validation check will some items failing" />
+    </p>
+
+
+    <!-- The Modal -->
+    <div id="_modal_" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="closeModal();">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="_modalImg_" src="./images/unknown.png" alt="Unknown Image" onclick="modalClick();" />
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="_modalCaption_"></div>
+    </div>
+</body>
+</html>

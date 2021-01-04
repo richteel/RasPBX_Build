@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
+﻿using FreePBX_Utility.Utility;
+using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FreePBX_Utility
@@ -20,6 +16,9 @@ namespace FreePBX_Utility
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = AssemblyDescription;
+
+            if (RunConfiguration.IsDebug)
+                this.labelProductName.Text += " (DEBUG)";
         }
 
         #region Assembly Attribute Accessors

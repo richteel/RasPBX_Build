@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Net;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
+using System.Net;
 
 namespace FreePBX_Utility.Web
 {
@@ -22,7 +22,7 @@ namespace FreePBX_Utility.Web
                     strContent = reader.ReadToEnd();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.Print(string.Format("Error connecting to the wesite {0}\n{1}", url, ex.Message));
             }

@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Xml;
-using System.Runtime.Serialization;
 
 namespace FreePBX_Utility.Settings
 {

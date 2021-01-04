@@ -12,11 +12,11 @@ namespace FreePBX_Utility.Web
             bool firstEndsWithSlash = firstPart.Last() == '/';
             bool secondStartsWithSlash = secondPart.First() == '/';
 
-            if(firstEndsWithSlash && secondStartsWithSlash)
+            if (firstEndsWithSlash && secondStartsWithSlash)
             {
                 return firstPart + secondPart.Substring(1);
             }
-            else if(firstEndsWithSlash || secondStartsWithSlash)
+            else if (firstEndsWithSlash || secondStartsWithSlash)
             {
                 return firstPart + secondPart;
             }

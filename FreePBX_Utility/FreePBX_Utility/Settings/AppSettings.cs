@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FreePBX_Utility.Controls;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using FreePBX_Utility.Controls;
 
 namespace FreePBX_Utility.Settings
 {

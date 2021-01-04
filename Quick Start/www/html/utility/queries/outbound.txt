@@ -1,0 +1,21 @@
+SELECT A.calldate AS `Date and Time`
+    ,CASE WHEN A.cnam LIKE 'POTS-%' THEN SUBSTRING(A.cnam, 6) ELSE A.cnam END AS `Caller`
+    ,A.cnum AS `Number`
+    ,B.duration AS `Duration`
+	,CASE WHEN A.clid LIKE '"POTS-%' THEN CONCAT('"', SUBSTRING(A.clid, 7)) ELSE A.clid END AS `Caller Id Info`
+    ,A.disposition AS `Disposition`
+    ,A.src AS `Source`
+    ,A.dst AS `Destination`
+	,A.uniqueid AS `Unique ID`
+FROM asteriskcdrdb.cdr AS A
+	INNER JOIN (
+				SELECT uniqueid
+					,MIN(calldate) AS `StartTime`
+					,MAX(duration) AS `duration`
+				FROM asteriskcdrdb.cdr
+				WHERE dstchannel LIKE 'SIP/OBITRUNK1-%' -- Include outbound calls
+				GROUP BY uniqueid
+                ) AS B
+		ON A.uniqueid=B.uniqueid
+			AND A.calldate=B.StartTime
+ORDER BY A.calldate DESC

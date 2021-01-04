@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
+﻿using FreePBX_Utility.Controls;
+using FreePBX_Utility.Settings;
+using System;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using FreePBX_Utility.Controls;
-using FreePBX_Utility.Settings;
 
 namespace FreePBX_Utility
 {
@@ -22,7 +16,7 @@ namespace FreePBX_Utility
         Configuration = 4
     };
 
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         /*** Fields and Constants ***/
         #region
@@ -56,7 +50,7 @@ namespace FreePBX_Utility
 
         /*** Constructor & Initialization ***/
         #region
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -88,7 +82,7 @@ namespace FreePBX_Utility
         #region
         private void LayoutButtons()
         {
-            cmdRevertConfig.Top = (panConfigurationButtons.Height - cmdRevertConfig.Height)/ 2;
+            cmdRevertConfig.Top = (panConfigurationButtons.Height - cmdRevertConfig.Height) / 2;
             cmdRevertConfig.Left = (panConfigurationButtons.Width - cmdRevertConfig.Width) / 2;
             cmdSaveConfig.Top = cmdValidateConfig.Top = cmdRevertConfig.Top;
             cmdSaveConfig.Left = cmdRevertConfig.Left - cmdSaveConfig.Width - 10;
@@ -112,7 +106,7 @@ namespace FreePBX_Utility
 
         /*** Event Handlers ***/
         #region
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (aboutBox == null || aboutBox.IsDisposed)
             {
@@ -126,7 +120,7 @@ namespace FreePBX_Utility
             }
             else
             {
-                aboutBox.Show();
+                aboutBox.ShowDialog();
             }
         }
 
@@ -150,7 +144,7 @@ namespace FreePBX_Utility
         {
             string validationMessages = "";
 
-            foreach(Control ctrl in Enumerable.Reverse(tabPgConfig.Controls.OfType<UrlConfigSetting>()))
+            foreach (Control ctrl in Enumerable.Reverse(tabPgConfig.Controls.OfType<UrlConfigSetting>()))
             {
                 UrlConfigSetting urlCtrl = (UrlConfigSetting)ctrl;
                 urlCtrl.Validate();
@@ -162,8 +156,8 @@ namespace FreePBX_Utility
                     validationMessages += string.Format("{0} {1}", urlCtrl.Title, urlCtrl.ValidationMessage.Replace("\t", " - "));
                 }
             }
-            
-            if(validationMessages.Length > 0)
+
+            if (validationMessages.Length > 0)
             {
                 MessageBox.Show(this, "Validation failed with the following:\r\n\r\n" + validationMessages, "Validation Summary", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -199,11 +193,16 @@ namespace FreePBX_Utility
             LayoutButtons();
         }
 
+        private void HelpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OnHelpRequested(new HelpEventArgs(new Point(0, 0)));
+        }
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
 
-            if(this.Visible)
+            if (this.Visible)
             {
                 if (!string.IsNullOrEmpty(webPortalIncoming.Url))
                     webPortalIncoming.Refresh();

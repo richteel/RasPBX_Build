@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FreePBX_Utility.Settings
+﻿namespace FreePBX_Utility.Settings
 {
     public class SettingKeys
     {
