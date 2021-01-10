@@ -189,7 +189,7 @@
                 </autoAnswer>
                 <callWaiting>3</callWaiting>
                 <authName>*** Extension Number ***</authName>
-                <authPassword>12345678</authPassword>
+                <authPassword>*** Extension Password ***</authPassword>
                 <sharedLine>false</sharedLine>
                 <messageWaitingLampPolicy>1</messageWaitingLampPolicy>
                 <messagesNumber>*97</messagesNumber>

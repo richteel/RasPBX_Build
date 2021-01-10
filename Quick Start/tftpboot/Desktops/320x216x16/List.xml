@@ -1,0 +1,7 @@
+<CiscoIPPhoneImageList>
+	<ImageItem Image="TFTP:Desktops/320x216x16/ubuntu-thumb.png" URL="TFTP:Desktops/320x216x16/ubuntu.png"/>
+	<ImageItem Image="TFTP:Desktops/320x216x16/raspberry_pi-thumb.png" URL="TFTP:Desktops/320x216x16/raspberry_pi.png"/>
+	<ImageItem Image="TFTP:Desktops/320x216x16/teelsys-thumb.png" URL="TFTP:Desktops/320x216x16/teelsys.png"/>
+	<ImageItem Image="TFTP:Desktops/320x216x16/tree-thumb.png" URL="TFTP:Desktops/320x216x16/tree.png"/>
+	<ImageItem Image="TFTP:Desktops/320x216x16/trees-thumb.png" URL="TFTP:Desktops/320x216x16/trees.png"/>
+</CiscoIPPhoneImageList>
