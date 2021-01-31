@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="Description" content="RasPBX Build using FreePBX/Asterisk. Modified code from the SourceForge 
+		<meta name="Description" content="RasPBX Build using FreePBX/Asterisk. Modified code from the SourceForge
 			Open79XX XML Directory project.
 			Helpful hints for Cisco 7941G IP phones." />
 		<link rel="stylesheet" href="./style/modal.css" />
@@ -25,24 +25,24 @@
 		<div id="_header_"></div>
 		<h1 id="main">200 - Setting up Cisco 79xx Phones</h1>
 		<p>
-			This guide will walk you through setting up an Cisco 7941 IP Phones and connecting them to 
+			This guide will walk you through setting up an Cisco 7941 IP Phones and connecting them to
 			RasPBX to place and receive calls.
 		</p>
-		
+
 		<div class="NoteBlock">
 			<span class="NoteTitle">Important note regarding network setup &amp; DHCP</span>
 			<div>
 				<p>
 					Setting up older Cisco phones requires that your DHCP server is configurable to allow
-					the addition of option 150 for TFTP. Most home and small business routers with built in 
-					DHCP servers do not provide the ability to add options for DHCP so it will be 
-					necessary to setup a DHCP server capable of adding DHCP options. The best option may be 
-					to use the Raspberry Pi running FreePBX but other options include other Linux machines 
+					the addition of option 150 for TFTP. Most home and small business routers with built in
+					DHCP servers do not provide the ability to add options for DHCP so it will be
+					necessary to setup a DHCP server capable of adding DHCP options. The best option may be
+					to use the Raspberry Pi running FreePBX but other options include other Linux machines
 					or Windows Server.
 				</p>
 				<p>
 					This guide will not go into setting up DHCP to support Cisco IP Phones. Search for options
-					on setting up a DHCP server on the platform of your choice. The following are some 
+					on setting up a DHCP server on the platform of your choice. The following are some
 					high-level steps to a sucessful installation.
 				</p>
 				<ul>
@@ -72,7 +72,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<h2>Step 1 - Setup TFTP Server on the Raspberry PI</h2>
 		<p>
 			Cisco IP Phones require a connection to a Trivial File Transfer Protocol (TFTP) Server on start-up to retrieve an XML file for provisioning the phone. The IP Phone will connect to the TFTP Server specified by the DHCP response or through the network configuration set locally on the phone. The issue with the locally stored network configuration, is the menu to set the configuration is not accessable after the phone is reset. Therefore it is necessary to have option 150 set in the DHCP Server configuration.
@@ -128,9 +128,12 @@ disable         = no
 				Check the status of the tftp xinetd service by issuing the following command:<br />
 				root@raspbx:~# /etc/init.d/xinetd status
 			</li>
-			
+
 		</ol>
-		
+
+		<h2>Step 2 - </h2>
+
+
 		<div id="_footer_"></div>
 	</body>
 </html>
