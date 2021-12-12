@@ -195,7 +195,7 @@ namespace FreePBX_Utility
 
         private void HelpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OnHelpRequested(new HelpEventArgs(new Point(0, 0)));
+            OnHelpRequested(new HelpEventArgs(Cursor.Position));
         }
 
         private void TabControl1_SelectedIndexChanged(object sender, EventArgs e)
