@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>RasPBX</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>RasPBX Setup</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+
+                <p>
+                    The inspiration for this project came from the article
+                    "<a href="https://magpi.raspberrypi.org/articles/raspberry-pi-telephone-exchange" target="_blank" rel="noopener noreferrer">
+                        Build a telephone
+                        exchange
+                    </a>" in <a href="https://magpi.raspberrypi.org/issues/78" target="_blank" rel="noopener noreferrer">MagPi issue 78</a>. I ran into issues with
+                    this build and did not listen to the advice of others to throw out the phones and gets some newer ones which are supported and can be easily configured.
+                </p>
+                <p>
+                    My advice is if you have Cisco 7941G phones, it is possible to get them to work and it is not too bad once you understand how to configure them and
+                    get them to work. If you do not have these phones, then I would advise you to move along and get a newer phone because the Cisco 7941G phones are not
+                    for the faint of heart. They are difficult but not impossible to setup. Hopefully the information that I have collected and am sharing here will help
+                    you to configure your RasPBX/FreePBX installation to work with the Cisco 7941G IP phones.
+                </p>
+                <p>
+                    The articles here are setup to let you pick and choose which ones you would like to follow based on your needs. I am not an expert in this area, but
+                    I had enough knowledge and ability to Google for answers to figure this out. I invite others with more knowledge in these areas to make improvements
+                    by forking this repository, making changes, and creating a pull request. If you run into any issues or see errors, please feel free to submit an
+                    issue and I will attempt to address it.<br />
+                    <img src="images/PBX_Network.gif"
+                         alt="Animated image showing the building of the PBX Network" class="previewImage" />
+                    <span class="caption">
+                        Animated image showing the PBX Network buildup over the course of these articles.
+                    </span>
+                </p>
+
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Install RasPBX</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Install RasPBX</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+                <p>
+                    This guide will walk you through setting up the RasPBX, connecting to two virtual softphones,
+                    and placing a call between the two phones.<br />
+                    <img src="../images/installation/installation/PBX_Network_101.png"
+                         alt="Diagram showing the end state" class="previewImage" />
+                </p>
+                <h2>Items required for this build</h2>
+                <ul>
+                    <li>Raspberry Pi (Not all Raspberry Pis are supported. Please check the documentation on the RasPBX Download page.)</li>
+                    <li>8GB or larger microSD card</li>
+                    <li>RasPBX Image - <a href="http://www.raspberry-asterisk.org/" target="_blank" rel="noopener noreferrer">RasPBX - Asterisk for Raspberry Pi Website</a></li>
+                    <li>Image writing software such as balenaEtcher - <a href="https://www.balena.io/etcher/" target="_blank" rel="noopener noreferrer">balenaEtcher Webpage</a></li>
+                </ul>
+
+                <h2>Step 1 - Install RasPBX</h2>
+                <ol>
+
+                    <li>
+                        Go to the <a href="http://www.raspberry-asterisk.org/" target="_blank" rel="noopener noreferrer">RasPBX (Asterisk for Raspberry Pi)</a> site and navigate to the downloads page.<br />
+                        <img src="../images/installation/installation/raspberry-asterisk_01.png"
+                             alt="The raspberry-asterisk website home page" />
+                    </li>
+                    <li>
+                        Download the latest RasPBX image file (The latest version is 10-10-2020 as of 9 December 2020.)<br />
+                        <img src="../images/installation/installation/raspberry-asterisk_02.png"
+                             alt="Raspberry-asterisk website downloads page" />
+                    </li>
+                    <li>
+                        Write the image to the microSD card using image writing software such as balenaEtcher. The steps and
+                        images below are from balenaEtcher. If you use another imaging software application, the steps may be
+                        different but the process is similar.
+                        <ol>
+                            <li>
+                                Click the "Flash from file" button to select the image file<br />
+                                <img src="../images/installation/installation/Etcher-Flash_01.png"
+                                     alt="balenaEtcher Screenshot - 'Flash from file' button highlighted" />
+                            </li>
+                            <li>
+                                Select the zip file that you downloaded and click the "Open" button in the Open File Dialog window.<br />
+                                <img src="../images/installation/installation/Etcher-Flash_02.png"
+                                     alt="balenaEtcher Screenshot - file open dialog box" />
+                            </li>
+                            <li>
+                                Click the "Select target" button<br />
+                                <img src="../images/installation/installation/Etcher-Flash_03.png"
+                                     alt="balenaEtcher Screenshot - 'Select target' button highlighted" />
+                            </li>
+                            <li>
+                                Select the microSD card from the list of devices and click the "Continue" button. Make certain that you are selecting the correct drive letter. balenaEtcher is nice in that
+                                it provides warnings to you if the drive is a large drive, but it is your responsibility to select the correct drive. If you accidently
+                                overwrite another drive, you will not be able to recover the data, so make certain you select the correct drive.<br />
+                                <img src="../images/installation/installation/Etcher-Flash_04.png"
+                                     alt="balenaEtcher Screenshot - 'Select a Drive' dialog" />
+                            </li>
+                            <li>
+                                Click the "Flash!" button to write the image to the microSD card.<br />
+                                <img src="../images/installation/installation/Etcher-Flash_05.png"
+                                     alt="balenaEtcher Screenshot - 'Flash!' button highlighted" /><br />
+                                <b>NOTE:</b>If you see a User Account Control (UAC) dialog box, click the "Yes" button to continue.<br />
+                                <img src="../images/installation/installation/Etcher-Flash_05UAC.png"
+                                     alt="Windows User Account Control (UAC) dialog box" />
+                            </li>
+                            <li>
+                                Wait until the flash process completes. It will take several minutes. You will see the screens shown below.<br />
+                                <i><b>NOTE:</b> If you are prompted to format the disk at any time, <b>do not format the disk!</b> Click the cancel button on the dialog box.</i><br />
+                                <img src="../images/installation/installation/Etcher-Flash_06a.png"
+                                     alt="balenaEtcher Screenshot - Decompressing Image" />
+                                <img src="../images/installation/installation/Etcher-Flash_06b.png"
+                                     alt="balenaEtcher Screenshot - Flashing Image" />
+                                <img src="../images/installation/installation/Etcher-Flash_06c.png"
+                                     alt="balenaEtcher Screenshot - Validating Image" />
+                                <img src="../images/installation/installation/Etcher-Flash_06f.png"
+                                     alt="balenaEtcher Screenshot - Flash Complete" /><br />
+                                <b>NOTE:</b> Windows may access the drive once the Flashing of the drive is complete. If this happens, you may
+                                see a message stating that you need to format the disk. Click Cancel on the dialog. Etcher may then present a
+                                message that there is "1 Failed device" on the "Flash Complete" screen. This is due to Windows creating a
+                                “System Volume Information” folder on the microSD card during validation. You may safely ignore the error and
+                                continue. If you wish to learn more about this message, you may read
+                                <a href="https://gitlab.tails.boum.org/tails/tails/-/issues/17634" target="_blank" rel="noopener noreferrer">issue #17634</a>
+                                on the Tails GitLab project.<br />
+                                <img src="../images/installation/installation/Etcher-Flash_06d.png"
+                                     alt="balenaEtcher Screenshot - Windows dialog asking to format drive. Don't!" />
+                                <img src="../images/installation/installation/Etcher-Flash_06e.png"
+                                     alt="balenaEtcher Screenshot - Flash Complete" />
+                            </li>
+                        </ol>
+                    </li>
+                    <li>Insert the microSD card in the Raspberry Pi and power it on.</li>
+                </ol>
+
+                <h2>Step 2 - Setup and configure RasPBX</h2>
+                <ol>
+                    <li>
+                        When the Raspberry Pi boots and is prompting for a username and password, login with the default values.<br />
+                        Username: root<br />
+                        Password raspberry
+                    </li>
+                    <li>
+                        Launch the Raspberry Pi Configuration application by typing the following at the prompt.
+                        <i><b>NOTE:</b> Do not type the prompt "root@raspbx:~#". It is displayed for context only.</i><br />
+                        root@raspbx:~# <b>raspi-config</b>
+                    </li>
+                    <li>
+                        Press tab to place the focus on the "&lt;OK&gt;" button and press Enter.<br />
+                        <img src="../images/installation/installation/raspi-config_01.png"
+                             alt="Raspi-Config - User Selection Screen" />
+                    </li>
+                    <li>
+                        <i>(Optional)</i> Enable SSH to allow administration from another PC using applications such as PuTTY and WinSCP.
+                        <ol>
+                            <li>
+                                Scroll down to option "5 Interfacing Options", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_02.png"
+                                     alt="Raspi-Config - Options Screen" />
+                            </li>
+                            <li>
+                                Scroll down to option "P2 SSH", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_03.png"
+                                     alt="Raspi-Config - Interfacing Options Screen" />
+                            </li>
+                            <li>
+                                Make certain that the focus is on the "&lt;Yes&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_04.png"
+                                     alt="Raspi-Config - SSH Screen" />
+                            </li>
+                            <li>
+                                Make certain that the focus is on the "&lt;Ok&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_05.png"
+                                     alt="Raspi-Config - SSH Screen confirmation Screen" />
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <i>(Optional)</i> Change Localization settings<br />
+                        If you are not located in the UK, it is a good idea to change options such as Timezone and Localization.
+                        <ol>
+                            <li>
+                                Timezone
+                                <ol>
+                                    <li>
+                                        Scroll down to option "4 Localisation Options", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                        <img src="../images/installation/installation/raspi-config_06.png"
+                                             alt="Raspi-Config - Options Screen" />
+                                    </li>
+                                    <li>
+                                        Timezone - Select the "I2 Change Time Zone" option and set the values for your timezone.
+                                        The screenshots show the options for Eastern Standard Time (EST).<br />
+                                        <img src="../images/installation/installation/raspi-config_07a.png"
+                                             alt="Raspi-Config - Localisation Options Screen" />
+                                        <img src="../images/installation/installation/raspi-config_07b.png"
+                                             alt="Raspi-Config - Time Zone Geographic area Screen" />
+                                        <img src="../images/installation/installation/raspi-config_07c.png"
+                                             alt="Raspi-Config - Time Zone Screen" />
+                                    </li>
+                                    <li>
+                                        Scroll down to option "4 Localisation Options", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                        <img src="../images/installation/installation/raspi-config_08a.png"
+                                             alt="Raspi-Config - Options Screen" />
+                                    </li>
+                                    <li>
+                                        Keyboard - Select the "I3 Change Keyboard Layout" option and set the values for your keyboard.
+                                        The screenshots show the options for US Standard Keyboard.<br />
+                                        <img src="../images/installation/installation/raspi-config_08b.png"
+                                             alt="Raspi-Config - Localisation Options Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08c.png"
+                                             alt="Raspi-Config - Localisation Keyboard model Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08d.png"
+                                             alt="Raspi-Config - Localisation Keyboard layout Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08e.png"
+                                             alt="Raspi-Config - Localisation Keyboard Country Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08f.png"
+                                             alt="Raspi-Config - Localisation Keyboard layout Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08g.png"
+                                             alt="Raspi-Config - Localisation Key to function as AltGr Screen" />
+                                        <img src="../images/installation/installation/raspi-config_08h.png"
+                                             alt="Raspi-Config - Localisation Compose key Screen" />
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+
+
+                    <li>
+                        <i>(Optional)</i> Expand the File System<br />
+                        If your card is larger than 4GB, then you may want to expand the filesystem to be able to use all the space on the card.
+                        <ol>
+                            <li>
+                                Scroll down to option "6 Advanced Options", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_09a.png"
+                                     alt="Raspi-Config - Options Screen" />
+                            </li>
+                            <li>
+                                Scroll down to option "A1 Expand Filesystem", press tab to place the focus on the "&lt;Select&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_09b.png"
+                                     alt="Raspi-Config - Advanced Options Screen" />
+                            </li>
+                            <li>
+                                Make certain that the focus is on the "&lt;Ok&gt;" button and press Enter.<br />
+                                <img src="../images/installation/installation/raspi-config_09c.png"
+                                     alt="Raspi-Config - Expand Filesystem confirmation Screen" />
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        Tab to the &lt;Finish&gt; button and press the Enter key.<br />
+                        <img src="../images/installation/installation/raspi-config_10.png"
+                             alt="Raspi-Config - Options Screen" />
+                    </li>
+                    <li>
+                        Tab to the &lt;Yes&gt; button and press the Enter key to reboot the Raspberry Pi.<br />
+                        <img src="../images/installation/installation/raspi-config_11.png"
+                             alt="Raspi-Config - Reboot confirmation Screen" />
+                    </li>
+                </ol>
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cisco 79xx Phones</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Setting up Cisco 79xx Phones</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+
+                <p>
+                    This guide will walk you through setting up an Cisco 7941 IP Phones and connecting them to
+                    RasPBX to place and receive calls.
+                </p>
+
+                <div class="NoteBlock">
+                    <span class="NoteTitle">Important note regarding network setup &amp; DHCP</span>
+                    <div>
+                        <p>
+                            Setting up older Cisco phones requires that your DHCP server is configurable to allow
+                            the addition of option 150 for TFTP. Most home and small business routers with built in
+                            DHCP servers do not provide the ability to add options for DHCP so it will be
+                            necessary to setup a DHCP server capable of adding DHCP options. The best option may be
+                            to use the Raspberry Pi running FreePBX but other options include other Linux machines
+                            or Windows Server.
+                        </p>
+                        <p>
+                            This guide will not go into setting up DHCP to support Cisco IP Phones. Search for options
+                            on setting up a DHCP server on the platform of your choice. The following are some
+                            high-level steps to a sucessful installation.
+                        </p>
+                        <ul>
+                            <li>
+                                If at all possible, run your VoIP equipment on a separate VLAN from the rest of your
+                                network traffic. This will improve your overall experience and will help isolate issues.
+                            </li>
+                            <li>
+                                The machine that will be your DHCP Server must have a static IP Address. Setting a static
+                                IP Address should be one of the first steps.
+                            </li>
+                            <li>
+                                Before starting up your DHCP Server (DHCP Service/Daemon/Process) turn off the current
+                                DHCP server.
+                            </li>
+                            <li>
+                                Add the following Options to your DHCP Sever at a minimum
+                                <ul>
+                                    <li>003 Router - IP Address of the Router/Gateway</li>
+                                    <li>006 DNS Servers - List of IP Address(es) for DNS Servers</li>
+                                    <li>
+                                        150 Cisco IPT - IP Address of the TFTP Server. The IP Address will be the IP Address
+                                        of the FreePBX Server unless you plan to use a different machine for TFTP.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Step 1 - Setup TFTP Server on the Raspberry PI</h2>
+                <p>
+                    Cisco IP Phones require a connection to a Trivial File Transfer Protocol (TFTP) Server on start-up to retrieve an XML file for provisioning the phone. The IP Phone will connect to the TFTP Server specified by the DHCP response or through the network configuration set locally on the phone. The issue with the locally stored network configuration, is the menu to set the configuration is not accessable after the phone is reset. Therefore it is necessary to have option 150 set in the DHCP Server configuration.
+                </p>
+                <p>
+                    This step will guide you through the stepup of the TFTP Server on the Raspberry Pi to support Cisco IP Phones.
+                </p>
+                <ol>
+                    <li>
+                        Log into the Raspberry Pi
+                    </li>
+                    <li>
+                        Install the xinetd tftp package by typing the following command<br />
+                        root@raspbx:~# apt-get install xinetd tftpd tftp
+                    </li>
+                    <li>
+                        Press the Enter key when prompted to accept the default values<br />
+                        Do you want to continue? [Y/n]<br />
+                        <pre class="terminal">
+root@raspbx:~# apt-get install xinetd tftpd tftp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  update-inetd
+The following NEW packages will be installed:
+  tftp tftpd update-inetd xinetd
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 184 kB of archives.
+After this operation, 464 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://mirror.umd.edu/raspbian/raspbian buster/main armhf tftp armhf 0.17-22 [17.2 kB]
+Get:2 http://mirror.umd.edu/raspbian/raspbian buster/main armhf xinetd armhf 1:2.3.15.3-1 [123 kB]
+Get:3 http://mirror.umd.edu/raspbian/raspbian buster/main armhf tftpd armhf 0.17-22 [16.4 kB]
+Get:4 http://mirror.umd.edu/raspbian/raspbian buster/main armhf update-inetd all 4.49 [27.8 kB]
+Fetched 184 kB in 1s (150 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package tftp.
+(Reading database ... 56364 files and directories currently installed.)
+Preparing to unpack .../tftp_0.17-22_armhf.deb ...
+Unpacking tftp (0.17-22) ...
+Selecting previously unselected package xinetd.
+Preparing to unpack .../xinetd_1%3a2.3.15.3-1_armhf.deb ...
+Unpacking xinetd (1:2.3.15.3-1) ...
+Selecting previously unselected package tftpd.
+Preparing to unpack .../tftpd_0.17-22_armhf.deb ...
+Unpacking tftpd (0.17-22) ...
+Selecting previously unselected package update-inetd.
+Preparing to unpack .../update-inetd_4.49_all.deb ...
+Unpacking update-inetd (4.49) ...
+Setting up xinetd (1:2.3.15.3-1) ...
+Setting up update-inetd (4.49) ...
+Setting up tftpd (0.17-22) ...
+Note: xinetd currently is not fully supported by update-inetd.
+Please consult /usr/share/doc/xinetd/README.Debian and itox(8).
+update-inetd: warning: cannot add service, /etc/inetd.conf does not exist
+Setting up tftp (0.17-22) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for systemd (241-7~deb10u8+rpi1) ...
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        Create/edit the tftp configuration file by typing the following command<br />
+                        nano /etc/xinetd.d/tftp
+                    </li>
+                    <li>
+                        Add/edit the file with the following contents<br />
+                        <pre class="terminal">
+service tftp
+{
+protocol        = udp
+port            = 69
+socket_type     = dgram
+wait            = yes
+user            = nobody
+server          = /usr/sbin/in.tftpd
+server_args     = /tftpboot
+disable         = no
+}
+                        </pre>
+                    </li>
+                    <li>
+                        Exit and save the file by doing the following
+                        <ol>
+                            <li>ctrl+x</li>
+                            <li>Y</li>
+                            <li>Enter</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Stop and start the xinetd service by issuing the following commands:<br />
+                        root@raspbx:~# /etc/init.d/xinetd stop<br />
+                        root@raspbx:~# /etc/init.d/xinetd start<br />
+                        <pre class="terminal">
+root@raspbx:~# /etc/init.d/xinetd stop
+[ ok ] Stopping xinetd (via systemctl): xinetd.service.
+root@raspbx:~# /etc/init.d/xinetd start
+[ ok ] Starting xinetd (via systemctl): xinetd.service.
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        Check the status of the tftp xinetd service by issuing the following command:<br />
+                        root@raspbx:~# /etc/init.d/xinetd status<br />
+                        <pre class="terminal">
+root@raspbx:~# /etc/init.d/xinetd status
+● xinetd.service - LSB: Starts or stops the xinetd daemon.
+   Loaded: loaded (/etc/init.d/xinetd; generated)
+   Active: active (running) since Sun 2021-12-19 10:36:34 EST; 1min 14s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 3644 ExecStart=/etc/init.d/xinetd start (code=exited, status=0/SUCCESS)
+    Tasks: 1 (limit: 4915)
+   CGroup: /system.slice/xinetd.service
+           └─3670 /usr/sbin/xinetd -pidfile /run/xinetd.pid -stayalive -inetd_compat -inetd_ipv6
+
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/discard-udp [file=/etc/xinetd.d/discard-udp] [line=25]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/echo [file=/etc/xinetd.d/echo] [line=14]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/echo-udp [file=/etc/xinetd.d/echo-udp] [line=26]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/servers [file=/etc/xinetd.d/servers] [line=14]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/services [file=/etc/xinetd.d/services] [line=13]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/tftp [file=/etc/xinetd.d/tftp] [line=13]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/time [file=/etc/xinetd.d/time] [line=11]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/time-udp [file=/etc/xinetd.d/time-udp] [line=28]
+Dec 19 10:36:35 raspbx xinetd[3670]: 2.3.15.3 started with libwrap loadavg labeled-networking options compiled in.
+Dec 19 10:36:35 raspbx xinetd[3670]: Started working: 1 available service
+root@raspbx:~#
+                        </pre>
+                    </li>
+
+                </ol>
+
+                <h2>Step 2 - Create Phone Configuration Files</h2>
+                <p class="comingSoonSectionMessage">
+                    Coming Soon
+                </p>
+                <h2>Step 3 - Copy configuration files and related files to the TFT Server</h2>
+                <ol>
+                    <li>
+                        Open WinSCP and navigate to the folder on the PC containing the cnfiguration files and navigate to the /tftpboot/ folder on the Raspberry Pi.<br />
+                        <img src="../images/phones/cisco79xx/TransferToTft_01.png" alt="Selecting folders in WinSCP" />
+                    </li>
+                    <li>
+                        Transfer the files from the PC to the Raspberry Pi<br />
+                        <img src="../images/phones/cisco79xx/TransferToTft_02.png" alt="All files transfered to the Raspberry Pi" />
+                    </li>
+                </ol>
+
+                <h2>Step 4 - Configure Legacy SIP (chan_sip) in FreePBX</h2>
+                <ul>
+                    <li>
+                        In FreePBX, select Settings => Asterisk SIP Settings from the menu<br />
+                        <img src="../images/phones/cisco79xx/SIP_Settings_01.png" alt="FreePBX menu with Asterisk SIP Settings highlighted" />
+                    </li>
+                    <li>
+                        Switch to the SIP Legacy Settings [chang_sip] tab and change the following items<br />
+                        <ul>
+                            <li>
+                                NAT: No
+                            </li>
+                            <li>
+                                Enable SRV Lookup: No
+                            </li>
+                        </ul>
+                        <img src="../images/phones/cisco79xx/SIP_Settings_02.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 1 of 3" />
+                        <img src="../images/phones/cisco79xx/SIP_Settings_03.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 2 of 3" />
+                        <img src="../images/phones/cisco79xx/SIP_Settings_04.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 3 of 3" />
+                    </li>
+                    <li>
+                        Settings => Asterisk SIP Settings => SIP Legacy Settings tab => Activate TCP => Yes<br />
+
+                    </li>
+                </ul>
+
+                <h2>Step 5 - Add extensions for the Cisco 79xx Phones</h2>
+                <ul>
+                    <li>
+                        Log into FreePBX and navigate to Applications &gt; Extensions<br />
+                        <img src="../images/phones/cisco79xx/RasPBX-Extensions_05.png" alt="FreePBX Extensions Application - All Extensions tab" />
+                    </li>
+                    <li>
+                        Click the Add Extension button and select Add New SIP (Legacy) [chan_sip] Extension<br />
+                        <img src="../images/phones/cisco79xx/RasPBX-Extensions_06b.png" alt="FreePBX Extensions Application - Add New SIP (Legacy) [chan_sip] Extension" />
+                    </li>
+                    <li>
+                        Enter the following infromation on the General tab
+                        <ul>
+                            <li>
+                                <b>Display Name</b>: Enter a name to display on phones when placing a call. (Internal caller id)
+                            </li>
+                            <li>
+                                Outbound CID: Enter the Caller Id to be displayed for outgoing calls. NOTE: This only appears in FreePBX logs and is not displayed on
+                                called person's phone.
+                            </li>
+                            <li>
+                                Emergency CID: <i>Leave Blank</i>
+                            </li>
+                            <li>
+                                Secret: Enter the authPassword from the Cisco SIP file for the phone. Cisco 79xx phones can have a max of 8 characters and they all
+                                must be numeric.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Switch to the Advanced tab and enter the following
+                        <ul>
+                            <li>
+                                Send RPID: Send Remote-Party-ID header
+                            </li>
+                            <li>
+                                NAT Mode: Never - (no)
+                            </li>
+                            <li>
+                                Qualify: No
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

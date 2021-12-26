@@ -1,0 +1,348 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\docs\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\docs\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4E71B279-41E9-4DBA-B873-7C893BA5E7EB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>documentation</RootNamespace>
+    <AssemblyName>documentation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44325</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\docs\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pages\about\references.html" />
+    <Content Include="pages\default.aspx" />
+    <Content Include="pages\default.html" />
+    <Content Include="pages\images\banner_fullimage.png" />
+    <Content Include="pages\images\Cisco7941G.png" />
+    <Content Include="pages\images\clipboard.png" />
+    <Content Include="pages\images\construction_icon.png" />
+    <Content Include="pages\images\external_link.png" />
+    <Content Include="pages\images\GitHub-Mark-64px.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_01.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_02.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_03.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_04.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_05.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_06.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_07.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_08.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_09.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_10.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_11.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_12.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_13.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_14.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_15.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_16.png" />
+    <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_17.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_01.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_02.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_03.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_04.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_05.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_05UAC.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06a.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06b.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06c.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06d.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06e.png" />
+    <Content Include="pages\images\installation\installation\Etcher-Flash_06f.png" />
+    <Content Include="pages\images\magnifier.png" />
+    <Content Include="pages\images\mail_icon.png" />
+    <Content Include="pages\images\phones\cisco79xx\RasPBX-Extensions_05.png" />
+    <Content Include="pages\images\phones\cisco79xx\RasPBX-Extensions_06b.png" />
+    <Content Include="pages\images\phones\cisco79xx\SIP_Settings_01.png" />
+    <Content Include="pages\images\phones\cisco79xx\SIP_Settings_02.png" />
+    <Content Include="pages\images\phones\cisco79xx\SIP_Settings_03.png" />
+    <Content Include="pages\images\phones\cisco79xx\SIP_Settings_04.png" />
+    <Content Include="pages\images\phones\cisco79xx\TransferToTft_01.png" />
+    <Content Include="pages\images\phones\cisco79xx\TransferToTft_02.png" />
+    <Content Include="pages\images\phones\linphone\LinPhoneAudioFix.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_01.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_02.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_03.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_04.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_05.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_06.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_07.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_08.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_09.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_09b.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_10.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_11.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_12.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_13.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_14.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_15.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_16.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_17.png" />
+    <Content Include="pages\images\phones\linphone\RasPBX-Extensions_18.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_01.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_02.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_03.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_04.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_05.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_06.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_07.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_08.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_09.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_10.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_11.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_12.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_13.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_14.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_15.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_16.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_17.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_18.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_19.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_20.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Android_21.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_TestCall_01.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_TestCall_02.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_TestCall_03.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_TestCall_04.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_01.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_02.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_03.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_04.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_05.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_06.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_07.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_08.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_09.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_10.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_11.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_12.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_13.png" />
+    <Content Include="pages\images\phones\linphone\Softphone_Windows_14.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Inbound_01.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Inbound_02.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Inbound_03.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_01.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_02.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_03.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_04.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_05.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_06.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_07.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_08.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_09.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Outbound_10.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_01.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_02.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_03.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_04.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_05.png" />
+    <Content Include="pages\images\phones\pots\FreePBX_Trunk_06.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_01.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_02.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_03.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_04.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_05.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_06.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_07.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_08.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_08d.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_09.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_10.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_11.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_12.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_12d.png" />
+    <Content Include="pages\images\phones\pots\FXO_Gateway_13.png" />
+    <Content Include="pages\images\phones\pots\OBi110_IP_Address_01.png" />
+    <Content Include="pages\images\phones\pots\OBi110_IP_Address_02.png" />
+    <Content Include="pages\images\phones\pots\OBi110_IP_Address_03.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reboot_01.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reset_01.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reset_02.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reset_03.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reset_04.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Reset_05.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Timezone_01.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Timezone_02.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Timezone_03.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Timezone_03d.png" />
+    <Content Include="pages\images\phones\pots\OBi110_Timezone_04.png" />
+    <Content Include="pages\images\phones\pots\PBX_Network_102.png" />
+    <Content Include="pages\images\phones\pots\RasPBX-Reboot_01.png" />
+    <Content Include="pages\images\phones\pots\Test_Call_01.png" />
+    <Content Include="pages\images\phones\pots\Test_Call_02.png" />
+    <Content Include="pages\images\remote\terminal\ifconfig_01.png" />
+    <Content Include="pages\images\installation\installation\PBX_Network_101.png" />
+    <Content Include="pages\images\installation\installation\raspberry-asterisk_01.png" />
+    <Content Include="pages\images\installation\installation\raspberry-asterisk_02.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_01.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_02.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_03.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_04.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_05.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_06.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_07a.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_07b.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_07c.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08a.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08b.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08c.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08d.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08e.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08f.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08g.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_08h.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_09a.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_09b.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_09c.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_10.png" />
+    <Content Include="pages\images\installation\installation\raspi-config_11.png" />
+    <Content Include="pages\images\remote\terminal\putty_01.png" />
+    <Content Include="pages\images\remote\terminal\putty_02.png" />
+    <Content Include="pages\images\PBX_Network.gif" />
+    <Content Include="pages\images\unknown.png" />
+    <Content Include="pages\images\zoom.png" />
+    <Content Include="pages\installation\afterupdate.html" />
+    <Content Include="pages\installation\initalconfig.html" />
+    <Content Include="pages\installation\update.html" />
+    <Content Include="pages\installation\installation.html" />
+    <Content Include="pages\js\content.js" />
+    <Content Include="pages\js\footer.js" />
+    <Content Include="pages\js\header.js" />
+    <Content Include="pages\js\load.js" />
+    <Content Include="pages\js\main.js" />
+    <Content Include="pages\js\modal.js" />
+    <Content Include="pages\phones\cisco79xx.html" />
+    <Content Include="pages\phones\linphone.html" />
+    <Content Include="pages\phones\pots.html" />
+    <Content Include="pages\remote\filetransfer.html" />
+    <Content Include="pages\remote\terminal.html" />
+    <Content Include="pages\style\default.css" />
+    <Content Include="pages\style\imageBox.css" />
+    <Content Include="pages\style\imgtitle.css" />
+    <Content Include="pages\style\main.css" />
+    <Content Include="pages\style\menu.css" />
+    <Content Include="pages\style\modal.css" />
+    <Content Include="pages\template.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="pages\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="pages\docs\" />
+    <Folder Include="pages\images\installation\afterupdate\" />
+    <Folder Include="pages\images\installation\update\" />
+    <Folder Include="pages\images\remote\filetransfer\" />
+    <Folder Include="pages\videos\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65513</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44325/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\docs\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\docs\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

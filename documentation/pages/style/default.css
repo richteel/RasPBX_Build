@@ -1,0 +1,206 @@
+﻿/* Hide the top anchor */
+#jomis-top {
+    display: none;
+}
+
+/* START: Color Palette */
+/* Primary Colors */
+.color-primary-darkest {
+    background-color: #13171f;
+    color: white;
+}
+
+.color-primary-darker {
+    background-color: #162e51;
+    color: white;
+}
+
+.color-primary-dark {
+    background-color: #1a4480;
+    color: white;
+}
+
+.color-primary {
+    background-color: #2672de;
+    color: white;
+}
+
+.color-primary-light {
+    background-color: #5994f6;
+    color: black;
+}
+
+.color-primary-lighter {
+    background-color: #adcdff;
+    color: black;
+}
+
+.color-primary-lightest {
+    background-color: #edf5ff;
+    color: black;
+}
+/* Base Colors */
+.color-base-darkest {
+    background-color: #1b1b1b;
+    color: white;
+}
+
+.color-base-darker {
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.color-base-dark {
+    background-color: #454545;
+    color: white;
+}
+
+.color-base {
+    background-color: #5c5c5c;
+    color: white;
+}
+
+.color-base-light {
+    background-color: #adadad;
+    color: black;
+}
+
+.color-base-lighter {
+    background-color: #c9c9c9;
+    color: black;
+}
+
+.color-base-lightest {
+    background-color: #f0f0f0;
+    color: black;
+}
+/* END: Color Palette */
+
+/* START: Type Styles */
+/* Display Styles */
+.display-1 {
+    /* This is for display headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+/* Heading Styles */
+.heading-1, h1 {
+    /* This is for page headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: normal;
+    font-weight: bolder !important;
+}
+
+.heading-2, h2 {
+    /* This is for section headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+    letter-spacing: normal;
+    font-weight: bolder !important;
+}
+
+.heading-3, h3 {
+    /* This is for section and component headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.heading-4, h4 {
+    /* This is for subsection and component headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.heading-5, h5 {
+    /* This is for subsection and component headings */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.heading-6, h6 {
+    /* THIS IS FOR SUBSECTION AND OVERLINE HEADINGS */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+}
+/* Body Styles */
+.body-1 {
+    /*	This is for short paragraphs with no more than four
+		lines and is commonly used for lead or introduction
+		text. This is for short paragraphs. */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 22px;
+    line-height: 36px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
+
+.body-2 {
+    /*	This is ideal for most situations where the primary intention is reading
+		and is commonly used in long blocks of text. This is ideal for most
+		situations where the primary intention is reading and is commonly used in
+		long blocks of text. This is for long blocks of text. */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+.body-3 {
+    /* 	This is for short paragraphs with no more than four lines and is commonly used in
+		captions. This is for short paragraphs with no more than four lines and is commonly
+		used in captions. This is for short paragraphs. */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+/* Action Styles */
+.action-1 {
+    /* This is for large buttons or actions */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+    letter-spacing: normal;
+}
+
+.action-2 {
+    /* This is for medium buttons or actions */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+}
+
+.action-3 {
+    /* This is for small buttons or actions */
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    letter-spacing: normal;
+}
+/* END: Type Styles */

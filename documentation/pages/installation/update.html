@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Update</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Updating RasPBX</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+                <p>
+                    This guide will walk you through updating RasPBX.
+                </p>
+                <h2>Items required for this build</h2>
+                <ul>
+                    <li>Raspberry Pi with RasPBX installed</li>
+                    <li>An active internet connection</li>
+                    <li>2 or more devices to run softphone software. These may be iOS, Android, Windows, or Linux devices.</li>
+                </ul>
+
+                <h2>Update RasPBX</h2>
+                <p>
+                    The following steps are optional but highly recommended. The steps here will cover updating the operating system and the
+                    FreePBX/Astrisk software.<br />
+                    <b>NOTE:</b> You may carry out this steps on a remote machine by referring to the instructions in <a href="../remote/terminal.html">Remote &gt; SSH Terminal</a>.
+                </p>
+                <ol>
+                    <li>
+                        The current version of RasPBX, raspbx-10-10-2020, has outdated certificates for the sury.org Debian package repository so we need to update the certificates
+                        before running raspbx-upgrade. To update the certificates, just download the new key:<br />
+                        wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg<br />
+                        REF: <a href="https://www.faqforge.com/linux/solved-the-following-signatures-were-invalid-expkeysig-b188e2b695bd4743-deb-sury-org-automatic-signing-key/">FAQforge</a><br />
+                        <pre class="terminal">
+root@raspbx:~# wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+--2021-12-18 16:10:16--  https://packages.sury.org/php/apt.gpg
+Resolving packages.sury.org (packages.sury.org)... 172.67.182.150, 104.21.18.148, 2606:4700:3030::ac43:b696, ...
+Connecting to packages.sury.org (packages.sury.org)|172.67.182.150|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1769 (1.7K) [application/octet-stream]
+Saving to: ‘/etc/apt/trusted.gpg.d/php.gpg’
+
+/etc/apt/trusted.gpg.d/php.gpg                              100%[========================================================================================================================================>]   1.73K  --.-KB/s    in 0s
+
+2021-12-18 16:10:17 (7.91 MB/s) - ‘/etc/apt/trusted.gpg.d/php.gpg’ saved [1769/1769]
+
+
+
+
+root@raspbx:~#
+									</pre>
+                    </li>
+
+
+
+                    <li>
+                        The current version of RasPBX is using the Buster release but the current Raspbian version is Bullseye. As far as I'm aware, it is best to remain on
+                        Buster so we need to specify that we want to get the buster updates. You may try to upgrade to Bullseye but I have not tried it yet. There may be issues
+                        if you so do so at your own risk.<br />
+                        To update the older Buster release and remain on Buster, run the following command:<br />
+                        apt-get update --allow-releaseinfo-change<br />
+                        REF: <a href="https://forum.proxmox.com/threads/apt-get-update-error-changed-its-suite-value-from-stable-to-oldstable.94726/">Proxmox Forum</a>
+                        <pre class="terminal">
+root@raspbx:~# sudo apt-get update --allow-releaseinfo-change
+Get:1 https://packages.sury.org/php buster InRelease [6,837 B]
+Get:2 http://archive.raspberrypi.org/debian buster InRelease [32.6 kB]
+Get:3 http://raspbian.raspberrypi.org/raspbian buster InRelease [15.0 kB]
+Get:4 http://repo.raspbx.org/apt/debian buster InRelease [1,443 B]
+Get:5 https://packages.sury.org/php buster/main armhf Packages [349 kB]
+Get:6 http://archive.raspberrypi.org/debian buster/main armhf Packages [393 kB]
+Get:7 http://raspbian.raspberrypi.org/raspbian buster/main armhf Packages [13.0 MB]
+Get:8 http://repo.raspbx.org/apt/debian buster/main armhf Packages [1,815 B]
+Get:9 http://raspbian.raspberrypi.org/raspbian buster/contrib armhf Packages [58.8 kB]
+Get:10 http://raspbian.raspberrypi.org/raspbian buster/non-free armhf Packages [104 kB]
+Fetched 14.0 MB in 7s (1,974 kB/s)
+Reading package lists... Done
+N: Repository 'https://packages.sury.org/php buster InRelease' changed its 'Suite' value from '' to 'buster'
+N: Repository 'http://archive.raspberrypi.org/debian buster InRelease' changed its 'Suite' value from 'testing' to 'oldstable'
+N: Repository 'http://raspbian.raspberrypi.org/raspbian buster InRelease' changed its 'Suite' value from 'stable' to 'oldstable'
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        We are now able to run raspbx-update to update the operating sytem and software. Run the following command
+                        (NOTE: It may take several minutes for this command to complete.):<br />
+                        raspbx-upgrade
+                        <pre class="terminal">
+root@raspbx:~# raspbx-upgrade
+RasPBX upgrade tool
+Run "raspbx-upgrade --help" for additional options
+Base version: 10-10-2020
+Installed upgrade:        29
+Local upgrade available:  29
+Online upgrade available: 29
+Checking repositories for updated packages...
+Hit:1 http://archive.raspberrypi.org/debian buster InRelease
+Hit:2 http://repo.raspbx.org/apt/debian buster InRelease
+Hit:3 http://raspbian.raspberrypi.org/raspbian buster InRelease
+Hit:4 https://packages.sury.org/php buster InRelease
+...
+Setting up ssh (1:7.9p1-10+deb10u2+rpt1) ...
+Setting up avahi-daemon (0.7-4+deb10u1) ...
+Removing obsolete conffile /etc/network/if-up.d/avahi-daemon ...
+Removing obsolete conffile /etc/resolvconf/update-libc.d/avahi-daemon ...
+Processing triggers for mime-support (3.62) ...
+Processing triggers for libc-bin (2.28-10+rpt2+rpi1) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for dbus (1.12.20-0+deb10u1) ...
+Processing triggers for install-info (6.5.0.dfsg.1-4+b1) ...
+Processing triggers for initramfs-tools (0.133+deb10u1) ...
+Processing triggers for ca-certificates (20200601~deb10u2) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Processing triggers for php7.0-cli (7.0.33-57+0~20211119.61+debian10~1.gbp5d8ba5) ...
+Processing triggers for libapache2-mod-php7.0 (7.0.33-57+0~20211119.61+debian10~1.gbp5d8ba5) ...
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        (Optional) We can remove obsolite packages by running the following command:<br />
+                        apt autoremove<br />
+                        <pre class="terminal">
+root@raspbx:~# apt autoremove
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages will be REMOVED:
+  libgmime-2.6-0
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 513 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 56370 files and directories currently installed.)
+Removing libgmime-2.6-0:armhf (2.6.23+dfsg1-4) ...
+Processing triggers for libc-bin (2.28-10+rpt2+rpi1) ...
+root@raspbx:~#
+</pre>
+                    </li>
+                </ol>
+
+                <p>
+                    <strong>NOTE:</strong> Found a forum discussing installation of FreePBX on Bullseye at:
+                    <a href="https://www.dslreports.com/forum/r30661088-PBX-FreePBX-for-the-Raspberry-Pi">https://www.dslreports.com/forum/r30661088-PBX-FreePBX-for-the-Raspberry-Pi</a><br />
+                    It may be worth looking into this to see if this is an alternative to RasPBX installation path.
+                </p>
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

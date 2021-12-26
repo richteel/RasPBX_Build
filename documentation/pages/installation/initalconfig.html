@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Initial Configuration</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Initial Configuration</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START:Content -->
+
+
+                <h2>Initial RasPBX Setup and Configuration</h2>
+                <ol>
+                    <li>
+                        Open a web browser and navigate to http://raspbx.local/ or use the IP Address or your Raspberry Pi.<br />
+                    </li>
+                    <li>
+                        The Initial Setup Screen is shown. Complete the requested information and click the "Setup System" button.<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_01.png"
+                             alt="FreePBX Initial Setup Screen" /><br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_02.png"
+                             alt="FreePBX Initial Setup Screen completed" />
+                    </li>
+                    <li>
+                        Click on the "FreePBX Administration" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_03.png"
+                             alt="FreePBX Home Screen" />
+                    </li>
+                    <li>
+                        Enter the username and password that you created on the Initial Setup Screen to log into FreePBX.<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_04.png"
+                             alt="FreePBX Login Screen" />
+                    </li>
+                    <li>
+                        Change the localization settings if necessary and click the "Submit" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_05.png"
+                             alt="Localization Settings Screen" />
+                    </li>
+                    <li>
+                        Click the "Admin" menu item and select "Updates" from the drop-down<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_06.png"
+                             alt="Admin Menu" />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_07.png"
+                             alt="Admin menu drop-down" />
+                    </li>
+                    <li>
+                        Click the "Module Updates" tab<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_08.png"
+                             alt="Summary tab" />
+                    </li>
+                    <li>
+                        Click the "Check Online" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_09.png"
+                             alt="Module Updates tab" />
+                    </li>
+                    <li>
+                        Click the "Upgrade all" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_10.png"
+                             alt="Module Updates tab" />
+                    </li>
+                    <li>
+                        Click the "Process" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_11.png"
+                             alt="Module Updates tab" />
+                    </li>
+                    <li>
+                        Click the "Confirm" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_12.png"
+                             alt="Module Updates tab - Confirmation screen" />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_13.png"
+                             alt="Module Updates tab - Status screen" />
+                    </li>
+                    <li>
+                        Click the "Return" button<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_14.png"
+                             alt="Module Updates tab - Status complete" />
+                    </li>
+                    <li>
+                        Click the red "Apply Config" button in the upper right<br />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_15.png"
+                             alt="Module Updates tab - Apply Config" />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_16.png"
+                             alt="Module Updates tab - Reloading" />
+                        <img src="../images/installation/initialconfig/RasPBX-Setup_17.png"
+                             alt="Module Updates tab - Reloading complete" />
+                    </li>
+                </ol>
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>
