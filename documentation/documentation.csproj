@@ -70,6 +70,8 @@
     <Content Include="pages\about\references.html" />
     <Content Include="pages\default.aspx" />
     <Content Include="pages\default.html" />
+    <Content Include="pages\images\about\references\7941-Button_Directories.png" />
+    <Content Include="pages\images\about\references\7941-Button_Services.png" />
     <Content Include="pages\images\banner_fullimage.png" />
     <Content Include="pages\images\Cisco7941G.png" />
     <Content Include="pages\images\clipboard.png" />
@@ -266,6 +268,7 @@
     <Content Include="pages\js\header.js" />
     <Content Include="pages\js\load.js" />
     <Content Include="pages\js\main.js" />
+    <Content Include="pages\js\menu.js" />
     <Content Include="pages\js\modal.js" />
     <Content Include="pages\phones\cisco79xx.html" />
     <Content Include="pages\phones\linphone.html" />

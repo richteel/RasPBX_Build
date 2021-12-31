@@ -33,7 +33,8 @@ const includeFiles = [
     { id: "style_menu", fileType: "style", req_jquery: false, local: "~/style/menu.css", host: "~/style/menu.css" },
     { id: "style_default", fileType: "style", req_jquery: false, local: "~/style/default.css", host: "~/style/default.css" },
     { id: "bootstrap_min_css", fileType: "style", req_jquery: true, local: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css", host: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" },
-    { id: "bootstrap_bundle_min_js", fileType: "script", req_jquery: true, local: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js", host: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" }
+    { id: "bootstrap_bundle_min_js", fileType: "script", req_jquery: true, local: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js", host: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" },
+    { id: "menu_js", fileType: "script", req_jquery: true, local: "~/js/menu.js", host: "~/js/menu.js" }
 ];
 
 const menuItems = [
@@ -46,7 +47,11 @@ const menuItems = [
     { id: "remote_filetransfer", group: "Remote", name: "SSH File Transfer", url: "~/remote/filetransfer.html", target: "" },
     { id: "phones_linphone", group: "Phones", name: "Linphone (Softphone)", url: "~/phones/linphone.html", target: "" },
     { id: "phones_pots", group: "Phones", name: "POTS Connection", url: "~/phones/pots.html", target: "" },
-    { id: "phones_cisco79xx", group: "Phones", name: "Cisco 79xx IP Phones", url: "~/phones/cisco79xx.html", target: "" },
+    { id: "phones_cisco79xx_reset", group: "Phones", name: "Reset", url: "~/phones/cisco79xx.html", target: "" },
+    { id: "phones_cisco79xx_tftp", group: "Phones", name: "Setup TFTP", url: "~/phones/cisco79xx.html", target: "" },
+    { id: "phones_cisco79xx_xml", group: "Phones", name: "XML Config", url: "~/phones/cisco79xx.html", target: "" },
+    { id: "phones_cisco79xx_directory", group: "Phones", name: "Directory", url: "~/phones/cisco79xx.html", target: "" },
+    { id: "phones_cisco79xx_services", group: "Phones", name: "Services", url: "~/phones/cisco79xx.html", target: "" },
     { id: "about_references", group: "About", name: "References", url: "~/about/references.html", target: "" }
 ];
 
