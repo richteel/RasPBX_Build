@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cisco 79xx TFTP</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Cisco 79xx TFTP</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+
+                <p>
+                    Cisco IP Phones require that there be a Trivial File Transfer Protocol (TFTP) server on the network
+                    and that the network's Dynamic Host Configuration Protocol (DHCP) server uses custom option 150, to
+                    point to the TFPT Server. Below is a snipit from Cicso's documentation regarding the TFTP requirement.
+                </p>
+                <figure>
+                    <blockquote cite="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/12_0_1/systemConfig/cucm_b_system-configuration-guide-1201/cucm_b_system-configuration-guide-1201_chapter_01000100.html#ariaid-title5">
+                        <p>
+                            We recommend that you enable IPv4 phones and gateways to use the DHCP custom option 150 to discover
+                            the TFTP server IP address. Using option 150, gateways and phones discover the TFTP server IP address.
+                            For more information, see the documentation that came with your device.
+                        </p>
+                    </blockquote>
+                    <figcaption>
+                        Cisco Systems, Inc.,
+                        <cite>
+                            <a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cucm/admin/12_0_1/systemConfig/cucm_b_system-configuration-guide-1201/cucm_b_system-configuration-guide-1201_chapter_01000100.html#ariaid-title5" target="_blank">
+                                System Configuration Guide for Cisco Unified Communications Manager, Release 12.0(1)
+                            </a>
+                        </cite>
+                    </figcaption>
+                </figure>
+
+                <p>
+                    These instructions are for installing the TFTP Server on the Raspberry Pi running RasPBX. The same instructions may be applied to any Linux installation. The
+                    commands include sudo to run the commands as superuser however if you are logged in as root on an RasPBX, you may drop the use of sudo from the commands.
+                    <i>You may still use sudo if logged in as root.</i>
+                </p>
+
+                <h2>
+                    Installation of TFTP on RasPBX
+                </h2>
+                <p>
+                    These instructions are from <a href="https://pbxbook.com/voip/pi-tftp.html" target="_blank">Mike's PBX Cookbook</a>.
+                </p>
+                <ol>
+                    <li>
+                        Log into the Raspberry Pi
+                    </li>
+                    <li>
+                        Update the packages by typing the following command<br />
+                        sudo apt-get update
+                    </li>
+                    <li>
+                        Install the xinetd tftp package by typing the following command<br />
+                        sudo apt-get install xinetd tftpd tftp
+                    </li>
+                    <li>
+                        Press the Enter key when prompted to accept the default values<br />
+                        Do you want to continue? [Y/n]<br />
+                        <pre class="terminal">
+root@raspbx:~# sudo apt-get install xinetd tftpd tftp
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  update-inetd
+The following NEW packages will be installed:
+  tftp tftpd update-inetd xinetd
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 184 kB of archives.
+After this operation, 464 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://mirror.umd.edu/raspbian/raspbian buster/main armhf tftp armhf 0.17-22 [17.2 kB]
+Get:2 http://mirror.umd.edu/raspbian/raspbian buster/main armhf xinetd armhf 1:2.3.15.3-1 [123 kB]
+Get:3 http://mirror.umd.edu/raspbian/raspbian buster/main armhf tftpd armhf 0.17-22 [16.4 kB]
+Get:4 http://mirror.umd.edu/raspbian/raspbian buster/main armhf update-inetd all 4.49 [27.8 kB]
+Fetched 184 kB in 1s (150 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package tftp.
+(Reading database ... 56364 files and directories currently installed.)
+Preparing to unpack .../tftp_0.17-22_armhf.deb ...
+Unpacking tftp (0.17-22) ...
+Selecting previously unselected package xinetd.
+Preparing to unpack .../xinetd_1%3a2.3.15.3-1_armhf.deb ...
+Unpacking xinetd (1:2.3.15.3-1) ...
+Selecting previously unselected package tftpd.
+Preparing to unpack .../tftpd_0.17-22_armhf.deb ...
+Unpacking tftpd (0.17-22) ...
+Selecting previously unselected package update-inetd.
+Preparing to unpack .../update-inetd_4.49_all.deb ...
+Unpacking update-inetd (4.49) ...
+Setting up xinetd (1:2.3.15.3-1) ...
+Setting up update-inetd (4.49) ...
+Setting up tftpd (0.17-22) ...
+Note: xinetd currently is not fully supported by update-inetd.
+Please consult /usr/share/doc/xinetd/README.Debian and itox(8).
+update-inetd: warning: cannot add service, /etc/inetd.conf does not exist
+Setting up tftp (0.17-22) ...
+Processing triggers for man-db (2.8.5-2) ...
+Processing triggers for systemd (241-7~deb10u8+rpi1) ...
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        Create/edit the tftp configuration file by typing the following command<br />
+                        sudo nano /etc/xinetd.d/tftp
+                    </li>
+                    <li>
+                        Add/edit the file with the following contents<br />
+                        <pre class="terminal">
+service tftp
+{
+protocol        = udp
+port            = 69
+socket_type     = dgram
+wait            = yes
+user            = nobody
+server          = /usr/sbin/in.tftpd
+server_args     = /tftpboot
+disable         = no
+}
+                        </pre>
+                    </li>
+                    <li>
+                        Exit and save the file by doing the following
+                        <ul>
+                            <li>ctrl+x</li>
+                            <li>Y</li>
+                            <li>Enter</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Stop and start the xinetd service by issuing the following commands:<br />
+                        sudo /etc/init.d/xinetd stop<br />
+                        sudo /etc/init.d/xinetd start<br />
+                        <pre class="terminal">
+root@raspbx:~# sudo /etc/init.d/xinetd stop
+[ ok ] Stopping xinetd (via systemctl): xinetd.service.
+root@raspbx:~# sudo /etc/init.d/xinetd start
+[ ok ] Starting xinetd (via systemctl): xinetd.service.
+root@raspbx:~#
+                        </pre>
+                    </li>
+                    <li>
+                        Check the status of the tftp xinetd service by issuing the following command:<br />
+                        sudo /etc/init.d/xinetd status<br />
+                        <pre class="terminal">
+root@raspbx:~# sudo /etc/init.d/xinetd status
+● xinetd.service - LSB: Starts or stops the xinetd daemon.
+   Loaded: loaded (/etc/init.d/xinetd; generated)
+   Active: active (running) since Sun 2021-12-19 10:36:34 EST; 1min 14s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 3644 ExecStart=/etc/init.d/xinetd start (code=exited, status=0/SUCCESS)
+    Tasks: 1 (limit: 4915)
+   CGroup: /system.slice/xinetd.service
+           └─3670 /usr/sbin/xinetd -pidfile /run/xinetd.pid -stayalive -inetd_compat -inetd_ipv6
+
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/discard-udp [file=/etc/xinetd.d/discard-udp] [line=25]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/echo [file=/etc/xinetd.d/echo] [line=14]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/echo-udp [file=/etc/xinetd.d/echo-udp] [line=26]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/servers [file=/etc/xinetd.d/servers] [line=14]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/services [file=/etc/xinetd.d/services] [line=13]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/tftp [file=/etc/xinetd.d/tftp] [line=13]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/time [file=/etc/xinetd.d/time] [line=11]
+Dec 19 10:36:34 raspbx xinetd[3670]: Reading included configuration file: /etc/xinetd.d/time-udp [file=/etc/xinetd.d/time-udp] [line=28]
+Dec 19 10:36:35 raspbx xinetd[3670]: 2.3.15.3 started with libwrap loadavg labeled-networking options compiled in.
+Dec 19 10:36:35 raspbx xinetd[3670]: Started working: 1 available service
+root@raspbx:~#
+                        </pre>
+                    </li>
+
+                </ol>
+
+                <h2>Configure DHCP</h2>
+                <p>
+                    There are many different types and options for DHCP servers on networks. You will need to determine what is the best
+                    option to properly setup your network so you have a DHCP Server with option 150 pointing to your TFTP server. I will
+                    briefly explain the steps I went throught to determine the best option for me.
+                </p>
+                <p>
+                    My network was using the WiFi router's built in DHCP server. I looked there first to see if it had a way to set
+                    DHCP Options but it did not. I then looked at some other networked devices to see if any of them included a DHCP
+                    server that had the option to configure DHCP Options. The only thing I could find that I already had was a Windows 
+                    Server used to monitor IP Cameras. I proceeded to add the DHCP Server feature to the server. The rest of the steps
+                    are a generalization of the steps that I took to install and configure the Windows Server DCHP Server to point to
+                    the TFTP Server. Use these steps as a guide. You may need to fill in some missing pieces as I will not be able to
+                    go into the details at this time.
+                </p>
+                <ol>
+                    <li>
+                        Add DHCP Server Feature on Windows Server
+                    </li>
+                    <li>
+                        Add new scope to the DHCP Server<br />
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_01.png" alt="DHCP Scope Properties General Tab" />&nbsp;
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_02.png" alt="DHCP Scope Properties DNS Tab" />&nbsp;
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_03.png" alt="DHCP Scope Properties Advanced Tab" />
+                    </li>
+                    <li>
+                        Disable the DHCP Server that is currently active for your network. You may only have one DHCP Server on a network segment.
+                    </li>
+                    <li>
+                        Reboot the RasPBX or drop and refresh the DHCP lease by issuing the following commands on the Raspberry Pi.<br />
+                        sudo dhclient – r<br />
+                        sudo dhclient
+                    </li>
+                    <li>
+                        Back on the Windows Server, view the Address Leases and find the RasPBX in the list of leases. It may be necessary 
+                        to refresh the list of leases.Right click on it and select "Add to Reservation" from the context menu to reserve 
+                        an IP Address for the RasPBX machine.<br />
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_AddReservation.png" alt="Add lease to reservation" />
+                    </li>
+                    <li>
+                        Right-click on IPv4 and select "Set Predefined Options..." from the context menu.<br />
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_SetPredefinedOptions.png" alt="Set Predefined Options menu item" />
+                    </li>
+                    <li>
+                        With the Option Class set to "DHCP Standard Options," click the "Add" button and enter the following 
+                        information and click the "OK" button.
+                        <ul>
+                            <li>Name: Cisco IPT</li>
+                            <li>Data Type: IP Address</li>
+                            <li>Check the Array checkbox</li>
+                            <li>Code: 150</li>
+                            <li>Description: TFTP Server for Cisco Call Manager</li>
+                        </ul>
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_AddOption150.png" alt="Add DHCP Option dialog" />
+                    </li>
+                    <li>
+                        Right-click on Scope Options and select "Configure Options..." from the context menu.<br />
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_ConfigureOptions.png" alt="Configure DHCP Options" />
+                    </li>
+                    <li>
+                        Scroll down the list and select "150 Cisco IPT", check the checkbox, enter the TFTP Server's 
+                        IP address, click the Add button, then click the OK button.<br />
+                        <img src="../images/phones/cisco79xx_tftp/win_dhcp_AddTftpOption.png" alt="Add the TFTP Server Address to Option 150" />
+                    </li>
+                </ol>
+                <p>
+                    Later when your IP Phones are setup, you may want to add a reservation for them especially if your IP Phone
+                    has a web interface for status, logs, or options. The Cisco 79xx phones have an option to grab a screenshot
+                    of the phone. If you plan to use this feature, you may want to configure an IP Reservation for them through the 
+                    DHCP Server.
+                </p>
+
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

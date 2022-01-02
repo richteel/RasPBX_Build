@@ -197,33 +197,33 @@ a.skip-main {
     color: white;
 }
 
-/*** FOOTER ***/
-footer {
-    margin-top: 50px;
-    font-size: smaller;
+/* Figure Blockquote */
+blockquote {
+    background-color: wheat;
+    font-style: italic;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    margin-bottom: 0.25em !important;
 }
 
-    footer a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    footer h5 {
-        /* padding-left: 10px; */
-    }
-
-    footer .border-right {
-        border-right: 1px solid white;
-    }
-
-.footer-links {
-    display: inline-block;
-    vertical-align: top;
-    padding-left: 10px;
-    padding-right: 10px;
-    min-width: 135px;
+blockquote p {
+    display: inline;
 }
 
-    .footer-links li {
-        /* list-style: disc; */
+    blockquote p::before {
+        content: open-quote;
+        font-size: 1.5em;
+        line-height: 0.1em;
+    }
+
+    blockquote p::after {
+        content: close-quote;
+        font-size: 1.5em;
+        line-height: 0.1em;
+    }
+
+figcaption {
+    margin-left: 2em;
+}
+    figcaption::before {
+        content: "\2014";
     }

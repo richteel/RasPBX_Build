@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cisco 79xx Reset</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Cisco 79xx Reset</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+
+                <p>
+                    When receiving a used or refurbished Cisco 79xx, it is generally a good idea to reset the phone to clear any passwords
+                    or configuration that may cause issues with connecting your IP Phone to your RasPBX instance. All of the 
+                    instructions given here are modified slightly from Cisco's website. The original Cisco instructions are found at 
+                    <a href="https://www.cisco.com/c/en/us/support/docs/voice-unified-communications/unified-ip-phone-7900-series/15254-7960-default.html">
+                        https://www.cisco.com/c/en/us/support/docs/voice-unified-communications/unified-ip-phone-7900-series/15254-7960-default.html
+                    </a>. I only have two types of Cisco phones, which are CP-7941G and CP-7975G. The instructions here are for these two models. For 
+                    other 79xx models, please refer to the Cisco website.
+                </p>
+
+                <h2>
+                    Reset the 7941, 7961, &amp; 7975 IP Phones to the Factory Default
+                </h2>
+                <p>
+                    Complete these steps:
+                    <ol>
+                        <li>
+                            Ensure that the following are in place before attempting a reset of the phone:
+                            <ul>
+                                <li>
+                                    DHCP server has Scope Option 150 set and pointing to the IP Address of your TFTP server
+                                </li>
+                                <li>
+                                    Have the TFTP server running
+                                </li>
+                                <li>
+                                    Have the firmware files and XML Configuration files in the proper locations on the TFT Server
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Unplug the power cable from the phone, and then plug in the cable again. <br />
+                            The phone begins its power up cycle.
+                        </li>
+                        <li>
+                            Immediately press and hold # and while the Headset, Mute, and Speaker buttons begin to flash in sequence, release #.<br />
+                            The line buttons flash in sequence in order to indicate that the phone waits for you to enter the key sequence for the reset.
+                        </li>
+                        <li>
+                            Press 123456789*0# within 60 seconds after the Headset, Mute, and Speaker buttons begin to flash.<br />
+                            NOTES:
+                            <ul>
+                                <li>
+                                    If you repeat a key within the sequence, for example, if you press 1223456789*0#, the sequence is still accepted 
+                                    and the phone resets.
+                                </li>
+                                <li>
+                                    If you do not complete this key sequence or do not press any keys, after 60 seconds the Headset, Mute, and Speaker 
+                                    buttons no longer flash, and the phone continues with its normal startup process. The phone does not reset.
+                                </li>
+                                <li>
+                                    If you enter an invalid key sequence, the buttons no longer flash, and the phone continues with its normal 
+                                    startup process. The phone does not reset.
+                                </li>
+                                <li>
+
+                                    If you enter this key sequence correctly, the phone displays this prompt:<br />
+                                    Upgrading
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </p>
+
+
+
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

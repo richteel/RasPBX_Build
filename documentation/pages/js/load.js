@@ -18,15 +18,17 @@ const hostEnvironments = [
     { name: "prod", path: "/pages", debug: true, isHost: true }
 ];
 
+// <!--Get your own code at fontawesome.com-->
 const includeFiles = [
+    { id: "font_awesome", fileType: "script", req_jquery: false, local: "https://kit.fontawesome.com/a12f3f2147.js", host: "https://kit.fontawesome.com/a12f3f2147.js" },
     { id: "js_main", fileType: "script", req_jquery: false, local: "~/js/main.js", host: "~/js/main.js" },
     { id: "js_modal", fileType: "script", req_jquery: false, local: "~/js/modal.js", host: "~/js/modal.js" },
     { id: "jquery_slim_min_js", fileType: "script", req_jquery: false, local: "https://code.jquery.com/jquery-3.5.1.slim.min.js", host: "https://code.jquery.com/jquery-3.5.1.slim.min.js" },
     { id: "jquery_min_js", fileType: "script", req_jquery: false, local: "https://code.jquery.com/jquery-3.5.1.min.js", host: "https://code.jquery.com/jquery-3.5.1.min.js" },
     { id: "js_content", fileType: "script", req_jquery: false, local: "~/js/content.js", host: "~/js/content.js" },
-    { id: "js_header", fileType: "script", req_jquery: false, local: "~/js/header.js", host: "~/js/header.js" },
-    { id: "js_footer", fileType: "script", req_jquery: false, local: "~/js/footer.js", host: "~/js/footer.js" },
-    { id: "js_main", fileType: "style", req_jquery: false, local: "~/style/main.css", host: "~/style/main.css" },
+    { id: "js_header", fileType: "script", req_jquery: true, local: "~/js/header.js", host: "~/js/header.js" },
+    { id: "js_footer", fileType: "script", req_jquery: true, local: "~/js/footer.js", host: "~/js/footer.js" },
+    { id: "style_main", fileType: "style", req_jquery: false, local: "~/style/main.css", host: "~/style/main.css" },
     { id: "style_modal", fileType: "style", req_jquery: false, local: "~/style/modal.css", host: "~/style/modal.css" },
     { id: "style_imagebox", fileType: "style", req_jquery: false, local: "~/style/imageBox.css", host: "~/style/imageBox.css" },
     { id: "style_imgtitle", fileType: "style", req_jquery: false, local: "~/style/imgtitle.css", host: "~/style/imgtitle.css" },
@@ -34,25 +36,29 @@ const includeFiles = [
     { id: "style_default", fileType: "style", req_jquery: false, local: "~/style/default.css", host: "~/style/default.css" },
     { id: "bootstrap_min_css", fileType: "style", req_jquery: true, local: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css", host: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" },
     { id: "bootstrap_bundle_min_js", fileType: "script", req_jquery: true, local: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js", host: "https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" },
-    { id: "menu_js", fileType: "script", req_jquery: true, local: "~/js/menu.js", host: "~/js/menu.js" }
+    { id: "js_menu", fileType: "script", req_jquery: true, local: "~/js/menu.js", host: "~/js/menu.js" }
 ];
 
 const menuItems = [
-    { id: "home", group: "", name: "", url: "~/default.html", target: "" },
     { id: "installation_install", group: "Installation", name: "1. Install RasPBX", url: "~/installation/installation.html", target: "" },
     { id: "installation_update", group: "Installation", name: "2. Update RasPBX", url: "~/installation/update.html", target: "" },
     { id: "installation_afterupdate", group: "Installation", name: "3. Tasks after update", url: "~/installation/afterupdate.html", target: "" },
     { id: "installation_initialconfig", group: "Installation", name: "4. Initial Configuration", url: "~/installation/initalconfig.html", target: "" },
     { id: "remote_terminal", group: "Remote", name: "SSH Terminal", url: "~/remote/terminal.html", target: "" },
     { id: "remote_filetransfer", group: "Remote", name: "SSH File Transfer", url: "~/remote/filetransfer.html", target: "" },
+    { id: "remote_mariadb", group: "Remote", name: "MariaDB", url: "~/remote/mariadb.html", target: "" },
     { id: "phones_linphone", group: "Phones", name: "Linphone (Softphone)", url: "~/phones/linphone.html", target: "" },
     { id: "phones_pots", group: "Phones", name: "POTS Connection", url: "~/phones/pots.html", target: "" },
-    { id: "phones_cisco79xx_reset", group: "Phones", name: "Reset", url: "~/phones/cisco79xx.html", target: "" },
-    { id: "phones_cisco79xx_tftp", group: "Phones", name: "Setup TFTP", url: "~/phones/cisco79xx.html", target: "" },
-    { id: "phones_cisco79xx_xml", group: "Phones", name: "XML Config", url: "~/phones/cisco79xx.html", target: "" },
-    { id: "phones_cisco79xx_directory", group: "Phones", name: "Directory", url: "~/phones/cisco79xx.html", target: "" },
-    { id: "phones_cisco79xx_services", group: "Phones", name: "Services", url: "~/phones/cisco79xx.html", target: "" },
-    { id: "about_references", group: "About", name: "References", url: "~/about/references.html", target: "" }
+    { id: "phones_cisco79xx_tftp", group: "Cisco79xx", name: "Setup TFTP", url: "~/phones/cisco79xx_tftp.html", target: "" },
+    { id: "phones_cisco79xx_xml", group: "Cisco79xx", name: "XML Config", url: "~/phones/cisco79xx_xml.html", target: "" },
+    { id: "phones_cisco79xx_reset", group: "Cisco79xx", name: "Reset", url: "~/phones/cisco79xx_reset.html", target: "" },
+    { id: "phones_cisco79xx_extension", group: "Cisco79xx", name: "Add Extension(s)", url: "~/phones/cisco79xx_extension.html", target: "" },
+    { id: "phones_cisco79xx_directory", group: "Cisco79xx", name: "Directory", url: "~/phones/cisco79xx_directory.html", target: "" },
+    { id: "phones_cisco79xx_services", group: "Cisco79xx", name: "Services", url: "~/phones/cisco79xx_services.html", target: "" },
+    { id: "more_cisco79xx_misc", group: "More", name: "Cisco 79xx Misc. Info", url: "~/more/cisco79xx_misc.html", target: "" },
+    { id: "about_references", group: "About", name: "References", url: "~/about/references.html", target: "" },
+    { id: "home", group: "", name: "", url: "~/default.html", target: "" },
+    { id: "phones_cisco79xx", group: "Phones", name: "Cisco 79xx", url: "", target: "" }
 ];
 
 const sitePages = [
@@ -62,10 +68,21 @@ const sitePages = [
     { name: "installation_initialconfig", path: "installation/", file: "initalconfig", resourcePath: "installation/initalconfig/" },
     { name: "remote_terminal", path: "remote/", file: "terminal", resourcePath: "remote/terminal/" },
     { name: "remote_filetransfer", path: "remote/", file: "filetransfer", resourcePath: "remote/filetransfer/" },
+    { name: "remote_mariadb", path: "remote/", file: "mariadb", resourcePath: "remote/mariadb/" },
     { name: "phones_linphone", path: "phones/", file: "linphone", resourcePath: "phones/linphone/" },
     { name: "phones_pots", path: "phones/", file: "pots", resourcePath: "phones/pots/" },
+    { name: "phones_cisco79xx_tftp", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "phones_cisco79xx_xml", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "phones_cisco79xx_reset", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "phones_cisco79xx_extension", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "phones_cisco79xx_directory", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "phones_cisco79xx_services", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
+    { name: "more_cisco79xx_misc", path: "more/", file: "cisco79xx_misc", resourcePath: "more/cisco79xx_misc/" },
     { name: "phones_cisco79xx", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
     { name: "about_references", path: "about/", file: "references", resourcePath: "about/references/" },
+    { name: "test_header", path: "js/", file: "header", resourcePath: "js/header/" },
+    { name: "test_footer", path: "js/", file: "footer", resourcePath: "js/footer/" },
+    { name: "sample_mdbootstrap_footer", path: "js/", file: "mdbootstrap_footer", resourcePath: "js/mdbootstrap_footer/" },
     { name: "home", path: "", file: "", resourcePath: "" }
 ];
 
@@ -116,6 +133,7 @@ function addInclude(includeFile) {
     }
     else if (includeFile.fileType == "script") {
         elem.src = incPath;
+        elem.crossorigin = "anonymous";
     }
     else
         return;
@@ -199,7 +217,7 @@ function begin() {
 
     // If we did not identify the page, throw an error
     if (pageInfo.name == "") {
-        throw "ERROR: Page not found";
+        throw "ERROR: Page not found - Add page to sitePages array in load.js";
     }
 }
 
@@ -237,24 +255,10 @@ function debugShowDetails() {
     if (!siteInfo.debug)
         return;
 
-    debugEntry("siteInfo ");
-    debugEntry("\t.rootPath = " + siteInfo.rootPath);
-    debugEntry("\t.environment = " + siteInfo.environment);
-    debugEntry("\t.debug = " + siteInfo.debug);
-    debugEntry("\t.isHost = " + siteInfo.isHost);
-    debugEntry("\t.imagesPath = " + siteInfo.imagesPath);
-    debugEntry("\t.videosPath = " + siteInfo.videosPath);
-    debugEntry("\t.documentsPath = " + siteInfo.documentsPath);
-    debugEntry("\t.scriptsPath = " + siteInfo.scriptsPath);
-    debugEntry("\t.stylePath = " + siteInfo.stylePath);
-
-    debugEntry("pageInfo ");
-    debugEntry("\t.name = " + pageInfo.name);
-    debugEntry("\t.path = " + pageInfo.path);
-    debugEntry("\t.file = " + pageInfo.file);
-    debugEntry("\t.imagesPath = " + pageInfo.imagesPath);
-    debugEntry("\t.videosPath = " + pageInfo.videosPath);
-    debugEntry("\t.documentsPath = " + pageInfo.documentsPath);
+    debugEntry("siteInfo:" + "\u25BC");
+    debugEntry(("siteInfo: %o", siteInfo));
+    debugEntry("pageInfo:" + "\u25BC");
+    debugEntry(("pageInfo: %o", pageInfo));
 }
 
 function getCorrectedWindowHref() {

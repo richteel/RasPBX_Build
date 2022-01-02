@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cisco 79xx XML</title>
+</head>
+<body>
+
+    <div id="pageHeader"></div>
+
+    <div class="jumbotron text-center siteJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="siteFullNameBlock">
+                        <span id="tagline" class="heading-6">The Electrical Engineering Log</span>
+                    </div>
+                    <h1>Cisco 79xx XML</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotron comingsoonJumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>This page is coming soon!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- START: Content -->
+
+                Content to go here
+
+                <!-- END: Content -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pageFooter"></div>
+
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+
+</body>
+</html>

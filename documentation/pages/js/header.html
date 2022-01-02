@@ -1,4 +1,10 @@
-﻿const pageHead = `
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Header</title>
+</head>
+<body>
     <!-- START: Header -->
     <a class="skip-main" href="#main">Skip to main content</a>
     <nav class="navbar navbar-expand-lg navbar-dark" id="pageHeader">
@@ -96,7 +102,17 @@
     </nav>
     <span id="main"></span>
     <!-- END: Header -->
-`;
 
-replaceElementWithContent("pageHeader", pageHead, "div");
 
+    <script>
+        if (window.top.location.href.startsWith("https://github.com")) {
+            document.write('<script src="https://github.com/richteel/RasPBX_Build/tree/main/documentation/pages/js/load.js"><\/script>');
+        }
+        else {
+            let url = window.top.location.href.substring(0, window.top.location.href.search("/pages/")) + "/pages/js/load.js";
+
+            document.write('<script src="' + url + '"><\/script>');
+        }
+    </script>
+</body>
+</html>
