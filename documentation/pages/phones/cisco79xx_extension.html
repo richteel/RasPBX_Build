@@ -36,21 +36,21 @@
                 <ul>
                     <li>
                         In FreePBX, select Settings => Asterisk SIP Settings from the menu<br />
-                        <img src="../images/phones/cisco79xx/SIP_Settings_01.png" alt="FreePBX menu with Asterisk SIP Settings highlighted" />
+                        <img src="../images/phones/cisco79xx_extension/SIP_Settings_01.png" alt="FreePBX menu with Asterisk SIP Settings highlighted" />
                     </li>
                     <li>
                         Switch to the SIP Legacy Settings [chang_sip] tab and change the following items<br />
                         <ul>
                             <li>
-                                NAT: No
+                                <b>NAT</b>: No
                             </li>
                             <li>
-                                Enable SRV Lookup: No
+                                <b>Enable SRV Lookup</b>: No
                             </li>
                         </ul>
-                        <img src="../images/phones/cisco79xx/SIP_Settings_02.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 1 of 3" />
-                        <img src="../images/phones/cisco79xx/SIP_Settings_03.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 2 of 3" />
-                        <img src="../images/phones/cisco79xx/SIP_Settings_04.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 3 of 3" />
+                        <img src="../images/phones/cisco79xx_extension/SIP_Settings_02.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 1 of 3" />
+                        <img src="../images/phones/cisco79xx_extension/SIP_Settings_03.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 2 of 3" />
+                        <img src="../images/phones/cisco79xx_extension/SIP_Settings_04.png" alt="SIP Legacy Settings [chang_sip] tab screenshot 3 of 3" />
                     </li>
                     <li>
                         Settings => Asterisk SIP Settings => SIP Legacy Settings tab => Activate TCP => Yes<br />
@@ -62,47 +62,94 @@
                 <ul>
                     <li>
                         Log into FreePBX and navigate to Applications &gt; Extensions<br />
-                        <img src="../images/phones/cisco79xx/RasPBX-Extensions_05.png" alt="FreePBX Extensions Application - All Extensions tab" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_05.png" alt="FreePBX Extensions Application - All Extensions tab" />
                     </li>
                     <li>
                         Click the Add Extension button and select Add New SIP (Legacy) [chan_sip] Extension<br />
-                        <img src="../images/phones/cisco79xx/RasPBX-Extensions_06b.png" alt="FreePBX Extensions Application - Add New SIP (Legacy) [chan_sip] Extension" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_06b.png" alt="FreePBX Extensions Application - Add New SIP (Legacy) [chan_sip] Extension" />
                     </li>
                     <li>
                         Enter the following infromation on the General tab
                         <ul>
                             <li>
+                                <b>User Extension</b>: Enter the numeric extension for the phone
+                            </li>
+                            <li>
                                 <b>Display Name</b>: Enter a name to display on phones when placing a call. (Internal caller id)
                             </li>
                             <li>
-                                Outbound CID: Enter the Caller Id to be displayed for outgoing calls. NOTE: This only appears in FreePBX logs and is not displayed on
+                                <b>Outbound CID</b>: Enter the Caller Id to be displayed for outgoing calls. NOTE: This only appears in FreePBX logs and is not displayed on
                                 called person's phone.
                             </li>
                             <li>
-                                Emergency CID: <i>Leave Blank</i>
+                                <b>Emergency CID</b>: <i>Leave Blank</i>
                             </li>
                             <li>
-                                Secret: Enter the authPassword from the Cisco SIP file for the phone. Cisco 79xx phones can have a max of 8 characters and they all
+                                <b>Secret</b>: Enter the authPassword from the Cisco SIP file for the phone. Cisco 79xx phones can have a max of 8 characters and they all
                                 must be numeric.
                             </li>
+                            <li>
+                                Leave the remaining fields as the default values
+                            </li>
                         </ul>
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_general.png" alt="FreePBX Extension General Tab" />
                     </li>
                     <li>
                         Switch to the Advanced tab and enter the following
                         <ul>
                             <li>
-                                Send RPID: Send Remote-Party-ID header
+                                <b>Send RPID</b>: Send Remote-Party-ID header
                             </li>
                             <li>
-                                NAT Mode: Never - (no)
+                                <b>NAT Mode</b>: Never - (no)
                             </li>
                             <li>
-                                Qualify: No
+                                <b>Qualify</b>: No
+                            </li>
+                            <li>
+                                <b>Transport</b>: All - UDP Primary
                             </li>
                         </ul>
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_advanced_01.png" alt="FreePBX Extension Advanced Tab 1 of 4" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_advanced_02.png" alt="FreePBX Extension Advanced Tab 2 of 4" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_advanced_03.png" alt="FreePBX Extension Advanced Tab 3 of 4" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_advanced_04.png" alt="FreePBX Extension Advanced Tab 4 of 4" /><br />
+                        <a href="../images/phones/cisco79xx_extension/RasPBX-Extensions_advanced.png" target="_blank">As one image</a>
+                    </li>
+                    <li>
+                        No changes are necessary on the additional tabs<br />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_voicemail.png" alt="FreePBX Extension Voicemail Tab" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_findme.png" alt="FreePBX Extension Find Me/Follow Me Tab" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_pinsets.png" alt="FreePBX Extension Pin Sets Tab" />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_other.png" alt="FreePBX Extension Other Tab" />
+                    </li>
+                    <li>
+                        Once all of the changes have been made, click the "Submit" button at the bottom right of the screen<br />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_submit.png" alt="Submit changes button" />
+                    </li>
+                    <li>
+                        After clicking the "Submit" button, click the "Apply Config" button at the top right corner of the screen<br />
+                        <img src="../images/phones/cisco79xx_extension/RasPBX-Extensions_apply.png" alt="Apply Config button" />
                     </li>
                 </ul>
 
+                <p>
+                    If you have properly performed the following steps, then your Cisco 79xx IP Phone should successfully connect to the
+                    PBX and you should be able to call the extension from other extensions and make calls to other extensions. There are 
+                    many things that need to be configured correctly to make this setup work so there are many things that can go wrong.
+                </p>
+                <ul>
+                    <li>Installed RasPBX</li>
+                    <li>Updated RasPBX</li>
+                    <li>Performed initial configuration of FreePBX</li>
+                    <li>Setup TFTP</li>
+                    <li>Set Option 150 in the DHCP Server for your network</li>
+                    <li>Created the XML Configuration file for the phone</li>
+                    <li>Placed the phone's XML file on the TFTP Server with the proper name</li>
+                    <li>Reset the Cisco 79xx IP Phone</li>
+                    <li>Configured Legacy SIP settings</li>
+                    <li>Configured the extension for the Cisco 79xx IP Phone</li>
+                </ul>
                 <!-- END: Content -->
             </div>
         </div>

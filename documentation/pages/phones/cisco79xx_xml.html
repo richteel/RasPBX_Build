@@ -21,22 +21,474 @@
         </div>
     </div>
 
-    <div class="jumbotron comingsoonJumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>This page is coming soon!</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <!-- START: Content -->
 
-                Content to go here
+                <p>
+                    Cisco 79xx IP Phones require that a configuration file be located at the root of the TFTP Server referenced in
+                    option 150 of the DHCP Sever that provided the IP Address for the phone. The XML file has several sections and
+                    options. The phones require that the XML file is in the expected format and contains valid values. It is easy
+                    to have one value off and prevent the phone from setting up properly.
+                </p>
+                <img class="previewImage" src="../images/phones/cisco79xx_xml/Flowchart.png" alt="Simplified Cisco 79xx IP Phone Boot Sequence" />
+
+                <br />
+                <div class="NoteBlock">
+                    <span class="NoteTitle">Important note regarding required SIP Software</span>
+                    <div>
+                        <p>
+                            SIP Software is required for Cisco IP Phones to work with FreePBX. Information regarding obtaining,
+                            uploading, and configuring the SIP Software and IP Phones is found in the <a href="#sip_software">/device/loadInformation</a>
+                            section below.
+                        </p>
+                    </div>
+                </div>
+                <br />
+
+                <h2>XML Template</h2>
+                <p>
+                    The easiest way to get started with correctly creating a configuration file is by copying an existing template
+                    and modifying the values to suite your needs. Once you do that, you are able to go further and add or modify
+                    other values by reading the Cisco documentation online. One helpful resource is
+                    <a href="https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/cuipph/all_models/xsi/9-1-1/CUIP_BK_P82B3B16_00_phones-services-application-development-notes/CUIP_BK_P82B3B16_00_phones-services-application-development-notes_chapter_011.html#CUIP_RF_75BD119E_00" target="_blank">
+                        Cisco Unified IP Phone 7900 Series and Cisco IP Communicator XML Object Support
+                    </a>
+                </p>
+                <ol>
+                    <li>
+                        Obtain the MAC Address for your IP Phone. There are several ways to get the MAC Address. It is typically on
+                        a sticker/label on the phone and is labeled MAC. It is a series of 12 letters and numbers from 0 to 9 and A
+                        to F.
+                    </li>
+                    <li>
+                        Copy the following template and copy it to a text editor such as Notepad.
+                        <pre class="code">
+&lt;?xml version="1.0" ?&gt;
+&lt;device&gt;
+    &lt;deviceProtocol&gt;SIP&lt;/deviceProtocol&gt;
+    &lt;sshUserId&gt;cisco&lt;/sshUserId&gt;
+    &lt;sshPassword&gt;cisco&lt;/sshPassword&gt;
+    &lt;ipAddressMode&gt;0&lt;/ipAddressMode&gt;
+
+    &lt;devicePool&gt;
+        &lt;dateTimeSetting&gt;
+            &lt;dateTemplate&gt;M-D-Ya&lt;/dateTemplate&gt;
+            &lt;timeZone&gt;Eastern Standard/Daylight Time&lt;/timeZone&gt;
+            &lt;ntps&gt;
+                &lt;ntp&gt;
+                    &lt;name&gt;129.6.15.28&lt;/name&gt;
+                    &lt;ntpMode&gt;Unicast&lt;/ntpMode&gt;
+                &lt;/ntp&gt;
+            &lt;/ntps&gt;
+        &lt;/dateTimeSetting&gt;
+
+        &lt;callManagerGroup&gt;
+            &lt;members&gt;
+                &lt;member priority="0"&gt;
+                    &lt;callManager&gt;
+                    	&lt;name&gt;[RasPBX IP Address]&lt;/name&gt;
+                    	&lt;description/&gt;
+                        &lt;ports&gt;
+                            &lt;ethernetPhonePort&gt;2000&lt;/ethernetPhonePort&gt;
+                            &lt;sipPort&gt;5160&lt;/sipPort&gt;
+                            &lt;securedSipPort&gt;5061&lt;/securedSipPort&gt;
+                        &lt;/ports&gt;
+                        &lt;processNodeName&gt;[RasPBX IP Address]&lt;/processNodeName&gt;
+                    &lt;/callManager&gt;
+                &lt;/member&gt;
+            &lt;/members&gt;
+        &lt;/callManagerGroup&gt;
+        &lt;connectionMonitorDuration&gt;120&lt;/connectionMonitorDuration&gt;
+    &lt;/devicePool&gt;
+
+    &lt;commonProfile&gt;
+        &lt;phonePassword&gt;anything&lt;/phonePassword&gt;
+        &lt;backgroundImageAccess&gt;true&lt;/backgroundImageAccess&gt;
+        &lt;callLogBlfEnabled&gt;1&lt;/callLogBlfEnabled&gt;
+    &lt;/commonProfile&gt;
+    
+    &lt;loadInformation&gt;SIP41.8-5-4S&lt;/loadInformation&gt;
+    
+    &lt;vendorConfig&gt;
+        &lt;disableSpeaker&gt;false&lt;/disableSpeaker&gt;
+        &lt;disableSpeakerAndHeadset&gt;false&lt;/disableSpeakerAndHeadset&gt;
+        &lt;pcPort&gt;0&lt;/pcPort&gt;
+        &lt;settingsAccess&gt;1&lt;/settingsAccess&gt;
+        &lt;garp&gt;0&lt;/garp&gt;
+        &lt;voiceVlanAccess&gt;0&lt;/voiceVlanAccess&gt;
+        &lt;videoCapability&gt;0&lt;/videoCapability&gt;
+        &lt;autoSelectLineEnable&gt;0&lt;/autoSelectLineEnable&gt;
+        &lt;webAccess&gt;0&lt;/webAccess&gt;
+        &lt;spanToPCPort&gt;1&lt;/spanToPCPort&gt;
+        &lt;loggingDisplay&gt;1&lt;/loggingDisplay&gt;
+        &lt;loadServer&gt;&lt;/loadServer&gt;
+        &lt;sshAccess&gt;1&lt;/sshAccess&gt;
+    &lt;/vendorConfig&gt;
+    
+    &lt;userLocale&gt;
+        &lt;name&gt;English_United_States&lt;/name&gt;
+        &lt;uid&gt;1&lt;/uid&gt;
+        &lt;langCode&gt;en_US&lt;/langCode&gt;
+        &lt;version&gt;1.0.0.0-1&lt;/version&gt;
+        &lt;winCharSet&gt;iso-8859-1&lt;/winCharSet&gt;
+    &lt;/userLocale&gt;
+    
+    &lt;networkLocale&gt;United_States&lt;/networkLocale&gt;
+    &lt;networkLocaleInfo&gt;
+        &lt;name&gt;United_States&lt;/name&gt;
+        &lt;uid&gt;64&lt;/uid&gt;
+        &lt;version&gt;1.0.0.0-4&lt;/version&gt; 
+    &lt;/networkLocaleInfo&gt;
+    
+    &lt;deviceSecurityMode&gt;1&lt;/deviceSecurityMode&gt;
+    &lt;authenticationURL&gt;http://[RasPBX IP Address]/cisco/authenticate.php&lt;/authenticationURL&gt;
+    &lt;directoryURL&gt;http://[RasPBX IP Address]/cisco/directory.php?xtn=[User Extension]&lt;/directoryURL&gt;
+    &lt;idleURL&gt;&lt;/idleURL&gt;
+    &lt;informationURL&gt;&lt;/informationURL&gt;
+    &lt;messagesURL&gt;&lt;/messagesURL&gt;
+    &lt;servicesURL&gt;http://[RasPBX IP Address]/xmldir/PhoneUI/&lt;/servicesURL&gt;
+    
+    &lt;transportLayerProtocol&gt;2&lt;/transportLayerProtocol&gt;
+    
+    &lt;certHash&gt;&lt;/certHash&gt;
+    &lt;encrConfig&gt;false&lt;/encrConfig&gt;
+    
+    &lt;sipProfile&gt;
+        &lt;sipProxies&gt;
+            
+            &lt;registerWithProxy&gt;true&lt;/registerWithProxy&gt;
+        &lt;/sipProxies&gt;
+        &lt;sipCallFeatures&gt;
+            &lt;cnfJoinEnabled&gt;true&lt;/cnfJoinEnabled&gt;
+            
+            &lt;rfc2543Hold&gt;false&lt;/rfc2543Hold&gt;
+            &lt;callHoldRingback&gt;2&lt;/callHoldRingback&gt;
+            &lt;localCfwdEnable&gt;true&lt;/localCfwdEnable&gt;
+            &lt;semiAttendedTransfer&gt;true&lt;/semiAttendedTransfer&gt;
+            &lt;anonymousCallBlock&gt;2&lt;/anonymousCallBlock&gt;
+            &lt;callerIdBlocking&gt;2&lt;/callerIdBlocking&gt;
+            &lt;dndControl&gt;0&lt;/dndControl&gt;
+            &lt;remoteCcEnable&gt;true&lt;/remoteCcEnable&gt;
+        &lt;/sipCallFeatures&gt;
+
+        &lt;sipStack&gt;
+            &lt;sipInviteRetx&gt;6&lt;/sipInviteRetx&gt;
+            &lt;sipRetx&gt;10&lt;/sipRetx&gt;
+            &lt;timerInviteExpires&gt;180&lt;/timerInviteExpires&gt;
+            &lt;timerRegisterExpires&gt;3600&lt;/timerRegisterExpires&gt;
+            &lt;timerRegisterDelta&gt;5&lt;/timerRegisterDelta&gt;
+            &lt;timerKeepAliveExpires&gt;120&lt;/timerKeepAliveExpires&gt;
+            &lt;timerSubscribeExpires&gt;120&lt;/timerSubscribeExpires&gt;
+            &lt;timerSubscribeDelta&gt;5&lt;/timerSubscribeDelta&gt;
+            &lt;timerT1&gt;500&lt;/timerT1&gt;
+            &lt;timerT2&gt;4000&lt;/timerT2&gt;
+            &lt;maxRedirects&gt;70&lt;/maxRedirects&gt;
+            &lt;remotePartyID&gt;true&lt;/remotePartyID&gt;
+            &lt;userInfo&gt;None&lt;/userInfo&gt;
+        &lt;/sipStack&gt;
+
+        &lt;autoAnswerTimer&gt;1&lt;/autoAnswerTimer&gt;
+        &lt;autoAnswerAltBehavior&gt;false&lt;/autoAnswerAltBehavior&gt;
+        &lt;autoAnswerOverride&gt;true&lt;/autoAnswerOverride&gt;
+        &lt;transferOnhookEnabled&gt;false&lt;/transferOnhookEnabled&gt;
+        &lt;enableVad&gt;false&lt;/enableVad&gt;
+        &lt;preferredCodec&gt;g711ulaw&lt;/preferredCodec&gt;
+        &lt;dtmfAvtPayload&gt;101&lt;/dtmfAvtPayload&gt;
+        &lt;dtmfDbLevel&gt;3&lt;/dtmfDbLevel&gt;
+        &lt;dtmfOutofBand&gt;avt&lt;/dtmfOutofBand&gt;
+        &lt;alwaysUsePrimeLine&gt;false&lt;/alwaysUsePrimeLine&gt;
+        &lt;alwaysUsePrimeLineVoiceMail&gt;false&lt;/alwaysUsePrimeLineVoiceMail&gt;
+        &lt;kpml&gt;3&lt;/kpml&gt;
+        &lt;stutterMsgWaiting&gt;0&lt;/stutterMsgWaiting&gt;
+        &lt;callStats&gt;false&lt;/callStats&gt;
+        &lt;silentPeriodBetweenCallWaitingBursts&gt;10&lt;/silentPeriodBetweenCallWaitingBursts&gt;
+        &lt;disableLocalSpeedDialConfig&gt;false&lt;/disableLocalSpeedDialConfig&gt;
+        &lt;startMediaPort&gt;10000&lt;/startMediaPort&gt;
+        &lt;stopMediaPort&gt;20000&lt;/stopMediaPort&gt;
+        
+        &lt;phoneLabel&gt;[Phone Label]&lt;/phoneLabel&gt;
+        &lt;natEnabled&gt;false&lt;/natEnabled&gt;
+
+        &lt;sipLines&gt;
+            &lt;line button="1"&gt;
+                &lt;featureID&gt;9&lt;/featureID&gt;
+                &lt;featureLabel&gt;[Line Label]&lt;/featureLabel&gt;
+                &lt;name&gt;[User Extension]&lt;/name&gt;
+                &lt;displayName&gt;[User Extension]&lt;/displayName&gt;
+                &lt;contact&gt;[User Extension]&lt;/contact&gt;
+                &lt;proxy&gt;USECALLMANAGER&lt;/proxy&gt;
+                &lt;port&gt;5160&lt;/port&gt;
+                &lt;autoAnswer&gt;
+                    &lt;autoAnswerEnabled&gt;2&lt;/autoAnswerEnabled&gt;
+                &lt;/autoAnswer&gt;
+                &lt;callWaiting&gt;3&lt;/callWaiting&gt;
+                &lt;authName&gt;[User Extension]&lt;/authName&gt;
+                &lt;authPassword&gt;[Extension Secret]&lt;/authPassword&gt;
+                &lt;sharedLine&gt;false&lt;/sharedLine&gt;
+                &lt;messageWaitingLampPolicy&gt;1&lt;/messageWaitingLampPolicy&gt;
+                &lt;messagesNumber&gt;*97&lt;/messagesNumber&gt;
+                &lt;ringSettingIdle&gt;4&lt;/ringSettingIdle&gt;
+                &lt;ringSettingActive&gt;5&lt;/ringSettingActive&gt;
+                &lt;forwardCallInfoDisplay&gt;
+                    &lt;callerName&gt;true&lt;/callerName&gt;
+                    &lt;callerNumber&gt;false&lt;/callerNumber&gt;
+                    &lt;redirectedNumber&gt;false&lt;/redirectedNumber&gt;
+                    &lt;dialedNumber&gt;true&lt;/dialedNumber&gt;
+                &lt;/forwardCallInfoDisplay&gt;
+            &lt;/line&gt;
+
+            &lt;line button="2"&gt;
+                &lt;featureID&gt;9&lt;/featureID&gt;
+                &lt;featureLabel&gt;[Line Label]&lt;/featureLabel&gt;
+                &lt;name&gt;[User Extension]&lt;/name&gt;
+                &lt;displayName&gt;[User Extension]&lt;/displayName&gt;
+                &lt;contact&gt;[User Extension]&lt;/contact&gt;
+                &lt;proxy&gt;USECALLMANAGER&lt;/proxy&gt;
+                &lt;port&gt;5160&lt;/port&gt;
+                &lt;autoAnswer&gt;
+                    &lt;autoAnswerEnabled&gt;2&lt;/autoAnswerEnabled&gt;
+                &lt;/autoAnswer&gt;
+                &lt;callWaiting&gt;3&lt;/callWaiting&gt;
+                &lt;authName&gt;[User Extension]&lt;/authName&gt;
+                &lt;authPassword&gt;[Extension Secret]&lt;/authPassword&gt;
+                &lt;sharedLine&gt;false&lt;/sharedLine&gt;
+                &lt;messageWaitingLampPolicy&gt;1&lt;/messageWaitingLampPolicy&gt;
+                &lt;messagesNumber&gt;*97&lt;/messagesNumber&gt;
+                &lt;ringSettingIdle&gt;4&lt;/ringSettingIdle&gt;
+                &lt;ringSettingActive&gt;5&lt;/ringSettingActive&gt;
+                &lt;forwardCallInfoDisplay&gt;
+                    &lt;callerName&gt;true&lt;/callerName&gt;
+                    &lt;callerNumber&gt;false&lt;/callerNumber&gt;
+                    &lt;redirectedNumber&gt;false&lt;/redirectedNumber&gt;
+                    &lt;dialedNumber&gt;true&lt;/dialedNumber&gt;
+                &lt;/forwardCallInfoDisplay&gt;
+            &lt;/line&gt;
+        &lt;/sipLines&gt;
+
+        &lt;voipControlPort&gt;5060&lt;/voipControlPort&gt;
+        &lt;dscpForAudio&gt;184&lt;/dscpForAudio&gt;
+        &lt;ringSettingBusyStationPolicy&gt;0&lt;/ringSettingBusyStationPolicy&gt;
+        &lt;dialTemplate&gt;dialplan.xml&lt;/dialTemplate&gt;
+    &lt;/sipProfile&gt;
+    
+    &lt;versionStamp&gt;001&lt;/versionStamp&gt;
+
+    &lt;dialToneSetting&gt;2&lt;/dialToneSetting&gt;
+&lt;/device&gt;
+</pre>
+                    </li>
+                    <li>
+                        Save the file with the following name, replacing the text &lt;MAC Address&gt; with the phone's MAC Address.<br />
+                        SEP&lt;MAC Address&gt;.cnf.xml
+                    </li>
+                    <li>
+                        Replace the following values in the template
+                        <ul>
+                            <li>
+                                <b>[RasPBX IP Address]</b>: The IP Address of the RasPBX server<br />
+                                <i>NOTE: The three URLs may be left blank if the features are not to be used.</i>
+                                <ul>
+                                    <li>/device/callManagerGroup/members/member/callManager/name</li>
+                                    <li>/device/callManagerGroup/members/member/callManager/processNodeName</li>
+                                    <li>/device/authenticationURL</li>
+                                    <li>/device/directoryURL</li>
+                                    <li>/device/servicesURL</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>[Phone Label]</b>: A label to be displayed in the top right of the phone's screen. This may be a
+                                person's name, a location, or the extension. This value cannot be longer than 12 characters.
+                                <ul>
+                                    <li>/device/sipProfile/phoneLabel</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>[Line Label]</b>: A label to be displayed next to the buttons along the right of the screen.
+                                I typically use these for lines and label them "Line 1 - Ext 110" and "Line 2 - Ext 110", where
+                                110 is the extension number
+                                <ul>
+                                    <li>/device/sipProfile/sipLines/line button="1"/featureLabel</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/featureLabel</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>[User Extension]</b>:The extension number for the phone
+                                <ul>
+                                    <li>/device/directoryURL</li>
+                                    <li>/device/sipProfile/sipLines/line button="1"/name</li>
+                                    <li>/device/sipProfile/sipLines/line button="1"/displayName</li>
+                                    <li>/device/sipProfile/sipLines/line button="1"/contact</li>
+                                    <li>/device/sipProfile/sipLines/line button="1"/authName</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/name</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/displayName</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/contact</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/authName</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <b>[Extension Secret]</b>: The Secret value/password for the extension. It must be numeric
+                                and cannot be more than 8 numbers.
+                                <ul>
+                                    <li>/device/sipProfile/sipLines/line button="1"/authPassword</li>
+                                    <li>/device/sipProfile/sipLines/line button="2"/authPassword</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Save the file
+                    </li>
+                    <li>
+                        Copy the file to the TFTP Server using an application such as WinSCP. The TFTP root folder is
+                        located at /tftpboot on the Raspberry Pi
+                    </li>
+                </ol>
+
+                <h3>
+                    Here are some additional values that you may want to change.
+                </h3>
+                <ul>
+                    <li>
+                        /device/devicePool/dateTimeSetting/dateTemplate<br />
+                        The format for the date time displayed on the phone
+                    </li>
+                    <li>
+                        /device/devicePool/dateTimeSetting/timeZone<br />
+                        The timezone for the phone. A possible list of valid values was posted by Alfred KOBA at
+                        <a href="https://community.cisco.com/t5/other-collaboration-subjects/cisco-phone-7941-7942-7962-7975-and-cipc-timezone-problem/td-p/2741289">
+                            https://community.cisco.com/t5/other-collaboration-subjects/cisco-phone-7941-7942-7962-7975-and-cipc-timezone-problem/td-p/2741289
+                        </a>.
+                        <pre class="code">
+    Below is the list of timezones from CME 7.0
+
+    &lt;1-53&gt;  select timezone name used by IP phones (offset in minutes)
+    1 Dateline Standard Time -720
+    2 Samoa Standard Time -660
+    3 Hawaiian Standard Time -600
+    4 Alaskan Standard/Daylight Time -540
+    5 Pacific Standard/Daylight Time -480
+    6 Mountain Standard/Daylight Time -420
+    7 US Mountain Standard Time -420
+    8 Central Standard/Daylight Time -360
+    9 Mexico Standard/Daylight Time -360
+    10 Canada Central Standard Time -360
+    11 SA Pacific Standard Time -300
+    12 Eastern Standard/Daylight Time -300
+    13 US Eastern Standard Time -300
+    14 Atlantic Standard/Daylight Time -240
+    15 SA Western Standard Time -240
+    16 Newfoundland Standard/Daylight Time -210
+    17 E. South America Standard/Daylight Time -180
+    18 SA Eastern Standard Time -180
+    19 Mid-Atlantic Standard/Daylight Time -120
+    20 Azores Standard/Daylight Time -60
+    21 GMT Standard/Daylight Time +0
+    22 Greenwich Standard Time +0
+    23 W. Europe Standard/Daylight Time +60
+    24 GTB Standard/Daylight Time +60
+    25 Egypt Standard/Daylight Time +60
+    26 E. Europe Standard/Daylight Time +60
+    27 Romance Standard/Daylight Time +120
+    28 Central Europe Standard/Daylight Time +120
+    29 South Africa Standard Time +120
+    30 Jerusalem Standard/Daylight Time +120
+    31 Saudi Arabia Standard Time +180
+    32 Russian Standard/Daylight Time +180
+    33 Iran Standard/Daylight Time +210
+    34 Caucasus Standard/Daylight Time +240
+    35 Arabian Standard Time +240
+    36 Afghanistan Standard Time +270
+    37 West Asia Standard Time +300
+    38 Ekaterinburg Standard Time +300
+    39 India Standard Time +330
+    40 Central Asia Standard Time +360
+    41 SE Asia Standard Time +420
+    42 China Standard/Daylight Time +480
+    43 Taipei Standard Time +480
+    44 Tokyo Standard Time +540
+    45 Cen. Australia Standard/Daylight Time +570
+    46 AUS Central Standard Time +570
+    47 E. Australia Standard Time +600
+    48 AUS Eastern Standard/Daylight Time +600
+    49 West Pacific Standard Time +600
+    50 Tasmania Standard/Daylight Time +600
+    51 Central Pacific Standard Time +660
+    52 Fiji Standard Time +720
+    53 New Zealand Standard/Daylight Time +720
+</pre>
+                    </li>
+                    <li>
+                        /device/devicePool/dateTimeSetting/ntps/ntp/name<br />
+                        You may use an IP Address for another NTP Server. The one in the template is for
+                        time-a-g.nist.gov in Gaithersburg, Maryland
+                    </li>
+                    <li>
+                        <span id="sip_software">/device/loadInformation</span><br />
+                        You will need the SIP Software for your phone. Here are some sources for the SIP Software.
+                        <ul>
+                            <li>
+                                7941 &amp; 7961 Phones may find the SIP Software at
+                                <a href="https://git.synchron.com.ua/sysadmin/synchron_voip/-/tree/master/tftp/Cisco_Firmwares" target="_blank">
+                                    https://git.synchron.com.ua/sysadmin/synchron_voip/-/tree/master/tftp/Cisco_Firmwares
+                                </a><br />
+                                I recall seeing someone state that is the best version to use is cmterm-7941_7961-sip.8-5-4.zip. The newer v9 is
+                                plagued with issues.
+                            </li>
+                            <li>
+                                SIP Software for 7975 Phones may be downloaded from Cisco but only until 30 June 2023, as that is the end support
+                                date for the phone. If you do not have a support contract, you may not download the latest version, but you may be
+                                able to download the previous version. The downloads are at
+                                <a href="https://software.cisco.com/download/home/281346597/type/282074288/release/9.4(2)SR3?i=!pp" target="_blank">
+                                    https://software.cisco.com/download/home/281346597/type/282074288/release/9.4(2)SR3?i=!pp
+                                </a>. You will need an account, but it is free to setup. This is the best option for obtaining the software.
+                            </li>
+                        </ul>
+                        Unzip the SIP Software, copy the files to the root of your TFTP Server. Enter the name of the "loads" file in the
+                        loadInformation value. As an example, the phones that I have are listed below with the loadInformation values:
+                        <ul>
+                            <li>
+                                <b>Phone Model</b>: CP-7941G<br />
+                                <b>SIP Software Zip File</b>: cmterm-7941_7961-sip.8-5-4.zip<br />
+                                File Contents:
+                                <ul>
+                                    <li>apps41.8-5-4TH1-6.sbn</li>
+                                    <li>cnu41.8-5-4TH1-6.sbn</li>
+                                    <li>cvm41sip.8-5-4TH1-6.sbn</li>
+                                    <li>dsp41.8-5-4TH1-6.sbn</li>
+                                    <li>jar41sip.8-5-4TH1-6.sbn</li>
+                                    <li>SIP41.8-5-4S.loads</li>
+                                    <li>term41.default.loads</li>
+                                    <li>term61.default.loads</li>
+                                </ul>
+                                <b>loadInformation value</b>: SIP41.8-5-4S
+                            </li>
+                            <li>
+                                <b>Phone Model</b>: CP-7975G<br />
+                                <b>SIP Software Zip File</b>: cmterm-7975-sip.9-4-2SR3-1.zip<br />
+                                File Contents:
+                                <ul>
+                                    <li>apps75.9-4-2ES26.sbn</li>
+                                    <li>cnu75.9-4-2ES26.sbn</li>
+                                    <li>cvm75sip.9-4-2ES26.sbn</li>
+                                    <li>dsp75.9-4-2ES26.sbn</li>
+                                    <li>jar75sip.9-4-2ES26.sbn</li>
+                                    <li>SIP75.9-4-2SR3-1S.loads</li>
+                                    <li>term75.default.loads</li>
+                                </ul>
+                                <b>loadInformation value</b>: SIP75.9-4-2SR3-1S
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        /device/userLocale<br />
+                        /device/networkLocale<br />
+                        /device/networkLocaleInfo<br />
+                        If you are not in the United States, you may want to change these values. You may have
+                        to do some searching to find the valid values to enter in the settings.
+                    </li>
+                </ul>
 
                 <!-- END: Content -->
             </div>

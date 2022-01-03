@@ -42,8 +42,8 @@ const includeFiles = [
 const menuItems = [
     { id: "installation_install", group: "Installation", name: "1. Install RasPBX", url: "~/installation/installation.html", target: "" },
     { id: "installation_update", group: "Installation", name: "2. Update RasPBX", url: "~/installation/update.html", target: "" },
-    { id: "installation_afterupdate", group: "Installation", name: "3. Tasks after update", url: "~/installation/afterupdate.html", target: "" },
-    { id: "installation_initialconfig", group: "Installation", name: "4. Initial Configuration", url: "~/installation/initalconfig.html", target: "" },
+    { id: "installation_initialconfig", group: "Installation", name: "3. Initial Configuration", url: "~/installation/initalconfig.html", target: "" },
+    { id: "installation_afterupdate", group: "Installation", name: "4. Tasks after Configuration", url: "~/installation/afterupdate.html", target: "" },
     { id: "remote_terminal", group: "Remote", name: "SSH Terminal", url: "~/remote/terminal.html", target: "" },
     { id: "remote_filetransfer", group: "Remote", name: "SSH File Transfer", url: "~/remote/filetransfer.html", target: "" },
     { id: "remote_mariadb", group: "Remote", name: "MariaDB", url: "~/remote/mariadb.html", target: "" },
@@ -56,6 +56,7 @@ const menuItems = [
     { id: "phones_cisco79xx_directory", group: "Cisco79xx", name: "Directory", url: "~/phones/cisco79xx_directory.html", target: "" },
     { id: "phones_cisco79xx_services", group: "Cisco79xx", name: "Services", url: "~/phones/cisco79xx_services.html", target: "" },
     { id: "more_cisco79xx_misc", group: "More", name: "Cisco 79xx Misc. Info", url: "~/more/cisco79xx_misc.html", target: "" },
+    { id: "more_windows_utiltiy", group: "More", name: "Windows Utility", url: "~/more/windows_utility.html", target: "" },
     { id: "about_references", group: "About", name: "References", url: "~/about/references.html", target: "" },
     { id: "home", group: "", name: "", url: "~/default.html", target: "" },
     { id: "phones_cisco79xx", group: "Phones", name: "Cisco 79xx", url: "", target: "" }
@@ -64,8 +65,8 @@ const menuItems = [
 const sitePages = [
     { name: "installation_install", path: "installation/", file: "installation", resourcePath: "installation/installation/" },
     { name: "installation_update", path: "installation/", file: "update", resourcePath: "installation/update/" },
-    { name: "installation_afterupdate", path: "installation/", file: "afterupdate", resourcePath: "installation/afterupdate/" },
     { name: "installation_initialconfig", path: "installation/", file: "initalconfig", resourcePath: "installation/initalconfig/" },
+    { name: "installation_afterupdate", path: "installation/", file: "afterupdate", resourcePath: "installation/afterupdate/" },
     { name: "remote_terminal", path: "remote/", file: "terminal", resourcePath: "remote/terminal/" },
     { name: "remote_filetransfer", path: "remote/", file: "filetransfer", resourcePath: "remote/filetransfer/" },
     { name: "remote_mariadb", path: "remote/", file: "mariadb", resourcePath: "remote/mariadb/" },
@@ -78,6 +79,7 @@ const sitePages = [
     { name: "phones_cisco79xx_directory", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
     { name: "phones_cisco79xx_services", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
     { name: "more_cisco79xx_misc", path: "more/", file: "cisco79xx_misc", resourcePath: "more/cisco79xx_misc/" },
+    { name: "more_windows_utiltiy", path: "more/", file: "windows_utility", resourcePath: "more/windows_utility/" },
     { name: "phones_cisco79xx", path: "phones/", file: "cisco79xx", resourcePath: "phones/cisco79xx/" },
     { name: "about_references", path: "about/", file: "references", resourcePath: "about/references/" },
     { name: "test_header", path: "js/", file: "header", resourcePath: "js/header/" },

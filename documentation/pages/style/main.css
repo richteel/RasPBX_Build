@@ -95,6 +95,9 @@ a.skip-main {
     unicode-bidi: embed;
     font-family: monospace;
     white-space: pre;
+    color: black;
+    background-color: wheat;
+    border: solid black 1px;
 }
 
 .terminal {

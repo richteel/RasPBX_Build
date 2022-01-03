@@ -27,8 +27,8 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownInstallation">
                         <li><a href="#" id="installation_install" class="dropdown-item"></a></li>
                         <li><a href="#" id="installation_update" class="dropdown-item"></a></li>
-                        <li><a href="#" id="installation_afterupdate" class="dropdown-item"></a></li>
                         <li><a href="#" id="installation_initialconfig" class="dropdown-item"></a></li>
+                        <li><a href="#" id="installation_afterupdate" class="dropdown-item"></a></li>
                     </ul>
                 </li>
 
@@ -75,6 +75,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
                         <li><a href="#" id="more_cisco79xx_misc" class="dropdown-item"></a></li>
+                        <li><a href="#" id="more_windows_utiltiy" class="dropdown-item"></a></li>
                     </ul>
                 </li>
 

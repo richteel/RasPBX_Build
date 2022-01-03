@@ -78,6 +78,7 @@
     <Content Include="pages\images\construction_icon.png" />
     <Content Include="pages\images\external_link.png" />
     <Content Include="pages\images\GitHub-Mark-64px.png" />
+    <Content Include="pages\images\installation\afterupdate\missingHtml5Codecs.png" />
     <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_01.png" />
     <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_02.png" />
     <Content Include="pages\images\installation\initialconfig\RasPBX-Setup_03.png" />
@@ -117,6 +118,24 @@
     <Content Include="pages\images\phones\cisco79xx\SIP_Settings_04.png" />
     <Content Include="pages\images\phones\cisco79xx\TransferToTft_01.png" />
     <Content Include="pages\images\phones\cisco79xx\TransferToTft_02.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_05.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_06b.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_advanced.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_advanced_01.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_advanced_02.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_advanced_03.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_advanced_04.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_apply.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_findme.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_general.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_other.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_pinsets.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_submit.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\RasPBX-Extensions_voicemail.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\SIP_Settings_01.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\SIP_Settings_02.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\SIP_Settings_03.png" />
+    <Content Include="pages\images\phones\cisco79xx_extension\SIP_Settings_04.png" />
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_01.png" />
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_02.png" />
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_03.png" />
@@ -125,6 +144,7 @@
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_AddTftpOption.png" />
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_ConfigureOptions.png" />
     <Content Include="pages\images\phones\cisco79xx_tftp\win_dhcp_SetPredefinedOptions.png" />
+    <Content Include="pages\images\phones\cisco79xx_xml\Flowchart.png" />
     <Content Include="pages\images\phones\linphone\LinPhoneAudioFix.png" />
     <Content Include="pages\images\phones\linphone\RasPBX-Extensions_01.png" />
     <Content Include="pages\images\phones\linphone\RasPBX-Extensions_02.png" />
@@ -282,6 +302,7 @@
     <Content Include="pages\js\menu.js" />
     <Content Include="pages\js\modal.js" />
     <Content Include="pages\more\cisco79xx_misc.html" />
+    <Content Include="pages\more\windows_utility.html" />
     <Content Include="pages\phones\cisco79xx.html" />
     <Content Include="pages\phones\linphone.html" />
     <Content Include="pages\phones\pots.html" />
@@ -324,7 +345,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="pages\docs\" />
-    <Folder Include="pages\images\installation\afterupdate\" />
     <Folder Include="pages\images\installation\update\" />
     <Folder Include="pages\images\remote\filetransfer\" />
     <Folder Include="pages\videos\" />

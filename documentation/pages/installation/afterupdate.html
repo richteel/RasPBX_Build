@@ -21,22 +21,93 @@
         </div>
     </div>
 
-    <div class="jumbotron comingsoonJumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>This page is coming soon!</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <!-- START: Content -->
 
-                Content to go here
+                <h2>Install missing CODECs for HTML5</h2>
+                <p>
+                    You may notice issues or tasks in the System Overview of the dashboard. One of the
+                    items is "" with the following description:
+                    "You are missing support for the following HTML5 codecs: m4a. To fully support HTML5
+                    browser playback you will need to install programs that can not be distributed with
+                    FreePBX. If you'd like to install the binaries needed for these conversions click
+                    'Resolve' in the lower left corner of this message. You can also safely ignore this
+                    message but browser playback might not work in your browser." In order to resolve
+                    and understand this item, you may click the resolve button that will take you to a
+                    page on
+                    <a href="https://wiki.freepbx.org/display/FOP/Installing+Media+Conversion+Libraries" target="_blank">
+                        freepbx.org
+                    </a> that will provide more information.<br />
+                    <img class="previewImage" src="../images/installation/afterupdate/missingHtml5Codecs.png" alt="Missing HTML5 format converters" />
+                </p>
+                <ul>
+                    <li>
+                        SOX is already installed on my installation but you may attempt to install it
+                        by running the following command:<br />
+                        apt-get install sox
+                    </li>
+                    <li>
+                        MPG321 may be installed by running the following command:<br />
+                        apt-get install mpg321
+                    </li>
+                    <li>
+                        LAME is already installed on my installation but you may attempt to install it
+                        by running the following command:<br />
+                        apt-get install lame
+                    </li>
+                    <li>
+                        FFMPEG may be installed. A good resource for installing on Raspberry Pi may be
+                        found at
+                        <a href="https://lindevs.com/install-ffmpeg-on-raspberry-pi/" target="_blank">
+                            https://lindevs.com/install-ffmpeg-on-raspberry-pi/
+                        </a>
+                        <br />
+                        You may run the following commands to install FFMPEG:<br />
+                        sudo apt update<br />
+                        sudo apt install -y ffmpeg
+                    </li>
+                </ul>
+                <p>
+                    After running the above steps, I still saw the message displayed. I attempted to restart
+                    FreePBX by running the following command by the item still appears in the System Overview
+                    widget.<br />
+                    fwconsole restart
+                </p>
+                <pre class="terminal">
+root@raspbx:~# fwconsole restart
+Running FreePBX shutdown...
+
+Running Asterisk pre from Core module
+Stopping Core FastAGI Server
+Stopped FastAGI Server
+Running Asterisk pre from Ucp module
+Stopping UCP Node Server
+[>---------------------------] 3 secs
+Stopped UCP Node Server
+Shutting down Asterisk Gracefully. Will forcefully kill after 30 seconds.
+Press C to Cancel
+Press N to shut down NOW
+[============================] < 1 sec
+<span style="background-color:red;">DAHDI NOT FOUND [Suggest Uninstalling the Dahdi Configuration Module]!</span>
+Running FreePBX startup...
+Running Asterisk pre from Dahdiconfig module
+<span style="background-color:red;">DAHDI NOT FOUND [Suggest Uninstalling the Dahdi Configuration Module]!</span>
+Starting Asterisk...
+[============================] 3 secs
+Asterisk Started
+Running Asterisk post from Core module
+Starting Core FastAGI Server...
+[>---------------------------] 3 secs
+Started Core FastAGI Server. PID is 5085
+Running Asterisk post from Dahdiconfig module
+Running Asterisk post from Ucp module
+Starting UCP Node Server...
+[>---------------------------] 3 secs
+Started UCP Node Server. PID is 5285
+root@raspbx:~#
+</pre>
 
                 <!-- END: Content -->
             </div>
